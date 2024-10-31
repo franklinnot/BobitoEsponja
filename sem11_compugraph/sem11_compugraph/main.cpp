@@ -7,6 +7,7 @@
 #include "texturas/RgbImage.h"
 #include "MetodosPoligonos.h"
 #include "CodigoBase.h"
+#include "Levi.h"
 using namespace std;
 #pragma endregion
 

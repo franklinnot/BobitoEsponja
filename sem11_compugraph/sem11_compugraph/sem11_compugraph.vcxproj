@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CodigoBase.h" />
+    <ClInclude Include="Levi.h" />
     <ClInclude Include="MetodosPoligonos.h" />
     <ClInclude Include="Texturas\RgbImage.h" />
   </ItemGroup>
