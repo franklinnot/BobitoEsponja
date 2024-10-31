@@ -1,6 +1,6 @@
 
-#pragma region Includes
 #pragma once
+#pragma region Includes
 #include <GL/glut.h>
 #include <Math.h>
 #include <time.h>
@@ -70,6 +70,11 @@ void rubik(float escalaX, float escalaY, float escalaZ) {
 void rubik(float size, float escalaX, float escalaY, float escalaZ) {
     glPushMatrix();
     glScalef(escalaX, escalaY, escalaZ);
+    glutSolidCube(size);
+    glPopMatrix();
+}
+void rubik(float size) {
+    glPushMatrix();
     glutSolidCube(size);
     glPopMatrix();
 }

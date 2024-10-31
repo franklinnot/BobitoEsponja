@@ -6,16 +6,17 @@
 #include <iostream>
 #include "texturas/RgbImage.h"
 #include "MetodosPoligonos.h"
+#include "CodigoBase.h"
 using namespace std;
 #pragma endregion
 
 #pragma region Código de cajon
 
 float camaraX = -60;
-float camaraY = 20;
-float camaraZ = 60;
+float camaraY = 100;
+float camaraZ = 120;
 float angulo = 0;
-GLuint texturas[5];
+GLuint texturas[100];
 GLUquadric* quad;
 
 void loadTexturesFromFile(const char* filename, int index) {
@@ -174,6 +175,8 @@ void cargarImagenes() {
     loadTexturesFromFile("Texturas/textura_cuadros.bmp",0);
     loadTexturesFromFile("Texturas/goku.bmp", 1);
     loadTexturesFromFile("Texturas/tierra.bmp", 2);
+    loadTexturesFromFile("Texturas/fondito_mar.bmp", 3);
+
 }
 
 void dibujar() {
@@ -181,6 +184,8 @@ void dibujar() {
     inicializarLuces();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
     glLoadIdentity();
     gluLookAt(camaraX, camaraY, camaraZ, 0, 0, 0, 0, 1, 0);
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
@@ -191,6 +196,8 @@ void dibujar() {
     #pragma endregion
 
     // Aqui colocar todo el codigo
+
+    WorkSpace(texturas);
 
     // aqui termina
 
