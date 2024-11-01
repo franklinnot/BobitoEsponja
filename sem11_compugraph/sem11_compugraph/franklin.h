@@ -14,10 +14,8 @@ using namespace std;
 
 #pragma region Elementos a desarrolar
 /*
-Pequeña formación de arena
 3 Palmeras
 Arbustito
-La textura del agua se encontrará en la parte superior del cubo
 Cielo despejado(textura con imagen de cielo)
 Plankton
 */
@@ -29,10 +27,10 @@ void Arena(GLuint texturas[100], GLUquadric* quad) {
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[20]);
-	glColor3ub(250, 250, 250);
+	glColor4ub(250, 250, 250, 250);
 
 	glPushMatrix();
-		glTranslated(0, 50, 0);
+		glTranslated(0, 49, 0);
 		glScaled(1.2, 1.2, 1.8);
 		semiEsfera(quad, 10);
 	glPopMatrix();
@@ -41,40 +39,62 @@ void Arena(GLuint texturas[100], GLUquadric* quad) {
 }
 
 // 3 Palmeras
-void Palmeras() {
 
+void Palmera(){
+	glPushMatrix();
+		cilindro();
+	glPopMatrix();
+}
+
+void Palmeras() {
+	glPushMatrix();
+		Palmera();
+	glPopMatrix();
 }
 
 // Awita
-void Awita() {
+void Awita(GLuint texturas[100]) {
 	glColor4ub(15, 104, 247, 100);
 	glPushMatrix();
-	glTranslated(0, 70, 0);
-	cubo(50, 1.28, 0.72, 1.28);
+		cubo(100, 1, 1, 0.1);
 	glPopMatrix();
 
-	//glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texturas[1]);
-	//glColor3ub(250, 250, 250);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[19]);
+	glColor4ub(250, 250, 250, 220);
 
-	//glPushMatrix();
-	//glTranslated(-12.8, 0, 12.81);
-	//glBegin(GL_POLYGON);
-	//glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
-	//glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
-	//glTexCoord2f(1, 0);  glVertex3d(25.6, 0, 0);
-	//glTexCoord2f(0, 0);  glVertex3d(0, 0, 0);
-	//glEnd();
-	//glPopMatrix();
+	glPushMatrix();
+		glTranslated(-50, -50, 6);
+		glBegin(GL_POLYGON);
+			glTexCoord2f(0, 1); glVertex3d(0, 100, 0);
+			glTexCoord2f(1, 1); glVertex3d(100, 100, 0);
+			glTexCoord2f(1, 0);  glVertex3d(100, 0, 0);
+			glTexCoord2f(0, 0);  glVertex3d(0, 0, 0);
+		glEnd();
+	glPopMatrix();
 
-	//glDisable(GL_TEXTURE_2D);
+	glDisable(GL_TEXTURE_2D);
 }
+
 
 // Toda la isla
 void Isla(GLuint texturas[100], GLUquadric* quad) {
 
 	glPushMatrix();
-	Arena(texturas, quad);
-	Awita();
+		
+		// arenita
+	    Arena(texturas, quad);
+
+		// las 3 palmeras
+
+
+		// awita sobre el cubito 
+        glPushMatrix();
+			glTranslated(0, 49, 0);
+			glScaled(1, 0.01, 1);
+			glRotated(-90, 1, 0, 0);
+	        Awita(texturas);
+        glPopMatrix();
+
 	glPopMatrix();
 }

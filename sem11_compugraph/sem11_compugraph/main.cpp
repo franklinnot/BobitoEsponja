@@ -156,7 +156,7 @@ void cubito() {
     glPopMatrix();
 
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, texturas[1]);
+    glBindTexture(GL_TEXTURE_2D, texturas[19]);
     glColor3ub(250, 250, 250);
 
 	glPushMatrix();
@@ -178,6 +178,7 @@ void cargarImagenes() {
     loadTexturesFromFile("Texturas/goku.bmp", 1);
     loadTexturesFromFile("Texturas/tierra.bmp", 2);
     loadTexturesFromFile("Texturas/fondito_mar.bmp", 3);
+    loadTexturesFromFile("Texturas/awita.bmp", 19);
     loadTexturesFromFile("Texturas/arenita_mar.bmp", 20);
 }
 
@@ -202,7 +203,7 @@ void dibujar() {
 
     WorkSpace(texturas);
     Isla(texturas, quad);
-
+    
     // aqui termina
 
     #pragma region No tocar
