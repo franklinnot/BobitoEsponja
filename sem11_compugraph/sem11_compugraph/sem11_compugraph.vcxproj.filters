@@ -35,5 +35,8 @@
     <ClInclude Include="CodigoBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="franklin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

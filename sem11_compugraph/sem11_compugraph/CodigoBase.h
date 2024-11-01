@@ -7,14 +7,14 @@
 using namespace std;
 #pragma endregion
 
-void WorkSpace(GLuint texturas[5])
+void WorkSpace(GLuint texturas[100])
 {
 
-    glColor4ub(15, 104, 247, 180);
+    glColor4ub(15, 104, 247, 100);
     glPushMatrix();
     glTranslated(0, 24, 0);
     glScalef(1,0.5,1);
-    rubik(100);
+    cuboHueco(100);
     glPopMatrix();
 
     glEnable(GL_TEXTURE_2D);
