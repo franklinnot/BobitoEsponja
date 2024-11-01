@@ -1,14 +1,12 @@
 
-#pragma once
 #pragma region Includes
+#pragma once
 #include <GL/glut.h>
 #include <Math.h>
 #include <time.h>
 #include <iostream>
 using namespace std;
 #pragma endregion
-
-
 
 void dibujarEjes(float tamano) {
     glBegin(GL_LINES);
@@ -31,61 +29,127 @@ void dibujarEjes(float tamano) {
     glEnd();
 }
 
-void barril_chavo(float radioBase, float radioTope, float altura, int divisiones) {
+void cilindro(float radioBase, float radioTope, float altura, int divisiones) {
     glPushMatrix();
     gluCylinder(gluNewQuadric(), radioBase, radioTope, altura, divisiones, divisiones);
     glPopMatrix();
 }
 
-void canica(GLdouble radio, GLint divisiones) {
+#pragma region Esfera
+void esfera(GLdouble radio, GLint divisiones) {
     glPushMatrix();
     glutSolidSphere(radio, divisiones, divisiones);
     glPopMatrix();
 }
 
-void canica(GLdouble radio) {
+void esfera(GLdouble radio) {
     glPushMatrix();
     glutSolidSphere(radio, 50, 50);
     glPopMatrix();
 }
 
-void canica(GLUquadric* quadcito, GLdouble radio) {
+void esfera(GLUquadric* quadcito, GLdouble radio) {
     glPushMatrix();
     gluSphere(quadcito, radio, 50, 50);
     glPopMatrix();
 }
 
-void canica(GLUquadric* quadcito, GLdouble radio, GLint divisiones) {
+void esfera(GLUquadric* quadcito, GLdouble radio, GLint divisiones) {
     glPushMatrix();
     gluSphere(quadcito, radio, divisiones, divisiones);
     glPopMatrix();
 }
 
-void rubik(float escalaX, float escalaY, float escalaZ) {
+#pragma endregion
+
+#pragma region Cubo
+
+void cuboHueco(GLfloat size) {
+    GLfloat halfSize = size / 2.0f;
+
+    // Cara frontal
+    glBegin(GL_QUADS);
+    glNormal3f(0.0f, 0.0f, 1.0f);
+    glVertex3f(-halfSize, -halfSize, halfSize);  
+    glVertex3f(halfSize, -halfSize, halfSize);  
+    glVertex3f(halfSize, halfSize, halfSize);  
+    glVertex3f(-halfSize, halfSize, halfSize);  
+    glEnd();
+
+    // Cara trasera
+    glBegin(GL_QUADS);
+    glNormal3f(0.0f, 0.0f, -1.0f);
+    glVertex3f(-halfSize, -halfSize, -halfSize); 
+    glVertex3f(-halfSize, halfSize, -halfSize); 
+    glVertex3f(halfSize, halfSize, -halfSize);  
+    glVertex3f(halfSize, -halfSize, -halfSize);  
+    glEnd();
+
+    // Cara izquierda
+    glBegin(GL_QUADS);
+    glNormal3f(-1.0f, 0.0f, 0.0f);
+    glVertex3f(-halfSize, -halfSize, -halfSize); 
+    glVertex3f(-halfSize, -halfSize, halfSize); 
+    glVertex3f(-halfSize, halfSize, halfSize);  
+    glVertex3f(-halfSize, halfSize, -halfSize);
+    glEnd();
+
+    // Cara derecha
+    glBegin(GL_QUADS);
+    glNormal3f(1.0f, 0.0f, 0.0f);
+    glVertex3f(halfSize, -halfSize, -halfSize); 
+    glVertex3f(halfSize, halfSize, -halfSize);  
+    glVertex3f(halfSize, halfSize, halfSize);   
+    glVertex3f(halfSize, -halfSize, halfSize);   
+    glEnd();
+
+    // Cara superior
+    glBegin(GL_QUADS);
+    glNormal3f(0.0f, 1.0f, 0.0f);
+    glVertex3f(-halfSize, halfSize, -halfSize); 
+    glVertex3f(-halfSize, halfSize, halfSize);   
+    glVertex3f(halfSize, halfSize, halfSize);    
+    glVertex3f(halfSize, halfSize, -halfSize);  
+    glEnd();
+
+    // Cara inferior
+    glBegin(GL_QUADS);
+    glNormal3f(0.0f, -1.0f, 0.0f);
+    glVertex3f(-halfSize, -halfSize, -halfSize);
+    glVertex3f(halfSize, -halfSize, -halfSize); 
+    glVertex3f(halfSize, -halfSize, halfSize);  
+    glVertex3f(-halfSize, -halfSize, halfSize);  
+    glEnd();
+}
+void cubo(float escalaX, float escalaY, float escalaZ) {
     glPushMatrix();
     glScalef(escalaX, escalaY, escalaZ);
     glutSolidCube(1);
     glPopMatrix();
 }
-void rubik(float size, float escalaX, float escalaY, float escalaZ) {
+void cubo(float size, float escalaX, float escalaY, float escalaZ) {
     glPushMatrix();
     glScalef(escalaX, escalaY, escalaZ);
     glutSolidCube(size);
     glPopMatrix();
 }
-void rubik(float size) {
+void cubo(float size) {
     glPushMatrix();
     glutSolidCube(size);
     glPopMatrix();
 }
 
-void donut(float radioInterior, float radioExterior, int lados, int anillos) {
+#pragma endregion
+
+void dona(float radioInterior, float radioExterior, int lados, int anillos) {
     glPushMatrix();
     glutSolidTorus(radioInterior, radioExterior, lados, anillos);
     glPopMatrix();
 }
 
-void bolcito(float radius, int slices, int stacks) {
+#pragma region SemiEsfera
+
+void semiEsfera(float radius, int slices, int stacks) {
     for (int i = 0; i <= stacks / 2; ++i) {
         float theta1 = (float)i / stacks * 3.1415;
         float theta2 = (float)(i + 1) / stacks * 3.1415;
@@ -109,6 +173,59 @@ void bolcito(float radius, int slices, int stacks) {
     }
 }
 
+void semiEsfera(float radius) {
+    int slices = 100;
+    int stacks = 100;
+    for (int i = 0; i <= stacks / 2; ++i) {
+        float theta1 = (float)i / stacks * 3.1415;
+        float theta2 = (float)(i + 1) / stacks * 3.1415;
+
+        glBegin(GL_TRIANGLE_STRIP);
+        for (int j = 0; j <= slices; ++j) {
+            float phi = (float)j / slices * 2.0f * 3.1415;
+
+            float x1 = radius * sinf(theta1) * cosf(phi);
+            float y1 = radius * cosf(theta1);
+            float z1 = radius * sinf(theta1) * sinf(phi);
+
+            float x2 = radius * sinf(theta2) * cosf(phi);
+            float y2 = radius * cosf(theta2);
+            float z2 = radius * sinf(theta2) * sinf(phi);
+
+            glVertex3f(x1, y1, z1);  // Primer vértice
+            glVertex3f(x2, y2, z2);  // Segundo vértice
+        }
+        glEnd();
+    }
+}
+
+void semiEsfera(GLUquadric* quadcito, GLdouble radius) {
+    int slices = 100;
+    int stacks = 100;
+    for (int i = 0; i <= stacks / 2; ++i) {
+        float theta1 = (float)i / stacks * 3.1415;
+        float theta2 = (float)(i + 1) / stacks * 3.1415;
+
+        glBegin(GL_TRIANGLE_STRIP);
+        for (int j = 0; j <= slices; ++j) {
+            float phi = (float)j / slices * 2.0f * 3.1415;
+
+            float x1 = radius * sinf(theta1) * cosf(phi);
+            float y1 = radius * cosf(theta1);
+            float z1 = radius * sinf(theta1) * sinf(phi);
+
+            float x2 = radius * sinf(theta2) * cosf(phi);
+            float y2 = radius * cosf(theta2);
+            float z2 = radius * sinf(theta2) * sinf(phi);
+
+            glVertex3f(x1, y1, z1);  // Primer vértice
+            glVertex3f(x2, y2, z2);  // Segundo vértice
+        }
+        glEnd();
+    }
+}
+
+#pragma endregion
 
 
 

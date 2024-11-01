@@ -8,14 +8,15 @@
 #include "MetodosPoligonos.h"
 #include "CodigoBase.h"
 #include "Levi.h"
+#include "franklin.h"
 using namespace std;
 #pragma endregion
 
-#pragma region Código de cajon
+#pragma region Cï¿½digo de cajon
 
-float camaraX = -60;
-float camaraY = 100;
-float camaraZ = 120;
+float camaraX = -80;
+float camaraY = 90;
+float camaraZ = 50;
 float angulo = 0;
 GLuint texturas[100];
 GLUquadric* quad;
@@ -188,7 +189,7 @@ void dibujar() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glLoadIdentity();
-    gluLookAt(camaraX, camaraY, camaraZ, 0, 0, 0, 0, 1, 0);
+    gluLookAt(camaraX, camaraY, camaraZ, 0, 25, 0, 0, 1, 0);
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
     glPushMatrix();
     glRotated(angulo, 0, 1, 0);
@@ -199,6 +200,7 @@ void dibujar() {
     // Aqui colocar todo el codigo
 
     WorkSpace(texturas);
+    
 
     // aqui termina
 
