@@ -142,7 +142,7 @@ void tierra() {
         glRotated(-90, 1, 0, 0);
         quad = gluNewQuadric();
         gluQuadricTexture(quad, 1);
-        canica(quad, 12);
+        esfera(quad, 12);
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
@@ -152,7 +152,7 @@ void cubito() {
 	glColor3ub(140, 220, 250);
 	glPushMatrix();
 	    glTranslated(0,7.2, 0);
-        rubik(20, 1.28, 0.72, 1.28);
+        cubo(20, 1.28, 0.72, 1.28);
     glPopMatrix();
 
     glEnable(GL_TEXTURE_2D);
