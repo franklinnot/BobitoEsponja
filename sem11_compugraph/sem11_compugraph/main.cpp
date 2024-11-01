@@ -189,6 +189,7 @@ void dibujar() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glLoadIdentity();
+    // Linea para modificar el punto al cual la camara debe enfocar
     gluLookAt(camaraX, camaraY, camaraZ, 0, 25, 0, 0, 1, 0);
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
     glPushMatrix();
