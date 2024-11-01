@@ -13,8 +13,8 @@ using namespace std;
 
 #pragma region Código de cajon
 
-float camaraX = -80;
-float camaraY = 90;
+float camaraX = 50;
+float camaraY = 75;
 float camaraZ = 50;
 float angulo = 0;
 GLuint texturas[100];
@@ -189,7 +189,7 @@ void dibujar() {
     glEnable(GL_BLEND);
     glLoadIdentity();
     // Linea para modificar el punto al cual la camara debe enfocar
-    gluLookAt(camaraX, camaraY, camaraZ, 0, 25, 0, 0, 1, 0);
+    gluLookAt(camaraX, camaraY, camaraZ, 0, 55, 0, 0, 1, 0);
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
     glPushMatrix();
     glRotated(angulo, 0, 1, 0);
@@ -200,7 +200,7 @@ void dibujar() {
     // Aqui colocar todo el codigo
 
     WorkSpace(texturas);
-    
+    Isla(texturas, quad);
 
     // aqui termina
 
