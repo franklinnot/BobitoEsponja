@@ -177,7 +177,7 @@ void cargarImagenes() {
     loadTexturesFromFile("Texturas/goku.bmp", 1);
     loadTexturesFromFile("Texturas/tierra.bmp", 2);
     loadTexturesFromFile("Texturas/fondito_mar.bmp", 3);
-
+    loadTexturesFromFile("Texturas/arenita_mar.bmp", 20);
 }
 
 void dibujar() {

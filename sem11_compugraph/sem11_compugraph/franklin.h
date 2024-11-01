@@ -28,18 +28,46 @@ Plankton
 void Arena(GLuint texturas[100], GLUquadric* quad) {
 
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texturas[2]);
+	glBindTexture(GL_TEXTURE_2D, texturas[20]);
 	glColor3ub(250, 250, 250);
 
 	glPushMatrix();
-		glColor3ub(190, 123, 129);
 		glTranslated(0, 50, 0);
-		glScaled(0.75, 1.2, 1.4);
-
+		glScaled(1.2, 1.2, 1.8);
 		semiEsfera(quad, 10);
 	glPopMatrix();
 
 	glDisable(GL_TEXTURE_2D);
+}
+
+// 3 Palmeras
+void Palmeras() {
+
+}
+
+// Awita
+void Awita() {
+	glColor4ub(15, 104, 247, 100);
+	glPushMatrix();
+	glTranslated(0, 70, 0);
+	cubo(50, 1.28, 0.72, 1.28);
+	glPopMatrix();
+
+	//glEnable(GL_TEXTURE_2D);
+	//glBindTexture(GL_TEXTURE_2D, texturas[1]);
+	//glColor3ub(250, 250, 250);
+
+	//glPushMatrix();
+	//glTranslated(-12.8, 0, 12.81);
+	//glBegin(GL_POLYGON);
+	//glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
+	//glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
+	//glTexCoord2f(1, 0);  glVertex3d(25.6, 0, 0);
+	//glTexCoord2f(0, 0);  glVertex3d(0, 0, 0);
+	//glEnd();
+	//glPopMatrix();
+
+	//glDisable(GL_TEXTURE_2D);
 }
 
 // Toda la isla
@@ -47,5 +75,6 @@ void Isla(GLuint texturas[100], GLUquadric* quad) {
 
 	glPushMatrix();
 	Arena(texturas, quad);
+	Awita();
 	glPopMatrix();
 }

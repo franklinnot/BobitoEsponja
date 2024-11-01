@@ -64,7 +64,7 @@ void esfera(GLUquadric* quadcito, GLdouble radio, GLint divisiones) {
 
 #pragma region Cubo
 
-void cuboHueco(GLfloat size) {
+void cubo(GLfloat size) {
     GLfloat halfSize = size / 2.0f;
 
     // Cara frontal
@@ -123,22 +123,16 @@ void cuboHueco(GLfloat size) {
 }
 void cubo(float escalaX, float escalaY, float escalaZ) {
     glPushMatrix();
-    glScalef(escalaX, escalaY, escalaZ);
-    glutSolidCube(1);
+        glScalef(escalaX, escalaY, escalaZ);
+        cuboHueco(10.0f);
     glPopMatrix();
 }
 void cubo(float size, float escalaX, float escalaY, float escalaZ) {
     glPushMatrix();
     glScalef(escalaX, escalaY, escalaZ);
-    glutSolidCube(size);
+    cuboHueco(size);
     glPopMatrix();
 }
-void cubo(float size) {
-    glPushMatrix();
-    glutSolidCube(size);
-    glPopMatrix();
-}
-
 #pragma endregion
 
 void dona(float radioInterior, float radioExterior, int lados, int anillos) {
