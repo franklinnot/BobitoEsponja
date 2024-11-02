@@ -255,6 +255,12 @@ void cielito(GLuint texturas[100], GLUquadric* quad) {
 	glDisable(GL_TEXTURE_2D);
 }
 
+// Plankton
+void plankton() {
+	
+}
+
+
 // Toda la isla
 void Isla(GLuint texturas[100], GLUquadric* quad) {
 
