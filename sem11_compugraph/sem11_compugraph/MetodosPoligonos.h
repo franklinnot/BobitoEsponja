@@ -29,11 +29,37 @@ void dibujarEjes(float tamano) {
     glEnd();
 }
 
-void cilindro(float radioBase, float radioTope, float altura, int divisiones) {
+void cilindroDiv(GLdouble radioBase, GLdouble radioTope, GLdouble altura, int divisiones) {
     glPushMatrix();
     gluCylinder(gluNewQuadric(), radioBase, radioTope, altura, divisiones, divisiones);
     glPopMatrix();
 }
+
+void cilindroDiv(GLdouble radio, GLdouble altura, int divisiones) {
+    glPushMatrix();
+    gluCylinder(gluNewQuadric(), radio, radio, altura, divisiones, 50);
+    
+    glPopMatrix();
+}
+
+void cilindro(GLdouble radioBase, GLdouble radioTope, GLdouble altura) {
+    glPushMatrix();
+    gluCylinder(gluNewQuadric(), radioBase, radioTope, altura, 50, 50);
+    glPopMatrix();
+}
+
+void cilindro(GLdouble radio, GLdouble altura) {
+    glPushMatrix();
+    gluCylinder(gluNewQuadric(), radio, radio, altura, 50, 50);
+    glPopMatrix();
+}
+
+void cilindro(GLUquadric* quad, GLdouble radioBase, GLdouble radioTope, GLdouble altura) {
+    glPushMatrix();
+    gluCylinder(quad, radioBase, radioTope, altura, 50, 50);
+    glPopMatrix();
+}
+
 
 #pragma region Esfera
 void esfera(GLdouble radio, GLint divisiones) {

@@ -14,9 +14,9 @@ using namespace std;
 
 #pragma region Codigo de cajon
 
-float camaraX = 50;
-float camaraY = 75;
-float camaraZ = 50;
+float camaraX = 35;
+float camaraY = 50;
+float camaraZ = 35;
 float angulo = 0;
 GLuint texturas[100];
 GLUquadric* quad;
@@ -175,11 +175,12 @@ void cubito() {
 
 void cargarImagenes() {
     loadTexturesFromFile("Texturas/textura_cuadros.bmp",0);
-    loadTexturesFromFile("Texturas/goku.bmp", 1);
-    loadTexturesFromFile("Texturas/tierra.bmp", 2);
-    loadTexturesFromFile("Texturas/fondito_mar.bmp", 3);
-    loadTexturesFromFile("Texturas/awita.bmp", 19);
-    loadTexturesFromFile("Texturas/arenita_mar.bmp", 20);
+
+    // texturas - franklin
+    loadTexturesFromFile("Texturas/awita.bmp", 85);
+    loadTexturesFromFile("Texturas/arenita_mar.bmp", 86); 
+    loadTexturesFromFile("Texturas/maderita.bmp", 87);
+    loadTexturesFromFile("Texturas/palmerita.bmp", 88);
 }
 
 void dibujar() {
