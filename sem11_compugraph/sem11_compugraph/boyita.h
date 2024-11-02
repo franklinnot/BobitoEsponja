@@ -157,6 +157,92 @@ void casaPatricio(GLuint texturas[100], GLUquadric* quad)
 
 }
 
+// Corales - 2 tipos
+
+
+// Tipo 1 xd 
+void puntosCoral(float x, float y, float z) {
+	glColor3ub(222, 200, 7); // Color amarillo
+
+	glPushMatrix();
+	glTranslated(x, y, z);
+	esfera(0.1, 10);  // Esfera pequeña para el punto
+	glPopMatrix();
+}
+
+void coralBase()
+{
+	glColor3ub(196, 39, 24);
+
+	glPushMatrix();
+	glRotated(-90, 1, 0, 0);
+	cilindro(0.5, 1, 6, 50);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 6, 0);
+	glRotated(-90, 1, 0, 0);
+	dona(0.5, 1, 10, 10);
+	glPopMatrix();
+
+	glPushMatrix();
+	glRotated(-90, 1, 0, 0);
+	dona(0.4, 0.5, 10, 10);
+	glPopMatrix();
+
+
+	puntosCoral(0.5, 3, 0.5);
+	puntosCoral(-0.63, 4, -0.63);
+	puntosCoral(0.7, 5, -0.7);
+	puntosCoral(-0.55, 6, 0.55);
+	puntosCoral(-0.1, 5, 0.9);
+
+
+	puntosCoral(1, 6.5, 0);
+	puntosCoral(-1, 6.5, 0);
+	puntosCoral(0, 6.5, 1);
+	puntosCoral(0, 6.5, -1);
+
+
+}
+
+void coralOne()
+{
+	glPushMatrix();
+	glScaled(2, 1.5, 2);
+	coralBase();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 2.5, 0);
+	glRotated(-40, 0, 0, 1);
+	glScaled(1.2, 1, 1.2);
+	coralBase();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 2.5, 0);
+	glRotated(40, 0, 0, 1);
+	glScaled(1.2, 1, 1.2);
+	coralBase();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 1, 0);
+	glRotated(40, 1, 0, 0);
+	glScaled(1.2, 1, 1.2);
+	coralBase();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 1, 0);
+	glRotated(-40, 1, 0, 0);
+	glScaled(1.2, 1, 1.2);
+	coralBase();
+	glPopMatrix();
+
+}
+
 
 
 // Detallito :)
