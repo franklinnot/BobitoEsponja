@@ -12,12 +12,14 @@
 using namespace std;
 #pragma endregion
 
-#pragma region C�digo de cajon
+#pragma region 
+//Codigo de cajon
 
 float camaraX = -80;
 float camaraY = 90;
 float camaraZ = 50;
 float angulo = 0;
+
 GLuint texturas[100];
 GLUquadric* quad;
 
@@ -29,7 +31,8 @@ void loadTexturesFromFile(const char* filename, int index) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, theTextMap.GetNumCols(), theTextMap.GetNumRows(), 0, GL_RGB, GL_UNSIGNED_BYTE, theTextMap.ImageData());
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, theTextMap.GetNumCols(), 
+        theTextMap.GetNumRows(), 0, GL_RGB, GL_UNSIGNED_BYTE, theTextMap.ImageData());
 }
 
 void iniciarVentana(int w, int h) {
@@ -61,7 +64,7 @@ void inicializarLuces() {
 void piso() {
 
     glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texturas[0]);
+	glBindTexture(GL_TEXTURE_2D, texturas[63]);
     glColor3ub(255,255,255);
 
     glPushMatrix();
@@ -104,29 +107,25 @@ void teclado(int tecla, int x, int y) {
     {
     case 101:
         std::cout << "Manito arriba" << std::endl;
-        camaraY += 0.2;
+        camaraY += 2;
         break;
 
     case 103:
         std::cout << "Manito abajo" << std::endl;
-        camaraY -= 0.2;
+        camaraY -= 2;
         break;
 
     case 102:
         std::cout << "Patita derecha" << std::endl;
-        angulo -= 1;
+        angulo -= 2;
         break;
 
     case 100:
         std::cout << "Patita izquierda" << std::endl;
-        angulo += 1;
+        angulo += 2;
         break;
-
     }
-
 }
-
-
 
 #pragma endregion
 
@@ -148,6 +147,7 @@ void tierra() {
     glDisable(GL_TEXTURE_2D);
 
 }
+
 void cubito() {
 	glColor3ub(140, 220, 250);
 	glPushMatrix();
@@ -171,13 +171,172 @@ void cubito() {
 
     glDisable(GL_TEXTURE_2D);
 }
+
+
+//Levi
+
+void pista()
+{
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[65]);
+    //Imprtante el color para que aparezca la imagen 
+    glColor3ub(255, 255, 255);
+
+    glPushMatrix();
+        glRotated(90, 90, 0,1);
+    glBegin(GL_POLYGON);
+    //Agregamos la imagen con gltexcoord2f en las medidas establecidas
+    glTexCoord2f(0, 1); glVertex3d(0, 10.8, 0);
+    glTexCoord2f(1, 1);	glVertex3d(12.2, 10.8, 0);
+    glTexCoord2f(1, 0); glVertex3d(12.2, 0, 0);
+    glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+
+    glEnd();
+
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+}
+
+void calles()
+{
+
+    glPushMatrix();
+    glTranslated(-6, -1, 10);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-6, -1, 20.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-6, -1, 30.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-6, -1, 40.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(40, -1, 40.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(30, -1, 40.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(20, -1, 40.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(10, -1, 40.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0, -1, 40.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-10, -1, 40.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-20, -1, 40.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-30, -1, 40.5);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-40, -1, 40.5);
+    pista();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(-50, -1, 40.5);
+    pista();
+    glPopMatrix();
+}
+
+void madera()
+{
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[61]);
+    glColor3ub(250, 250, 250);
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);
+    glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
+    glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
+    glTexCoord2f(1, 0);  glVertex3d(25.6, 0, 0);
+    glTexCoord2f(0, 0);  glVertex3d(0, 0, 0);
+    glEnd();
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+}
+
+void banderas()
+{
+        glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[66]);
+    glColor3ub(250, 250, 250);
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);
+    glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
+    glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
+    glTexCoord2f(1, 0);  glVertex3d(25.6, 0, 0);
+    glTexCoord2f(0, 0);  glVertex3d(0, 0, 0);
+    glEnd();
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+}
+
+
+
+void ventanalateral()
+{
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[67]);
+    glColor3ub(250, 250, 250);
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);
+    glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
+    glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
+    glTexCoord2f(1, 0);  glVertex3d(25.6, 0, 0);
+    glTexCoord2f(0, 0);  glVertex3d(0, 0, 0);
+    glEnd();
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+}
 #pragma endregion
 
+
 void cargarImagenes() {
-    loadTexturesFromFile("Texturas/textura_cuadros.bmp",0);
-    loadTexturesFromFile("Texturas/goku.bmp", 1);
-    loadTexturesFromFile("Texturas/tierra.bmp", 2);
-    loadTexturesFromFile("Texturas/fondito_mar.bmp", 3);
+    loadTexturesFromFile("Texturas/madera.bmp", 61);
+    loadTexturesFromFile("Texturas/fondito_mar.bmp", 62);
+    loadTexturesFromFile("Texturas/arena.bmp", 63);
+    loadTexturesFromFile("Texturas/pista.bmp", 65);
+    loadTexturesFromFile("Texturas/BanderaCrustaceo.bmp", 66);
+    loadTexturesFromFile("Texturas/ventanalateral.bmp", 67);
+
 
 }
 
@@ -190,7 +349,7 @@ void dibujar() {
     glEnable(GL_BLEND);
     glLoadIdentity();
     // Linea para modificar el punto al cual la camara debe enfocar
-    gluLookAt(camaraX, camaraY, camaraZ, 0, 25, 0, 0, 1, 0);
+    gluLookAt(camaraX, camaraY, 0, 30, 25, 0, 0, 1, 0);
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
     glPushMatrix();
     glRotated(angulo, 0, 1, 0);
@@ -200,8 +359,50 @@ void dibujar() {
 
     // Aqui colocar todo el codigo
 
-    WorkSpace(texturas);
+    //Local
+    glPushMatrix();
+        glTranslated(0, 10, 1);
+        base(40,20,20,61);
+    glPopMatrix();
     
+    socalos();
+
+    pilares();
+
+    calles();
+
+    glPushMatrix();
+        glTranslated(-19, 3, -9.5);
+        glScaled(1.5, 1.2, 0);
+        madera();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-19, 13, 11.5);
+    glScaled(1.5, 0.5, 0);
+
+    banderas();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-20.5, 3, 10);
+    glRotated(90, 1, 90,1);
+        glScaled(0.7, 1.5, 0);
+        ventanalateral();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(20.5, 3, 10);
+    glRotated(90, 1, 90, 1);
+    glScaled(0.7, 1.5, 0);
+    ventanalateral();
+    glPopMatrix();
+
+
+    WorkSpace(texturas);
 
     // aqui termina
 
