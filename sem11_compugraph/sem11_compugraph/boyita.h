@@ -157,3 +157,22 @@ void casaPatricio(GLuint texturas[100], GLUquadric* quad)
 
 }
 
+
+
+// Detallito :)
+void burbujitas()
+{
+
+	glColor3ub(185, 220, 239);
+
+	for (int i = 0; i < 100; ++i) {
+		float x = (rand() % 100 - 50) / 25.0f;
+		float y = i * 0.15f;
+		float z = (rand() % 100 - 50) / 25.0f;
+
+		glPushMatrix();
+		glTranslated(x, y, z);
+		esfera(0.1, 10);
+		glPopMatrix();
+	}
+}
