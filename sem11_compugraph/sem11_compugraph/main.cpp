@@ -36,7 +36,7 @@ void iniciarVentana(int w, int h) {
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(70, (float)w / (float)h, 1, 200);
+    gluPerspective(70, (float)w / (float)h, 1, 500);
 }
 
 void inicializarLuces() {
@@ -181,6 +181,8 @@ void cargarImagenes() {
     loadTexturesFromFile("Texturas/arenita_mar.bmp", 86); 
     loadTexturesFromFile("Texturas/maderita.bmp", 87);
     loadTexturesFromFile("Texturas/palmerita.bmp", 88);
+    loadTexturesFromFile("Texturas/arbustito.bmp", 89);
+    loadTexturesFromFile("Texturas/cielito.bmp", 90);
 }
 
 void dibujar() {

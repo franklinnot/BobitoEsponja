@@ -14,8 +14,6 @@ using namespace std;
 
 #pragma region Elementos a desarrolar
 /*
-Arbustito
-Cielo despejado(textura con imagen de cielo)
 Plankton
 */
 #pragma endregion
@@ -65,6 +63,7 @@ void Arena(GLuint texturas[100], GLUquadric* quad) {
 }
 
 
+#pragma region Palmeras
 
 void hojaPalmera(GLuint texturas[100]) {
 	glEnable(GL_TEXTURE_2D);
@@ -144,7 +143,6 @@ void Palmera(GLuint texturas[100]) {
 
 }
 
-
 void Palmeras(GLuint texturas[100]) {
 	glPushMatrix();
 		glTranslated(2, -0.8, 8);
@@ -166,7 +164,96 @@ void Palmeras(GLuint texturas[100]) {
 	glPopMatrix();
 }
 
+#pragma endregion
 
+// Arbustito
+void arbusto(GLuint texturas[100]) {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[89]); // Textura de follaje
+
+	GLUquadric* quad = gluNewQuadric();
+	gluQuadricTexture(quad, GL_TRUE);
+
+	// Crear varias esferas para la estructura del arbusto
+	glPushMatrix();
+	glColor3ub(34, 139, 34);  // Color verde para camuflar con la textura
+	glTranslatef(0, 0, 0);
+	gluSphere(quad, 3.0, 20, 20);  // Esfera principal
+
+	// Varias esferas alrededor para una forma irregular
+	glPushMatrix();
+	glTranslatef(-2, 1, 2);
+	gluSphere(quad, 2.0, 20, 20);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(2, 1, -2);
+	gluSphere(quad, 2.0, 20, 20);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(1.5, 2, 1.5);
+	gluSphere(quad, 1.8, 20, 20);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-1.5, 2, -1.5);
+	gluSphere(quad, 1.5, 20, 20);
+	glPopMatrix();
+
+	glPopMatrix();
+
+	gluDeleteQuadric(quad);
+	glDisable(GL_TEXTURE_2D);
+}
+
+void elArbustito(GLuint texturas[100]) {
+
+	glPushMatrix();
+	glTranslated(0, 60, 0);
+	arbusto(texturas);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(4, 58, 0);
+	glRotated(-35, 0, 1, 0);
+	arbusto(texturas);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(6, 58, -4);
+	glRotated(35, 0, 1, 0);
+	arbusto(texturas);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(7, 57, 5);
+	glRotated(70, 0, 1, 0);
+	arbusto(texturas);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(4, 58, 4);
+	glRotated(20, 0, 1, 0);
+	arbusto(texturas);
+	glPopMatrix();
+
+}
+
+
+void cielito(GLuint texturas[100], GLUquadric* quad) {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[90]);
+	glColor3ub(255, 255, 255);
+
+	glPushMatrix();
+		glTranslated(0, 25, 0);
+		quad = gluNewQuadric();
+		gluQuadricTexture(quad, 1);
+		esfera(quad, 135);
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+}
 
 // Toda la isla
 void Isla(GLuint texturas[100], GLUquadric* quad) {
@@ -188,6 +275,30 @@ void Isla(GLuint texturas[100], GLUquadric* quad) {
         glPopMatrix();
 
 		Palmeras(texturas);
+
+		glPushMatrix();
+			glTranslated(0, -0.8, 0);
+			elArbustito(texturas);
+		glPopMatrix();
+
+		glPushMatrix();
+			glRotated(135, 0, 1, 0);
+			glTranslated(0, -0.6, 0);
+			elArbustito(texturas);
+		glPopMatrix();
+
+		glPushMatrix();
+			glRotated(-75, 0, 1, 0);
+			glTranslated(0, -0.4, 0);
+			elArbustito(texturas);
+		glPopMatrix();
+
+		glPushMatrix();
+			glScaled(2, 2, 2);
+			glRotated(80, 1, 0, 0);
+			glRotated(-90, 1, 0, 0);
+			cielito(texturas, quad);
+		glPopMatrix();
 
 	glPopMatrix();
 }

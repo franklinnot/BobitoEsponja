@@ -76,7 +76,7 @@ void esfera(GLdouble radio) {
 
 void esfera(GLUquadric* quadcito, GLdouble radio) {
     glPushMatrix();
-    gluSphere(quadcito, radio, 50, 50);
+    gluSphere(quadcito, radio, 100, 100);
     glPopMatrix();
 }
 
