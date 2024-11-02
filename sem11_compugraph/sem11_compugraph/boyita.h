@@ -161,12 +161,12 @@ void casaPatricio(GLuint texturas[100], GLUquadric* quad)
 
 
 // Tipo 1 xd 
-void puntosCoral(float x, float y, float z) {
-	glColor3ub(222, 200, 7); // Color amarillo
-
+void puntosCoral(float x, float y, float z) 
+{
+	
 	glPushMatrix();
 	glTranslated(x, y, z);
-	esfera(0.1, 10);  // Esfera pequeña para el punto
+	esfera(0.1, 10);  
 	glPopMatrix();
 }
 
@@ -190,6 +190,7 @@ void coralBase()
 	dona(0.4, 0.5, 10, 10);
 	glPopMatrix();
 
+	glColor3ub(222, 200, 7);
 
 	puntosCoral(0.5, 3, 0.5);
 	puntosCoral(-0.63, 4, -0.63);
@@ -242,15 +243,10 @@ void coralOne()
 	glPopMatrix();
 
 }
-
-
-
 // Detallito :)
 void burbujitas()
 {
-
 	glColor3ub(185, 220, 239);
-
 	for (int i = 0; i < 100; ++i) {
 		float x = (rand() % 100 - 50) / 25.0f;
 		float y = i * 0.15f;
@@ -262,3 +258,86 @@ void burbujitas()
 		glPopMatrix();
 	}
 }
+// Tipo 2 :D
+void tubosCoral()
+{
+	glColor3ub(185, 220, 239);
+
+	glPushMatrix();
+	glTranslated(0, 0, -1.2);
+	glRotated(-90, 1, 0, 0);
+	glScaled(0.2, 0.2, 10);
+	dona(1, 2, 50, 50);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-1, 0, -1.2);
+	glRotated(-90, 1, 0, 0);
+	glScaled(0.2, 0.2, 9);
+	dona(1, 2, 50, 50);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 0, -1.2);
+	glRotated(-90, 1, 0, 0);
+	glScaled(0.2, 0.2, 8);
+	dona(1, 2, 50, 50);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-3, 0, -1.2);
+	glRotated(-90, 1, 0, 0);
+	glScaled(0.2, 0.2, 7);
+	dona(1, 2, 50, 50);
+	glPopMatrix();
+}
+
+void coralTwo()
+{
+	glColor3ub(70, 124, 161);
+
+	glPushMatrix();
+	glTranslated(0, 0, 0);
+	glRotated(-90, 1, 0, 0);
+	glScaled(1, 0.2, 6);
+	dona(1, 3, 50, 50);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 0, 0);
+	glRotated(-90, 1, 0, 0);
+	glScaled(1, 0.2, 5);
+	dona(1, 3, 50, 50);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 0, 0);
+	glRotated(-90, 1, 0, 0);
+	glScaled(1, 0.2, 4);
+	dona(1, 3, 50, 50);
+	glPopMatrix();
+
+	tubosCoral();
+
+	glPushMatrix();
+	glTranslated(3, 0, 2.4);
+	glScaled(1, 0.5, 1);
+	tubosCoral();
+	glPopMatrix();
+
+	glColor3ub(196, 92, 106);
+	glPushMatrix();
+		glScaled(3, 3, 3);
+		puntosCoral(-1, 1, 0.2);
+		puntosCoral(-1.2, 1, 0.2);
+		puntosCoral(-1.4, 1, 0.15);
+		puntosCoral(-1.6, 1, 0.1);
+
+		puntosCoral(1.5, 0.5, -0.2);
+		puntosCoral(1.7, 0.3, -0.15);
+
+		puntosCoral(1.3, 1, 0.15);
+		puntosCoral(1.3, 1.4, 0.15);
+	glPopMatrix();
+}
+
