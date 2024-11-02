@@ -8,14 +8,16 @@
 #include "MetodosPoligonos.h"
 #include "CodigoBase.h"
 #include "franklin.h"
+#include "boyita.h"
+
 using namespace std;
 #pragma endregion
 
 #pragma region Código de cajon
 
-float camaraX = 50;
-float camaraY = 75;
-float camaraZ = 50;
+float camaraX = 30;
+float camaraY = 20;
+float camaraZ = 7;
 float angulo = 0;
 GLuint texturas[100];
 GLUquadric* quad;
@@ -178,6 +180,10 @@ void cargarImagenes() {
     loadTexturesFromFile("Texturas/tierra.bmp", 2);
     loadTexturesFromFile("Texturas/fondito_mar.bmp", 3);
     loadTexturesFromFile("Texturas/arenita_mar.bmp", 20);
+
+    //Texturas - Boyita
+    loadTexturesFromFile("Texturas/casa_patricio.bmp", 10);
+
 }
 
 void dibujar() {
@@ -189,7 +195,7 @@ void dibujar() {
     glEnable(GL_BLEND);
     glLoadIdentity();
     // Linea para modificar el punto al cual la camara debe enfocar
-    gluLookAt(camaraX, camaraY, camaraZ, 0, 55, 0, 0, 1, 0);
+    gluLookAt(camaraX, camaraY, camaraZ, 0, 0, 0, 0, 1, 0);
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
     glPushMatrix();
     glRotated(angulo, 0, 1, 0);
@@ -198,9 +204,17 @@ void dibujar() {
     #pragma endregion
 
     // Aqui colocar todo el codigo
+    
+    //WorkSpace(texturas);
+    //Isla(texturas, quad);
 
-    WorkSpace(texturas);
-    Isla(texturas, quad);
+    // Metodos de Boyita :D
+    //casaPatricio(texturas,quad);
+    //burbujitas();
+    //coralOne();
+    coralTwo();
+
+
 
     // aqui termina
 
