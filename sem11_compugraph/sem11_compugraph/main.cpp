@@ -14,9 +14,9 @@ using namespace std;
 
 #pragma region Codigo de cajon
 
-float camaraX = 25;
-float camaraY = 25;
-float camaraZ = 25;
+float camaraX = 15;
+float camaraY = 15;
+float camaraZ = 15;
 float angulo = 0;
 GLuint texturas[100];
 GLUquadric* quad;
@@ -206,7 +206,12 @@ void dibujar() {
 
     WorkSpace(texturas);
     Isla(texturas, quad);
-    
+
+    glPushMatrix();
+        glTranslated(0, 5, 0);
+        glRotated(-180, 0, 1, 0);
+        Plankton();
+    glPopMatrix();
     // aqui termina
 
     #pragma region No tocar

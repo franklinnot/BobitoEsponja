@@ -255,10 +255,256 @@ void cielito(GLuint texturas[100], GLUquadric* quad) {
 	glDisable(GL_TEXTURE_2D);
 }
 
+
 // Plankton
-void plankton() {
-	
+
+void SimBody() {
+	glPushMatrix();
+		semiEsfera(2);
+	glPopMatrix();
 }
+
+void CuerpitoPlank() {
+	glPushMatrix();
+		glRotated(-90, 1, 0, 0);
+		cilindro(2.0f, 4.8f);
+	glPopMatrix();
+}
+
+void Antenitas() {
+	glPushMatrix();
+		glPushMatrix();
+			glTranslated(0.0f, 2.2, 0.0f);
+			glRotated(-90, 1, 0, 0);
+			glRotated(-8, 0, 1, 0);
+			glRotated(6, 1, 0, 0);
+			glTranslated(-0.3, 0, 0);
+			glTranslated(0, -0.23, 0);
+			glRotated(24, 0, 1, 0);
+			glRotated(12, 1, 0, 0);
+			cilindro(0.08f, 0.01f, 2.3f); 
+		glPopMatrix();
+
+		glPushMatrix();
+			glRotated(-90, 1, 0, 0);
+			glRotated(-8, 0, 1, 0);
+			glRotated(6, 1, 0, 0);
+			cilindro(0.15f, 0.08f, 2.3f);
+		glPopMatrix();
+	glPopMatrix();
+}
+
+void bracitop() {
+	glColor3ub(66, 156, 94);
+	glPushMatrix();
+		glPushMatrix();
+			glTranslated(0.0f, 5.8, 1.8);
+			glRotated(16, 1, 0, 0);
+			cilindro(0.3, 0.18, 2);
+		glPopMatrix();
+
+		glPushMatrix();
+			glTranslated(0.0f, 6, 6.0f);
+			glRotated(125, 1, 0, 0);
+			glTranslated(0, -1.6, 1.9);
+			glRotated(2, 1, 0, 0);
+			cilindro(0.18, 0.14, 2.2);
+		glPopMatrix();
+
+		glPushMatrix();
+
+			glTranslated(0.0f, 3.4, 2.2);
+			glRotated(125, 1, 0, 0);
+			glTranslated(0, -0.05, 0);
+			esfera(0.25);
+		glPopMatrix();
+	glPopMatrix();
+}
+
+void patita() {
+	glPushMatrix();
+
+		glPushMatrix();
+			glTranslated(0.0f, 0.2, 1);
+			glRotated(85, 1, 0, 0);
+			glTranslated(0, -0.05, 0);
+			cilindro(0.3, 0.2, 2.4);
+		glPopMatrix();
+
+		glPushMatrix();
+			glTranslated(0.0f, -2, 1.15);
+			esfera(0.28);
+		glPopMatrix();
+
+	glPopMatrix();
+}
+
+void ojito() {
+	
+	glPushMatrix();
+		glColor3ub(216, 255, 90);
+		glPushMatrix();
+			glTranslated(-1.88, 6, 0);
+			glScaled(0.2, 1, 0.75);
+			esfera(1.45);
+		glPopMatrix();
+
+		glColor3ub(254, 11, 28);
+		glPushMatrix();
+			glTranslated(-2.15, 6, 0);
+			glScaled(0.2, 1, 0.75);
+			esfera(0.85);
+		glPopMatrix();
+	glPopMatrix();
+
+}
+
+void cejita() {
+	glPushMatrix();
+		
+		glColor3ub(12, 12, 12);
+		glPushMatrix();
+			glTranslated(-1.78, 7.85, 0);
+			glRotated(-20, 0, 0, 1);
+			cubo(0.4, 0.2, 1, 5.5);
+		glPopMatrix();
+
+	glPopMatrix();
+}
+
+
+void sonrisa() {
+	glPushMatrix();
+
+		glColor3ub(12, 12, 12);
+		glPushMatrix();
+			glTranslated(-1.2, 3.4, 0);
+			glRotated(-90, 1, 0, 0);
+			glScaled(1, 1.4, 0.5);
+			glutSolidTorus(0.6, 0.5, 50, 100);
+		glPopMatrix();
+
+
+		glColor3ub(245, 245, 245);
+		glPushMatrix();
+		glTranslated(-2.3, 3.4, -0.6);
+		cubo(0.2, 0.2, 1.4, 1);
+		glPopMatrix();
+
+		glColor3ub(245, 245, 245);
+		glPushMatrix();
+		glTranslated(-2.3, 3.4, -0.305);
+		cubo(0.2, 0.2, 1.4, 1);
+		glPopMatrix();
+
+		glColor3ub(245, 245, 245);
+		glPushMatrix();
+			glTranslated(-2.3, 3.4, -0.305);
+			cubo(0.2, 0.2, 1.4, 1);
+		glPopMatrix();
+
+		glColor3ub(245, 245, 245);
+			glPushMatrix();
+			glTranslated(-2.3, 3.4, 0);
+			cubo(0.2, 0.2, 1.4, 1);
+		glPopMatrix();
+
+		glPushMatrix();
+			glTranslated(-2.3, 3.4, 0.305);
+			cubo(0.2, 0.2, 1.4, 1);
+		glPopMatrix();
+
+		glColor3ub(245, 245, 245);
+		glPushMatrix();
+		glTranslated(-2.3, 3.4, 0.6);
+		cubo(0.2, 0.2, 1.4, 1);
+		glPopMatrix();
+
+	glPopMatrix();
+}
+
+void Plankton() {
+
+	glPushMatrix();
+	glColor4ub(66, 156, 94, 250);
+	// parte inferior 
+	glPushMatrix();
+		glTranslated(0.0f, 2.0f, 0.0f);
+		glRotated(-180, 1, 0, 0);
+		glScaled(1, 1.2, 1);
+		SimBody();
+	glPopMatrix();
+
+	// cuerpo
+	glPushMatrix();
+		glTranslated(0.0f, 2.0f, 0.0f);
+		CuerpitoPlank();
+	glPopMatrix();
+
+	// cabeza
+	glPushMatrix();
+		glTranslated(0.0f, 6.8f, 0.0f);
+		glScaled(1, 1.2, 1);
+		SimBody();
+	glPopMatrix();
+
+	// Antenitas
+	glPushMatrix();
+		glTranslated(-0.3f, 8.6f, 1.0f);
+		glScalef(1.0f, 0.85f, 1.0f);
+		glRotated(-24, 0, 1, 0);
+		glRotated(-12, 0, 0, 1);
+		Antenitas();
+	glPopMatrix();
+
+	// Antenita izquierda
+	glPushMatrix();
+		glTranslated(-0.3f, 8.6f, -1.0f);
+		glScalef(1.0f, 0.85f, -1.0f); 
+		glRotated(-24, 0, 1, 0);
+		glRotated(-12, 0, 0, 1);
+		Antenitas();
+	glPopMatrix();
+
+	// Brazo izquierdo
+	glPushMatrix();
+		bracitop();
+	glPopMatrix();
+
+	// Brazo derecho
+	glPushMatrix();
+		glRotated(-180, 0, 1, 0);
+		bracitop();
+	glPopMatrix();
+
+	// patita izquierda
+	glPushMatrix();
+		patita();
+	glPopMatrix();
+
+	// patita derecha
+	glPushMatrix();
+	glRotated(-180, 0, 1, 0);
+		patita();
+	glPopMatrix();
+
+	// ojito
+	
+	glPushMatrix();
+	ojito();
+	glPopMatrix();
+
+	glPushMatrix();
+		cejita();
+	glPopMatrix();
+
+	glPushMatrix();
+		sonrisa();
+	glPopMatrix();
+
+	glPopMatrix();
+}
+
 
 
 // Toda la isla
