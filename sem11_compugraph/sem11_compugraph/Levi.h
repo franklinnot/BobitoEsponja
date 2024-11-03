@@ -11,17 +11,6 @@
 using namespace std;
 #pragma endregion
 
-void techo()
-{
-    glPushMatrix();
-    glColor3ub(140, 83, 62);
-    glRotated(0, 1, 0, 0);
-    glTranslated(0, 20, 0);
-
-    gluCylinder(gluNewQuadric(), 10, 10, 30, 50, 50);
-    glPopMatrix();
-}
-
 void base(GLfloat width, GLfloat height, GLfloat depth, GLuint textureID) {
     GLfloat halfWidth = width / 2.0f;
     GLfloat halfHeight = height / 2.0f;
@@ -138,5 +127,4 @@ void socalos()
     base(50, 3, 10, 61);
     glPopMatrix();
 }
-
 

@@ -29,6 +29,12 @@ void dibujarEjes(float tamano) {
     glEnd();
 }
 
+
+
+
+
+
+
 void cilindro(float radioBase, float radioTope, float altura, int divisiones) {
     glPushMatrix();
     gluCylinder(gluNewQuadric(), radioBase, radioTope, altura, divisiones, divisiones);
