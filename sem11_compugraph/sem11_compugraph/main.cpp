@@ -215,8 +215,9 @@ void dibujar() {
     //burbujitas();
     //coralOne();
     //coralTwo();
-    casaBobEsponja();
-    
+    //casaBobEsponja();
+    bobEsponja();
+
     // aqui termina
 
     #pragma region No tocar

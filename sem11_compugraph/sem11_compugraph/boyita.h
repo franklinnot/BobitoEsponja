@@ -351,6 +351,7 @@ void bordeP(float posX,float posY, float rot)
 	cilindro(9.7, 9.7, 0.15, 50);
 	glPopMatrix();
 }
+
 void bordeP()
 {
 	glPushMatrix();
@@ -645,7 +646,6 @@ void pi()
 	glPopMatrix();
 }
 
-
 void hoja()
 {
 	glPushMatrix();
@@ -653,6 +653,7 @@ void hoja()
 		esfera(1);
 	glPopMatrix();
 }
+
 void hojitas()
 {
 	glPushMatrix();
@@ -754,4 +755,154 @@ void casaBobEsponja()
 		glScaled(1, 1, 0.5);
 		hojitas();
 	glPopMatrix();
+}
+
+// Bob Esponja :D
+void zapato(float posX)
+{
+	glPushMatrix();
+		glTranslated(posX, 0, 1);
+		glScaled(1, 0.7, 1.6);
+		esfera(1);
+	glPopMatrix();
+
+}
+
+void media(float posX)
+{
+	glColor3ub(255, 255, 255);
+	glPushMatrix();
+		glTranslated(posX, 0, 0);
+		glRotated(-90, 1, 0, 0);
+		cilindro(0.4, 0.4, 4.5, 50);
+	glPopMatrix();
+
+	glColor3ub(234, 89, 71);
+	glPushMatrix();
+		glTranslated(posX, 3, 0);
+		glRotated(-90, 1, 0, 0);
+		cilindro(0.43, 0.43, 0.1, 50);
+	glPopMatrix();
+
+	glColor3ub(94, 132, 182);
+	glPushMatrix();
+		glTranslated(posX, 3.7, 0);
+		glRotated(-90, 1, 0, 0);
+		cilindro(0.43, 0.43, 0.1, 50);
+	glPopMatrix();
+}
+
+void pierna(float posX)
+{
+	glPushMatrix();
+		glTranslated(posX, 4.4, 0);
+		glRotated(-90, 1, 0, 0);
+		cilindro(0.4, 0.4, 3, 50);
+	glPopMatrix();
+
+}
+
+void pantalon()
+{
+	glPushMatrix();
+		glTranslated(0, 7.7, 0);
+		cubo(2, 5, 0.9, 1.5);
+	glPopMatrix();
+}
+
+void pantalon(float posX)
+{
+	glPushMatrix();
+	glTranslated(posX, 5.5, 0);
+	glRotated(-90, 1, 0, 0);
+	cilindro(1, 0.5, 2.5, 50);
+	glPopMatrix();
+}
+
+void camisa()
+{
+	glPushMatrix();
+		glTranslated(0, 8.7, 0);
+		cubo(2, 4.9, 1, 1.4);
+	glPopMatrix();
+}
+
+void camisa(float posX, float rot)
+{
+	glPushMatrix();
+		glTranslated(posX, 9.5, 1);
+		glRotated(rot,0,0,1);
+		cubo(1, 1, 0.05, 1);
+	glPopMatrix();
+}
+
+void correa(float posX, float posZ)
+{
+	glColor3ub(0, 0, 0);
+		glPushMatrix();
+		glTranslated(posX, 7.7, posZ);
+		cubo(1, 1.1, 0.3, 1.1);
+	glPopMatrix();
+}
+
+void cara()
+{
+	glPushMatrix();
+		glTranslated(0, 13.7, 0);
+		cubo(2, 5, 4, 1.5);
+	glPopMatrix();
+}
+
+void corbata()
+{
+	glPushMatrix();
+		glTranslated(0, 8.8, 1.5);
+		glScaled(0.6,1.3,0.25);
+		esfera(1, 6);
+	glPopMatrix();
+	
+}
+
+void bobEsponja()
+{
+	glColor3ub(0, 0, 0);
+	zapato(2.5);
+	zapato(-2.5);
+
+	camisa(1.5,30);
+	camisa(0.8, -30);
+	camisa(-1.5, -30);
+	camisa(-0.8, 30);
+
+	correa(1,1);
+	correa(-1, 1);
+	correa(3, 1);
+	correa(-3, 1);
+
+	correa(1, -1);
+	correa(-1, -1);
+	correa(3, -1);
+	correa(-3, -1);
+
+	correa(-4.5, 0);
+	correa(4.5, 0);
+	
+	media(2.5);
+	media(-2.5);
+
+	glColor3ub(255, 245, 121);
+	pierna(2.5);
+	pierna(-2.5);
+	cara();
+
+	glColor3ub(211, 148, 71);
+	pantalon();
+	pantalon(2.5);
+	pantalon(-2.5);
+
+	glColor3ub(255, 255, 255);
+	camisa();
+
+	glColor3ub(237, 87, 70);
+	corbata();
 }
