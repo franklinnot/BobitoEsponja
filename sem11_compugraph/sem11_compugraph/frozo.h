@@ -43,6 +43,7 @@ void casagenerica(GLUquadric* quad) {
     glScalef(1.2f,1.0f,1.2f);
     glTranslated(-0.2, 10.8, 0);
     glRotatef(-90,1,0,0);
+    glRotatef(-10, 0, 1, 0);
     cilindro(0.5, 0.5, 1.5, 20); 
     glPopMatrix();
 
@@ -69,21 +70,45 @@ void casagenerica(GLUquadric* quad) {
 
     // Dibujar la puerta
     glPushMatrix();
-    glTranslated(0, 1.3, 2.4);
-    glScalef(2.0f, 2.8f, 0.0f); 
+    glTranslated(0, 1.5, 2.4);
+    glScalef(1.4f, 3.0f, 0.0f); 
     glColor3ub(139, 69, 19); 
     glutSolidCube(1.0);
     glPopMatrix();
-
-
-    // Dibujar las ventanas
+    //adornopuerta
     glPushMatrix();
-    glTranslatef(-0.7f, 2.0f, 3.2f);
-    glScalef(1.0f, 1.0f, 0.1f); 
-    glColor3ub(255, 255, 250);
-    glutSolidCube(0.5);
-    glTranslatef(1.4f, 0.0f, 0.0f);
-    glutSolidCube(0.5);
+    glTranslated(0, 2, 2.4); 
+    glRotatef(180, 1, 0, 0);
+    glScaled(1.4, 1.4, 0.1);
+    glColor3ub(255, 255, 255); 
+    glutSolidSphere(0.2, 50, 50);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0, 2, 2.4);
+    glScaled(0.5, 0.5, 0.5);
+    glRotatef(90, 0, 0, 1);
+    glColor3ub(45, 104, 184);
+    dona(0.2f, 0.6f, 20, 20);
+    glPopMatrix();
+
+    //marco ventana
+    glPushMatrix();
+    glTranslated(-1.9, 7.5, 2);  
+    glScaled(0.5, 0.5, 0.5);
+    glRotatef(10, 0, 0, 1);
+    glRotatef(140, 0, 1, 0); 
+    glColor3ub(45, 104, 184);  
+    dona(0.4f, 1.6f, 20, 20);  
+    glPopMatrix();
+    //vidrio
+    glPushMatrix();
+    glTranslated(-1.9, 7.5, 2);
+    glRotatef(10, 0, 0, 1);
+    glRotatef(140, 0, 1, 0);
+    glScaled(3, 3, 0.1);
+    glColor3ub(255, 255, 255); 
+    glutSolidSphere(0.2, 50, 50);
     glPopMatrix();
 
 }
@@ -91,9 +116,96 @@ void casagenerica(GLUquadric* quad) {
 
 
 void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
-    
+    //casa
+    glPushMatrix();
+    glTranslated(0, 0, 0); // Ajustar la posición del cuerpo
+    glScaled(1.2, 1.2, 1.2);
+    glRotatef(-90, 1, 0, 0);
+    glColor3ub(11,51,123); // Color del cuerpo
+    cilindro(1.5, 0.8, 4, 20); // Llamada al método cilindro
+    glPopMatrix();
+    //techodelacasa
+    glPushMatrix();
+    glTranslated(0, 4.8, 0);
+    glRotatef(90, 1, 0, 0);
+    gluDisk(gluNewQuadric(), 0, 0.8 * 1.2, 20, 1);
+    glPopMatrix();
 
-    
+    //ventanasmarco
+    glPushMatrix();
+    glTranslated(0.5, 3, 1.2); 
+    glScaled(0.5, 0.5, 0.5);
+    glRotatef(90, 0, 0, 1); 
+    glColor3ub(45, 104, 184);  
+    dona(0.2f, 0.6f, 20, 20);  
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-0.5, 3, 1.2);  
+    glScaled(0.5, 0.5, 0.5);
+    glRotatef(90, 0, 0, 1);
+    glColor3ub(45, 104, 184);  
+    dona(0.2f, 0.6f, 20, 20);  
+    glPopMatrix();
+
+    //cejas
+    glPushMatrix();
+    glTranslated(0.8, 3.5, 1.2); 
+    glScaled(1.2, 1.2, 0.8);
+    glRotatef(-90, 0, 1, 0);
+    glColor3ub(108, 212, 249); 
+    cilindro(0.1, 0.1, 1.3, 10); 
+    glPopMatrix();
+
+    //nariz
+    glPushMatrix();
+    glTranslated(0, 2, 1.3); 
+    glScaled(1.2, 1.2, 1);
+    glRotatef(-95, 1, 0, 0);
+    glColor3ub(108, 212, 249); 
+    cilindro(0.4, 0.1, 1.2, 10); 
+    glPopMatrix();
+
+    //puerta
+    glPushMatrix();
+    glTranslated(0, 0.7, 1.7); 
+    glRotatef(170, 1, 0, 0);
+    glScalef(1.0f, 1.4f, 0.1f);
+    glColor3ub(139, 69, 19);
+    glutSolidCube(1.0);
+    glPopMatrix();
+
+    //ojos
+    glPushMatrix();
+    glTranslated(0.5, 3, 1.25);
+    glScaled(1, 1, 0.1);
+    glColor3ub(255, 255, 255);
+    glutSolidSphere(0.2, 50, 50);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-0.5, 3, 1.25); 
+    glScaled(1, 1, 0.1);
+    glColor3ub(255, 255, 255); 
+    glutSolidSphere(0.2, 50, 50);
+    glPopMatrix();
+
+    //orejas
+    glPushMatrix();
+    glTranslated(1.2, 2, 0); 
+    glScaled(1.2, 1.2, 1.2);
+    glRotatef(-90, 1, 0, 0);
+    glColor3ub(11, 51, 123);
+    cilindro(0.4, 0.4, 1.1, 20); 
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-1.2, 2, 0);
+    glScaled(1.2, 1.2, 1.2);
+    glRotatef(-90, 1, 0, 0);
+    glColor3ub(11, 51, 123);
+    cilindro(0.4, 0.4, 1.1, 20);
+    glPopMatrix();
 }
 
 void cielofondodebikini(GLuint texturas[100], GLUquadric* quad) {

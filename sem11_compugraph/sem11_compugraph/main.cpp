@@ -14,8 +14,8 @@ using namespace std;
 
 #pragma region Código de cajon
 
-float camaraX = 50;
-float camaraY = 55;
+float camaraX = 10;
+float camaraY = 15;
 float camaraZ = 0;
 float angulo = 0;
 GLuint texturas[100];
@@ -182,6 +182,7 @@ void cargarImagenes() {
     //José
     loadTexturesFromFile("Texturas/shortpatricio.bmp", 41);
     loadTexturesFromFile("Texturas/casacalamardo.bmp", 42);
+    loadTexturesFromFile("Texturas/texturamadera.bmp", 43);
 }
 
 void dibujar() {
@@ -208,8 +209,8 @@ void dibujar() {
     // En tu función de dibujo principal
     
     //JOSÉ: 
-    //casagenerica(quad);
-    patricio(texturas,quad);
+    casagenerica(quad);
+    //patricio(texturas,quad);
     //casacalamardo(texturas, quad);
     // aqui termina
 
