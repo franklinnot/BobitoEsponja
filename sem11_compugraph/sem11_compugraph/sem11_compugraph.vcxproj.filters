@@ -36,6 +36,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Levi.h">
+          <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="franklin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
