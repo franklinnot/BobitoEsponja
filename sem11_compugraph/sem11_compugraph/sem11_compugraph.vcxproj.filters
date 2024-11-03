@@ -38,5 +38,8 @@
     <ClInclude Include="franklin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="frozo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

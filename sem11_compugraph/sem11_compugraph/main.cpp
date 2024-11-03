@@ -8,14 +8,15 @@
 #include "MetodosPoligonos.h"
 #include "CodigoBase.h"
 #include "franklin.h"
+#include "frozo.h"
 using namespace std;
 #pragma endregion
 
 #pragma region Código de cajon
 
 float camaraX = 50;
-float camaraY = 75;
-float camaraZ = 50;
+float camaraY = 55;
+float camaraZ = 0;
 float angulo = 0;
 GLuint texturas[100];
 GLUquadric* quad;
@@ -178,6 +179,9 @@ void cargarImagenes() {
     loadTexturesFromFile("Texturas/tierra.bmp", 2);
     loadTexturesFromFile("Texturas/fondito_mar.bmp", 3);
     loadTexturesFromFile("Texturas/arenita_mar.bmp", 20);
+    //José
+    loadTexturesFromFile("Texturas/shortpatricio.bmp", 41);
+    loadTexturesFromFile("Texturas/casacalamardo.bmp", 42);
 }
 
 void dibujar() {
@@ -189,7 +193,7 @@ void dibujar() {
     glEnable(GL_BLEND);
     glLoadIdentity();
     // Linea para modificar el punto al cual la camara debe enfocar
-    gluLookAt(camaraX, camaraY, camaraZ, 0, 55, 0, 0, 1, 0);
+    gluLookAt(camaraX, camaraY, camaraZ, 0, 0, 0, 0, 1, 0);
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
     glPushMatrix();
     glRotated(angulo, 0, 1, 0);
@@ -199,9 +203,14 @@ void dibujar() {
 
     // Aqui colocar todo el codigo
 
-    WorkSpace(texturas);
+    //WorkSpace(texturas);
     Isla(texturas, quad);
-
+    // En tu función de dibujo principal
+    
+    //JOSÉ: 
+    //casagenerica(quad);
+    patricio(texturas,quad);
+    //casacalamardo(texturas, quad);
     // aqui termina
 
     #pragma region No tocar

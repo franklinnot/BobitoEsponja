@@ -112,6 +112,7 @@ void cubo(GLfloat size) {
     glVertex3f(halfSize, halfSize, -halfSize);  
     glEnd();
 
+
     // Cara inferior
     glBegin(GL_QUADS);
     glNormal3f(0.0f, -1.0f, 0.0f);
@@ -124,13 +125,13 @@ void cubo(GLfloat size) {
 void cubo(float escalaX, float escalaY, float escalaZ) {
     glPushMatrix();
         glScalef(escalaX, escalaY, escalaZ);
-        cuboHueco(10.0f);
+        cubo(10.0f);
     glPopMatrix();
 }
 void cubo(float size, float escalaX, float escalaY, float escalaZ) {
     glPushMatrix();
     glScalef(escalaX, escalaY, escalaZ);
-    cuboHueco(size);
+    cubo(size);
     glPopMatrix();
 }
 #pragma endregion
@@ -210,6 +211,9 @@ void semiEsfera(GLUquadric* quad, GLdouble radio) {
     glDisable(GL_CLIP_PLANE0);
     glPopMatrix();
 }
+
+
+
 #pragma endregion
 
 
