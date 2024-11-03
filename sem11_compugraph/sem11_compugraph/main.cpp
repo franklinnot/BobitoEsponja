@@ -16,8 +16,8 @@ using namespace std;
 #pragma region Código de cajon
 
 float camaraX = 30;
-float camaraY = 20;
-float camaraZ = 10;
+float camaraY = 30;
+float camaraZ = 20;
 float angulo = 0;
 GLuint texturas[100];
 GLUquadric* quad;
@@ -216,8 +216,7 @@ void dibujar() {
     //coralOne();
     //coralTwo();
     casaBobEsponja();
-
-
+    
     // aqui termina
 
     #pragma region No tocar

@@ -343,7 +343,7 @@ void coralTwo()
 // Casa de Bob Esponja 
 void bordeP(float posX,float posY, float rot)
 {
-	glColor3ub(119, 0, 1);
+	glColor3ub(149, 39, 0);
 	glPushMatrix();
 	glTranslated(posX, posY, 0);
 	glRotated(90, 0, 1, 0);
@@ -555,6 +555,148 @@ void timon()
 
 }
 
+void tubo()
+{
+	glColor3ub(87, 102, 147);
+	glPushMatrix();
+		glTranslated(0, 10, 0);
+		glRotated(90, 0, 1, 0);
+		cilindro(0.5, 0.9, 6, 50);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(6, 10, 0);
+		esfera(0.9);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(6, 10, 0);
+		glRotated(-90, 1, 0, 0);
+		cilindro(0.8, 1.1, 3, 50);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(6, 10, 0);
+		glRotated(-90, 1, 0, 0);
+		cilindro(0.5, 1, 5, 50);
+	glPopMatrix();
+
+
+}
+
+void pi()
+{
+	glColor3ub(149, 39, 0);
+
+	glPushMatrix();
+		glTranslated(0, 10, 7.5);
+		glRotated(-13, 1, 0, 0);
+		glScaled(0.2, 1, 0.2);
+		esfera(0.5);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(0, 13.5, 5.1);
+		glRotated(-25, 1, 0, 0);
+		glScaled(0.2, 1, 0.2);
+		esfera(0.5);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(-4.5, 6, 7.6);
+		glRotated(-25, 1, 0, 0);
+		glScaled(0.2, 1, 0.2);
+		esfera(0.5);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(4.5, 6.5, 7.5);
+		glRotated(-25, 1, 0, 0);
+		glScaled(0.2, 1, 0.2);
+		esfera(0.5);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(-6, 7.8, 5.8);
+		glRotated(-25, 1, 0, 0);
+		glScaled(0.2, 1, 0.2);
+		esfera(0.5);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(6, 7.8, 5.8);
+		glRotated(-25, 1, 0, 0);
+		glScaled(0.2, 1, 0.2);
+		esfera(0.5);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(-3.2, 13, 4.6);
+		glRotated(-25, 1, 0, 0);
+		glScaled(0.2, 1, 0.2);
+		esfera(0.5);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(3.2, 13, 4.6);
+		glRotated(-25, 1, 0, 0);
+		glScaled(0.2, 1, 0.2);
+		esfera(0.5);
+	glPopMatrix();
+}
+
+
+void hoja()
+{
+	glPushMatrix();
+		glScaled(1.5, 5, 0.5);
+		esfera(1);
+	glPopMatrix();
+}
+void hojitas()
+{
+	glPushMatrix();
+		glTranslated(0, 19, 0);
+		hoja();
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(-2, 17, 0);
+		glRotated(10,0,0,1);
+		hoja();
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(2, 17, 0);
+		glRotated(-10, 0, 0, 1);
+		hoja();
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(3, 16, 0);
+		glRotated(-30, 0, 0, 1);
+		hoja();
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(-3, 16, 0);
+		glRotated(30, 0, 0, 1);
+		hoja();
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(-4, 14, 0);
+		glRotated(40, 0, 0, 1);
+		hoja();
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(4, 14, 0);
+		glRotated(-40, 0, 0, 1);
+		hoja();
+	glPopMatrix();
+}
+
 void casaBobEsponja()
 {
 	pineapple();
@@ -582,5 +724,34 @@ void casaBobEsponja()
 		glScaled(0.4, 0.4, 0.4);
 		timon();
 	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(3, 5.2, 5.3);
+		glScaled(0.6, 0.6, 0.6);
+		tubo();
+	glPopMatrix();
 	
+	pi();
+
+	glPushMatrix();
+		glScaled(1, 1, -1);
+		pi();
+	glPopMatrix();
+
+	glColor3ub(98, 168, 40);
+	hojitas();
+
+	glColor3ub(57, 94, 60);
+
+	glPushMatrix();
+		glTranslated(0, 0, 0.1);
+		glScaled(1, 1, 0.5);
+		hojitas();
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(0, 0, -0.1);
+		glScaled(1, 1, 0.5);
+		hojitas();
+	glPopMatrix();
 }
