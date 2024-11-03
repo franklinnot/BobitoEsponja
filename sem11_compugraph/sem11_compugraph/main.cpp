@@ -17,7 +17,7 @@ using namespace std;
 
 float camaraX = 30;
 float camaraY = 20;
-float camaraZ = 7;
+float camaraZ = 10;
 float angulo = 0;
 GLuint texturas[100];
 GLUquadric* quad;
@@ -183,6 +183,8 @@ void cargarImagenes() {
 
     //Texturas - Boyita
     loadTexturesFromFile("Texturas/casa_patricio.bmp", 10);
+    
+
 
 }
 
@@ -212,8 +214,8 @@ void dibujar() {
     //casaPatricio(texturas,quad);
     //burbujitas();
     //coralOne();
-    coralTwo();
-
+    //coralTwo();
+    casaBobEsponja();
 
 
     // aqui termina
