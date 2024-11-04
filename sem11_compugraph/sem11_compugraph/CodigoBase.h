@@ -14,7 +14,6 @@ void WorkSpace(GLuint texturas[100])
     glPushMatrix();
     glTranslated(0, 24, 0);
     glScalef(1,0.5,1);
-    cuboHueco(100);
     glPopMatrix();
 
     glEnable(GL_TEXTURE_2D);

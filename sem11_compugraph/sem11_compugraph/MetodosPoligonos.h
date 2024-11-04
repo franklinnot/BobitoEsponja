@@ -124,13 +124,13 @@ void cubo(GLfloat size) {
 void cubo(float escalaX, float escalaY, float escalaZ) {
     glPushMatrix();
         glScalef(escalaX, escalaY, escalaZ);
-        cuboHueco(10.0f);
+      
     glPopMatrix();
 }
 void cubo(float size, float escalaX, float escalaY, float escalaZ) {
     glPushMatrix();
     glScalef(escalaX, escalaY, escalaZ);
-    cuboHueco(size);
+   
     glPopMatrix();
 }
 #pragma endregion

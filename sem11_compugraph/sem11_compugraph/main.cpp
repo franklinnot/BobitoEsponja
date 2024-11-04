@@ -1,5 +1,6 @@
 
 #pragma region Includes
+
 #include <GL/glut.h>
 #include <Math.h>
 #include <time.h>
@@ -200,7 +201,7 @@ void dibujar() {
     // Aqui colocar todo el codigo
 
     WorkSpace(texturas);
-    Isla(texturas, quad);
+  
 
     // aqui termina
 
