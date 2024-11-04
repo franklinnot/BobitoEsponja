@@ -181,6 +181,295 @@ void cargarImagenes() {
     loadTexturesFromFile("Texturas/arenita_mar.bmp", 20);
 }
 
+
+void drawBucket() {
+
+
+    // Dibujar el cuerpo del balde
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f); // Color gris oscuro para el balde
+    glRotated(90, 0, 1, 0);
+    gluCylinder(gluNewQuadric(), 10, 8, 20, 30, 30); // Cuerpo del balde, tamaño aumentado 10x
+    glPopMatrix();
+
+
+
+}
+
+void esferacondona() {
+    glPushMatrix();
+
+    glColor3ub(255, 215, 0);
+    glTranslated(0, 29, 0);   // Trasladar la forma
+    glRotated(135, 0, 1, 0);
+    glScalef(1.0f, 1.0f, 0.5f);  // Escalar en Z para mostrar solo la mitad
+    glutSolidTorus(1, 13, 2, 50);
+
+    glPopMatrix();
+}
+
+void dibujarHamburguesa() {
+
+
+    // Base de la hamburguesa (pan inferior)
+    glColor3ub(222, 184, 135); // Color del pan
+    glPushMatrix();
+    glTranslatef(0.0f, 0.0f, -0.5f); // Mover hacia abajo
+    gluCylinder(gluNewQuadric(), 1.0f, 1.0f, 0.5f, 32, 1); // Cuerpo del pan
+    glPopMatrix();
+
+
+
+    // Pan superior
+    glColor3ub(222, 184, 135); // Color del pan
+    glPushMatrix();
+    glTranslatef(0.0f, 0.0f, 0.35f); // Mover encima del queso
+    gluCylinder(gluNewQuadric(), 1.0f, 1.0f, 0.5f, 32, 1); // Cuerpo del pan
+
+    glPopMatrix();
+
+    gluDeleteQuadric(gluNewQuadric()); // Limpiar recursos
+}
+
+
+void dibujarDisco(float radioInterior, float radioExterior, int cortes) {
+    GLUquadric* quadric = gluNewQuadric();
+    gluDisk(quadric, radioInterior, radioExterior, cortes, 1);
+    gluDeleteQuadric(quadric);
+}
+
+void hamburguesa2() {
+
+
+    //pan1
+    glPushMatrix();
+    glTranslated(-25, 10, -25);
+    glScaled(1.2, 0.75, 1.2);
+    glColor3ub(234, 197, 83);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(15, 10, 15);
+    glPopMatrix();
+
+
+    //pan2
+    glPushMatrix();
+    glTranslated(-25, 8, -25);
+    glScaled(1.2, 0.75, 1.2);
+    glColor3ub(234, 197, 83);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(15, 10, 15);
+    glPopMatrix();
+
+
+
+    //Carne
+    glPushMatrix();
+    glTranslated(-25, 8, -25);
+    glScaled(1.2, 0.75, 1.2);
+    glColor3ub(159, 34, 4);
+    glRotated(270, 1, 0, 0);
+    glutSolidTorus(5, 11, 20, 32);
+    glPopMatrix();
+
+
+    //lechuga
+    glPushMatrix();
+    glTranslated(-25, 10, -25);
+    glScaled(1.2, 0.35, 1.2);
+    glColor3ub(116, 156, 23);
+    glRotated(270, 1, 0, 0);
+    glutSolidTorus(5, 10.5, 20, 32);
+    glPopMatrix();
+
+
+
+
+    //Queso1
+    glPushMatrix();
+    glTranslated(-25, 10, -25);
+    glScaled(0.9, 0.03, 0.9);
+    glColor3ub(214, 182, 11);
+    glRotated(270, 1, 0, 0);
+    glutSolidCube(35);
+    glPopMatrix();
+
+    //Queso2
+    glPushMatrix();
+    glTranslated(-25, 10, -25);
+    glScaled(0.9, 0.03, 0.9);
+    glColor3ub(214, 182, 11);
+    glRotated(215, 0, 1, 0);
+    glutSolidCube(35);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-25, 20, -25); // Posición del disco
+    glColor3ub(200, 200, 200); // Color del disco
+    dibujarDisco(0, 15, 30); // Disco con radio exterior de 15
+    glPopMatrix();
+
+}
+
+void dibujarJ() {
+
+
+
+    // Cilindro original más ancho
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f); // Color gris oscuro para el balde
+    glTranslated(11, 10, 15);
+    glScaled(0.5, 0.5, 0.5);  // Escalar la forma en un factor de 2 en cada eje
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    // Otro cilindro más ancho
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 1, 15);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(55, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    // Cilindro más ancho
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, -7, 25);
+    glScaled(0.5, 0.5, 0.5);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    // Otro cilindro más ancho
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, -7, 20);
+    glScaled(0.5, 0.5, 0.5);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    // Otro cilindro más ancho
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 1.8, 37);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(110, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    // Repite el proceso para los cilindros restantes
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 10, 36.7);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 15, 36.7);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 20, 36.7);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 25, 36.7);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 30, 36.7);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 35, 36.7);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    // Cilindro más ancho
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 35, 22);
+    glScaled(0.5, 0.5, 0.5);
+    gluCylinder(gluNewQuadric(), 6, 3, 50, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(10, 35, 20);
+    glColor3ub(154, 205, 50);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(3.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(10, 42, 35);
+    glRotated(90, 0, 1, 0);
+    glColor3ub(154, 205, 50);
+    glutSolidTorus(1, 5, 16, 32);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glColor3f(1.0f, 0.0f, 0.0f); // Color rojo
+    glTranslated(10, 10, 15);
+    glScaled(5, 4, 4);
+    glRotated(270, 1, 0, 0);
+    glutSolidCone(1.0f, 2.0f, 20, 20); // radio, altura, slices, stacks
+    glPopMatrix();
+
+
+}
+
+void ancla() {
+
+
+    glPushMatrix();
+    glTranslated(10, 42, 35);
+    glRotated(90, 0, 1, 0);
+    glColor3ub(154, 205, 50);
+    glutSolidTorus(1, 5, 16, 32);
+    glPopMatrix();
+
+
+
+
+
+
+
+
+    dibujarJ();
+    glPushMatrix();
+    glTranslated(22, 0, 70);
+    glRotated(180, 0, 1, 0);
+    dibujarJ();
+    glPopMatrix();
+
+}
+
+
 void dibujar() {
     #pragma region No tocar
     inicializarLuces();
@@ -200,8 +489,38 @@ void dibujar() {
 
     // Aqui colocar todo el codigo
 
-    WorkSpace(texturas);
-  
+    glPushMatrix();
+    glTranslated(0, 29, 0);   // Trasladar la forma
+    glScaled(1.2, 1.5, 1.2);  // Escalar la forma en un factor de 2 en cada eje (ajusta según necesites)
+    glRotated(270, 0, 0, 1);  // Rotar la forma 270 grados en el eje Z
+    drawBucket();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    esferacondona();
+    glPopMatrix();
+
+    glPushMatrix();
+    hamburguesa2();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glRotated(angulo, 0, 1, 0);
+   
+    ejes();
+    glPopMatrix();
+
+
+
+    glPushMatrix();
+    glTranslated(-2, 8, -2);
+
+    glRotated(0, 0, 0, 0);
+    ancla();
+    glPopMatrix();
+    
 
     // aqui termina
 
