@@ -182,54 +182,42 @@ void cargarImagenes() {
 }
 
 
-void drawBucket() {
+void baldecarnada() {
 
 
-    // Dibujar el cuerpo del balde
+    //balde
     glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f); // Color gris oscuro para el balde
-    glRotated(90, 0, 1, 0);
-    gluCylinder(gluNewQuadric(), 10, 8, 20, 30, 30); // Cuerpo del balde, tamaño aumentado 10x
+    glColor3f(0.8f, 0.8f, 0.8f); // Gris claro
+    glTranslated(0, 29, 0);
+    glRotated(90, 1, 0, 0);
+    glScaled(1.2, 1.5, 1.2);
+    gluCylinder(gluNewQuadric(), 10, 8, 25, 35, 30); 
     glPopMatrix();
 
 
 
-}
-
-void esferacondona() {
+    //manija
     glPushMatrix();
-
-    glColor3ub(255, 215, 0);
-    glTranslated(0, 29, 0);   // Trasladar la forma
+    glTranslated(0, 29, 0);   
     glRotated(135, 0, 1, 0);
-    glScalef(1.0f, 1.0f, 0.5f);  // Escalar en Z para mostrar solo la mitad
-    glutSolidTorus(1, 13, 2, 50);
+    glScalef(1.0f, 1.0f, 0.5f);  
+    glutSolidTorus(0.5, 13, 10, 50);
+    glPopMatrix();
 
+
+
+}
+
+
+void dibujarDedo(float x, float y, float z, float tamaño) {
+    glPushMatrix();
+    glTranslatef(x, y, z);
+    glutSolidSphere(tamaño, 10, 10);  // Dedo como esfera
     glPopMatrix();
 }
 
-void dibujarHamburguesa() {
+// Función para dibujar un puño
 
-
-    // Base de la hamburguesa (pan inferior)
-    glColor3ub(222, 184, 135); // Color del pan
-    glPushMatrix();
-    glTranslatef(0.0f, 0.0f, -0.5f); // Mover hacia abajo
-    gluCylinder(gluNewQuadric(), 1.0f, 1.0f, 0.5f, 32, 1); // Cuerpo del pan
-    glPopMatrix();
-
-
-
-    // Pan superior
-    glColor3ub(222, 184, 135); // Color del pan
-    glPushMatrix();
-    glTranslatef(0.0f, 0.0f, 0.35f); // Mover encima del queso
-    gluCylinder(gluNewQuadric(), 1.0f, 1.0f, 0.5f, 32, 1); // Cuerpo del pan
-
-    glPopMatrix();
-
-    gluDeleteQuadric(gluNewQuadric()); // Limpiar recursos
-}
 
 
 void dibujarDisco(float radioInterior, float radioExterior, int cortes) {
@@ -238,26 +226,15 @@ void dibujarDisco(float radioInterior, float radioExterior, int cortes) {
     gluDeleteQuadric(quadric);
 }
 
-void hamburguesa2() {
+void hamburguesa() {
 
-
-    //pan1
+    //pan2
     glPushMatrix();
     glTranslated(-25, 10, -25);
     glScaled(1.2, 0.75, 1.2);
     glColor3ub(234, 197, 83);
     glRotated(270, 1, 0, 0);
-    glutSolidSphere(15, 10, 15);
-    glPopMatrix();
-
-
-    //pan2
-    glPushMatrix();
-    glTranslated(-25, 8, -25);
-    glScaled(1.2, 0.75, 1.2);
-    glColor3ub(234, 197, 83);
-    glRotated(270, 1, 0, 0);
-    glutSolidSphere(15, 10, 15);
+    glutSolidSphere(15, 19, 15);
     glPopMatrix();
 
 
@@ -311,134 +288,116 @@ void hamburguesa2() {
 
 }
 
+
+
+
+
+
 void dibujarJ() {
 
 
+    //Cono
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 10, 15.5);
+    glScaled(5, 4, 4);
+    glRotated(270, 1, 0, 0);
+    glutSolidCone(1.0f, 2.0f, 20, 20); // radio, altura, slices, stacks
+    glPopMatrix();
 
-    // Cilindro original más ancho
+    //EXTREMO
     glPushMatrix();
     glColor3f(0.2f, 0.2f, 0.2f); // Color gris oscuro para el balde
-    glTranslated(11, 10, 15);
+    glTranslated(11, 10, 15.5);
     glScaled(0.5, 0.5, 0.5);  // Escalar la forma en un factor de 2 en cada eje
     glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    gluCylinder(gluNewQuadric(), 6, 5, 15, 30, 30); // Aumentar los radios a 6
     glPopMatrix();
 
-    // Otro cilindro más ancho
+
+
+    //enganche
+
     glPushMatrix();
     glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, 1, 15);
+    glTranslated(11, 2, 15.5);
     glScaled(0.5, 0.5, 0.5);
     glRotated(55, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glutSolidSphere(6, 17, 30);
     glPopMatrix();
 
-    // Cilindro más ancho
+
+
+
+    // CURVA
     glPushMatrix();
     glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, -7, 25);
+    glTranslated(11, 1, 16);
     glScaled(0.5, 0.5, 0.5);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    glRotated(55, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 7, 20, 30, 30); // Aumentar los radios a 6
     glPopMatrix();
 
-    // Otro cilindro más ancho
+
+    //enganche
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, -7, 22);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(55, 1, 0, 0);
+    glutSolidSphere(8, 16, 20);
+    glPopMatrix();
+
+
+
+
+
+    //base
     glPushMatrix();
     glColor3f(0.2f, 0.2f, 0.2f);
     glTranslated(11, -7, 20);
     glScaled(0.5, 0.5, 0.5);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    gluCylinder(gluNewQuadric(), 7, 12, 40, 30, 30); // Aumentar los radios a 6
     glPopMatrix();
 
-    // Otro cilindro más ancho
-    glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, 1.8, 37);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(110, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
 
-    // Repite el proceso para los cilindros restantes
+
+    //lado largo
     glPushMatrix();
     glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, 10, 36.7);
+    glTranslated(11, 35, 40);
     glScaled(0.5, 0.5, 0.5);
     glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-    glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, 15, 36.7);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-    glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, 20, 36.7);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-    glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, 25, 36.7);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-    glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, 30, 36.7);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-    glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, 35, 36.7);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 6, 6, 20, 30, 30); // Aumentar los radios a 6
+    gluCylinder(gluNewQuadric(), 4, 12, 80, 30, 30); // Aumentar los radios a 6
     glPopMatrix();
 
 
     // Cilindro más ancho
     glPushMatrix();
     glColor3f(0.2f, 0.2f, 0.2f);
-    glTranslated(11, 35, 22);
+    glTranslated(11, 35, 17);
     glScaled(0.5, 0.5, 0.5);
     gluCylinder(gluNewQuadric(), 6, 3, 50, 30, 30); // Aumentar los radios a 6
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(10, 35, 20);
-    glColor3ub(154, 205, 50);
+    glTranslated(11, 35, 18);
+    glColor3f(0.2f, 0.2f, 0.2f);
     glRotated(270, 1, 0, 0);
     glutSolidSphere(3.5, 16, 20);
     glPopMatrix();
 
 
     glPushMatrix();
-    glTranslated(10, 42, 35);
+    glTranslated(10, 42, 40);
     glRotated(90, 0, 1, 0);
-    glColor3ub(154, 205, 50);
+    glColor3f(0.2f, 0.2f, 0.2f);
     glutSolidTorus(1, 5, 16, 32);
     glPopMatrix();
 
 
-    glPushMatrix();
-    glColor3f(1.0f, 0.0f, 0.0f); // Color rojo
-    glTranslated(10, 10, 15);
-    glScaled(5, 4, 4);
-    glRotated(270, 1, 0, 0);
-    glutSolidCone(1.0f, 2.0f, 20, 20); // radio, altura, slices, stacks
-    glPopMatrix();
+ 
 
 
 }
@@ -446,26 +405,64 @@ void dibujarJ() {
 void ancla() {
 
 
+
+
+   dibujarJ();
+
+
+  glPushMatrix();
+  glTranslated(22, 0, 80);
+  glRotated(180, 0, 1, 0);
+  dibujarJ();
+  glPopMatrix();
+
+}
+
+
+
+void mano() {
+
+    
     glPushMatrix();
-    glTranslated(10, 42, 35);
-    glRotated(90, 0, 1, 0);
-    glColor3ub(154, 205, 50);
-    glutSolidTorus(1, 5, 16, 32);
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(-30, 30, 20);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
     glPopMatrix();
 
 
 
-
-
-
-
-
-    dibujarJ();
     glPushMatrix();
-    glTranslated(22, 0, 70);
-    glRotated(180, 0, 1, 0);
-    dibujarJ();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(-30, 30, 22);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
     glPopMatrix();
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(-30, 30, 24);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(-30, 30, 26);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+
+   
+
+
 
 }
 
@@ -478,7 +475,11 @@ void dibujar() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glLoadIdentity();
+
+
     // Linea para modificar el punto al cual la camara debe enfocar
+
+
     gluLookAt(camaraX, camaraY, camaraZ, 0, 0, 0, 0, 1, 0);
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
 
@@ -490,35 +491,32 @@ void dibujar() {
 
     // Aqui colocar todo el codigo
 
-    glPushMatrix();
-    glTranslated(0, 29, 0);   // Trasladar la forma
-    glScaled(1.2, 1.5, 1.2);  // Escalar la forma en un factor de 2 en cada eje (ajusta según necesites)
-    glRotated(270, 0, 0, 1);  // Rotar la forma 270 grados en el eje Z
-    drawBucket();
-    glPopMatrix();
 
 
     glPushMatrix();
-    esferacondona();
-    glPopMatrix();
-
-    glPushMatrix();
-    hamburguesa2();
+    mano();
     glPopMatrix();
 
 
     glPushMatrix();
     glRotated(angulo, 0, 1, 0);
-   
     ejes();
     glPopMatrix();
 
 
+    glPushMatrix();   
+    baldecarnada();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    hamburguesa();
+    glPopMatrix();
+
 
     glPushMatrix();
     glTranslated(-2, 8, -2);
-
-    glRotated(0, 0, 0, 0);
+    glRotated(25, 0, 1, 0);
     ancla();
     glPopMatrix();
     
