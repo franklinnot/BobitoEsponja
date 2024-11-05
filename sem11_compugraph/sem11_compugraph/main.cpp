@@ -187,7 +187,7 @@ void baldecarnada() {
 
     //balde
     glPushMatrix();
-    glColor3f(0.8f, 0.8f, 0.8f); // Gris claro
+    glColor3f(0.1333f, 0.2353f, 0.3176f);  // Color #223C51 (Azul oscuro con verde)
     glTranslated(0, 29, 0);
     glRotated(90, 1, 0, 0);
     glScaled(1.2, 1.5, 1.2);
@@ -198,6 +198,7 @@ void baldecarnada() {
 
     //manija
     glPushMatrix();
+    glColor3f(0.1333f, 0.2353f, 0.3176f);  // Color #223C51 (Azul oscuro con verde)
     glTranslated(0, 29, 0);   
     glRotated(135, 0, 1, 0);
     glScalef(1.0f, 1.0f, 0.5f);  
@@ -293,7 +294,7 @@ void hamburguesa() {
 
 
 
-void dibujarJ() {
+void anclalateral() {
 
 
     //Cono
@@ -401,19 +402,18 @@ void dibujarJ() {
 
 
 }
-
 void ancla() {
 
 
 
 
-   dibujarJ();
+   anclalateral();
 
 
   glPushMatrix();
   glTranslated(22, 0, 80);
   glRotated(180, 0, 1, 0);
-  dibujarJ();
+  anclalateral();
   glPopMatrix();
 
 }
@@ -423,8 +423,34 @@ void ancla() {
 void mano() {
 
     
+
     glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(-30, 30, 23);
+    glScaled(0.3, 0.4, 0.5);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(9, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-31, 30, 23);
+    glScaled(0.3, 0.4, 0.5);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(9, 16, 20);
+    glPopMatrix();
+
+
+
+    glPushMatrix();
+    glTranslated(-30.5, 35, 23);
+    glScaled(0.5, 0.4, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 8, 8, 10.5, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+
+    glPushMatrix();
     glTranslated(-30, 30, 20);
     glScaled(0.5, 0.5, 0.5);
     glRotated(90, 1, 0, 0);
@@ -432,17 +458,29 @@ void mano() {
     glPopMatrix();
 
 
+    glPushMatrix();
+    glTranslated(-30, 22, 20);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
 
     glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
     glTranslated(-30, 30, 22);
     glScaled(0.5, 0.5, 0.5);
     glRotated(90, 1, 0, 0);
     gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
     glPopMatrix();
 
+
     glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(-30, 22, 22);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
     glTranslated(-30, 30, 24);
     glScaled(0.5, 0.5, 0.5);
     glRotated(90, 1, 0, 0);
@@ -451,7 +489,12 @@ void mano() {
 
 
     glPushMatrix();
-    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(-30, 22, 24);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+    glPushMatrix();
     glTranslated(-30, 30, 26);
     glScaled(0.5, 0.5, 0.5);
     glRotated(90, 1, 0, 0);
@@ -459,8 +502,33 @@ void mano() {
     glPopMatrix();
 
 
-
+    glPushMatrix();
+    glTranslated(-30, 22, 26);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
    
+
+    glPushMatrix();
+    glTranslated(-32.5, 26, 22);
+    glScaled(0.5, 0.5, 0.3);
+    glRotated(5, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-32.5, 26, 22);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-32.5, 25.5, 27);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+
 
 
 
@@ -493,7 +561,10 @@ void dibujar() {
 
 
 
-    glPushMatrix();
+    glPushMatrix(); 
+    glRotated(40, 0, 1, 0);
+    glTranslated(30, 18, -22.5);
+    glColor3f(0.1922f, 0.2745f, 0.7176f); // Color azul/morado #3146B7
     mano();
     glPopMatrix();
 
