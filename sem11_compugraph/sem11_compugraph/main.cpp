@@ -159,75 +159,73 @@ void pista()
 
 void calles()
 {
-    glPushMatrix();
-        glTranslated(-6, -1, 10);
 
+    glPushMatrix();
+        glTranslated(-51, 0, 0);
+        glScaled(0.8,0.8,0.8);
+        pista();
+    glPopMatrix();
+    glPushMatrix();
+        glTranslated(-42, 0, 0);
+        glScaled(0.8,0.8,0.8);
+        pista();
+    glPopMatrix();
+    glPushMatrix();
+        glTranslated(-33, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(-6, -1, 20.5);
+        glTranslated(-24, 0, 0);
+        glScaled(0.8,0.8,0.8);
+        glRotated(1,1,0,0);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(-6, -1, 30.5);
+        glTranslated(-15, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(-6, -1, 40.5);
+        glTranslated(-6, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(40, -1, 40.5);
+        glTranslated(3, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(30, -1, 40.5);
+        glTranslated(12, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(20, -1, 40.5);
+        glTranslated(21, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(10, -1, 40.5);
+        glTranslated(30, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(0, -1, 40.5);
+        glTranslated(39, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
-    glPushMatrix();
-        glTranslated(-10, -1, 40.5);
-        pista();
-    glPopMatrix();
 
-    glPushMatrix();
-        glTranslated(-20, -1, 40.5);
-        pista();
-    glPopMatrix();
-
-    glPushMatrix();
-        glTranslated(-30, -1, 40.5);
-        pista();
-    glPopMatrix();
-
-    glPushMatrix();
-        glTranslated(-40, -1, 40.5);
-        pista();
-        glPopMatrix();
-        glPushMatrix();
-        glTranslated(-50, -1, 40.5);
-        pista();
-    glPopMatrix();
 }
 
 void madera()
@@ -444,7 +442,6 @@ void curstaceo_cascarudo()
 
     pilares();
 
-    calles();
 
     //madera anterior
     glPushMatrix();
@@ -1173,38 +1170,8 @@ void dibujar() {
 
     // Jesus
     //curstaceo_cascarudo();
+    calles();
 
-    #pragma region Metodos de jair
-    glPushMatrix(); 
-    glRotated(40, 0, 1, 0);
-    glTranslated(30, 18, -22.5);
-    glColor3f(0.1922f, 0.2745f, 0.7176f); // Color azul/morado #3146B7
-    mano();
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glRotated(angulo, 0, 1, 0);
-    ejes();
-    glPopMatrix();
-
-
-    glPushMatrix();   
-    baldecarnada();
-    glPopMatrix();
-
-
-    glPushMatrix();
-    hamburguesa();
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslated(-2, 8, -2);
-    glRotated(25, 0, 1, 0);
-    ancla();
-    glPopMatrix();
-    #pragma endregion
 
     // aqui termina
     #pragma region No tocar
