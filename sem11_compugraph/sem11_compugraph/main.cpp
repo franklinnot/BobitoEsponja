@@ -785,6 +785,358 @@ void cargarImagenes() {
 
 }
 
+void baldecarnada() {
+
+
+    //balde
+    glPushMatrix();
+    glColor3f(0.1333f, 0.2353f, 0.3176f);  // Color #223C51 (Azul oscuro con verde)
+    glTranslated(0, 29, 0);
+    glRotated(90, 1, 0, 0);
+    glScaled(1.2, 1.5, 1.2);
+    gluCylinder(gluNewQuadric(), 10, 8, 25, 35, 30); 
+    glPopMatrix();
+
+
+
+    //manija
+    glPushMatrix();
+    glColor3f(0.1333f, 0.2353f, 0.3176f);  // Color #223C51 (Azul oscuro con verde)
+    glTranslated(0, 29, 0);   
+    glRotated(135, 0, 1, 0);
+    glScalef(1.0f, 1.0f, 0.5f);  
+    glutSolidTorus(0.5, 13, 10, 50);
+    glPopMatrix();
+
+
+
+}
+
+
+void dibujarDedo(float x, float y, float z, float tama�o) {
+    glPushMatrix();
+    glTranslatef(x, y, z);
+    glutSolidSphere(tama�o, 10, 10);  // Dedo como esfera
+    glPopMatrix();
+}
+
+// Funci�n para dibujar un pu�o
+
+
+
+void dibujarDisco(float radioInterior, float radioExterior, int cortes) {
+    GLUquadric* quadric = gluNewQuadric();
+    gluDisk(quadric, radioInterior, radioExterior, cortes, 1);
+    gluDeleteQuadric(quadric);
+}
+
+void hamburguesa() {
+
+    //pan2
+    glPushMatrix();
+    glTranslated(-25, 10, -25);
+    glScaled(1.2, 0.75, 1.2);
+    glColor3ub(234, 197, 83);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(15, 19, 15);
+    glPopMatrix();
+
+
+
+    //Carne
+    glPushMatrix();
+    glTranslated(-25, 8, -25);
+    glScaled(1.2, 0.75, 1.2);
+    glColor3ub(159, 34, 4);
+    glRotated(270, 1, 0, 0);
+    glutSolidTorus(5, 11, 20, 32);
+    glPopMatrix();
+
+
+    //lechuga
+    glPushMatrix();
+    glTranslated(-25, 10, -25);
+    glScaled(1.2, 0.35, 1.2);
+    glColor3ub(116, 156, 23);
+    glRotated(270, 1, 0, 0);
+    glutSolidTorus(5, 10.5, 20, 32);
+    glPopMatrix();
+
+
+
+
+    //Queso1
+    glPushMatrix();
+    glTranslated(-25, 10, -25);
+    glScaled(0.9, 0.03, 0.9);
+    glColor3ub(214, 182, 11);
+    glRotated(270, 1, 0, 0);
+    glutSolidCube(35);
+    glPopMatrix();
+
+    //Queso2
+    glPushMatrix();
+    glTranslated(-25, 10, -25);
+    glScaled(0.9, 0.03, 0.9);
+    glColor3ub(214, 182, 11);
+    glRotated(215, 0, 1, 0);
+    glutSolidCube(35);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-25, 20, -25); // Posici�n del disco
+    glColor3ub(200, 200, 200); // Color del disco
+    dibujarDisco(0, 15, 30); // Disco con radio exterior de 15
+    glPopMatrix();
+
+}
+
+
+
+
+
+
+void anclalateral() {
+
+
+    //Cono
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 10, 15.5);
+    glScaled(5, 4, 4);
+    glRotated(270, 1, 0, 0);
+    glutSolidCone(1.0f, 2.0f, 20, 20); // radio, altura, slices, stacks
+    glPopMatrix();
+
+    //EXTREMO
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f); // Color gris oscuro para el balde
+    glTranslated(11, 10, 15.5);
+    glScaled(0.5, 0.5, 0.5);  // Escalar la forma en un factor de 2 en cada eje
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 5, 15, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+
+    //enganche
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 2, 15.5);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(55, 1, 0, 0);
+    glutSolidSphere(6, 17, 30);
+    glPopMatrix();
+
+
+
+
+    // CURVA
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 1, 16);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(55, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 6, 7, 20, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    //enganche
+
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, -7, 22);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(55, 1, 0, 0);
+    glutSolidSphere(8, 16, 20);
+    glPopMatrix();
+
+
+
+
+
+    //base
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, -7, 20);
+    glScaled(0.5, 0.5, 0.5);
+    gluCylinder(gluNewQuadric(), 7, 12, 40, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+
+    //lado largo
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 35, 40);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 4, 12, 80, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    // Cilindro m�s ancho
+    glPushMatrix();
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glTranslated(11, 35, 17);
+    glScaled(0.5, 0.5, 0.5);
+    gluCylinder(gluNewQuadric(), 6, 3, 50, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(11, 35, 18);
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(3.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(10, 42, 40);
+    glRotated(90, 0, 1, 0);
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glutSolidTorus(1, 5, 16, 32);
+    glPopMatrix();
+
+
+ 
+
+
+}
+void ancla() {
+
+
+
+
+   anclalateral();
+
+
+  glPushMatrix();
+  glTranslated(22, 0, 80);
+  glRotated(180, 0, 1, 0);
+  anclalateral();
+  glPopMatrix();
+
+}
+
+
+
+void mano() {
+
+    
+
+    glPushMatrix();
+    glTranslated(-30, 30, 23);
+    glScaled(0.3, 0.4, 0.5);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(9, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-31, 30, 23);
+    glScaled(0.3, 0.4, 0.5);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(9, 16, 20);
+    glPopMatrix();
+
+
+
+    glPushMatrix();
+    glTranslated(-30.5, 35, 23);
+    glScaled(0.5, 0.4, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 8, 8, 10.5, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+
+    glPushMatrix();
+    glTranslated(-30, 30, 20);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 22, 20);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 30, 22);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 22, 22);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 30, 24);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 22, 24);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-30, 30, 26);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 22, 26);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+   
+
+    glPushMatrix();
+    glTranslated(-32.5, 26, 22);
+    glScaled(0.5, 0.5, 0.3);
+    glRotated(5, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-32.5, 26, 22);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-32.5, 25.5, 27);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+
+
+
+
+}
+
 void dibujar() {
     #pragma region No tocar
     inicializarLuces();
@@ -834,6 +1186,38 @@ void dibujar() {
 
     // Jesus
     //curstaceo_cascarudo();
+
+    #pragma region Metodos de jair
+    glPushMatrix(); 
+    glRotated(40, 0, 1, 0);
+    glTranslated(30, 18, -22.5);
+    glColor3f(0.1922f, 0.2745f, 0.7176f); // Color azul/morado #3146B7
+    mano();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glRotated(angulo, 0, 1, 0);
+    ejes();
+    glPopMatrix();
+
+
+    glPushMatrix();   
+    baldecarnada();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    hamburguesa();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-2, 8, -2);
+    glRotated(25, 0, 1, 0);
+    ancla();
+    glPopMatrix();
+    #pragma endregion
 
     // aqui termina
     #pragma region No tocar
