@@ -7,9 +7,9 @@
 using namespace std;
 #pragma endregion
 
-void WorkSpace(GLuint texturas[100])
+void WorkSpace()
 {
-    glColor4ub(15, 104, 247, 100);
+    glColor4ub(15, 104, 247, 120);
     glPushMatrix();
     glTranslated(0, 25, 0);
     glScalef(1,0.5,1);
@@ -17,3 +17,4 @@ void WorkSpace(GLuint texturas[100])
     glPopMatrix();
 
 }
+

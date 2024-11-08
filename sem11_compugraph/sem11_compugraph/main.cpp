@@ -1,3 +1,4 @@
+
 #pragma region Includes
 #include <GL/glut.h>
 #include <Math.h>
@@ -12,10 +13,6 @@
 #include "frozo.h"
 using namespace std;
 #pragma endregion
-
-
-#pragma region 
-//Codigo de cajon
 
 #pragma region Codigo de cajon
 
@@ -271,7 +268,7 @@ void banderas()
     glDisable(GL_TEXTURE_2D);
 }
 
-void puerta()
+void puertaLev()
 {
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texturas[68]);
@@ -485,7 +482,7 @@ void curstaceo_cascarudo()
     glTranslated(-6, -1, 11.5);
     glRotated(1, 1, 90, 1);
     glScaled(0.5, 1, 0);
-    puerta();
+    puertaLev();
     glPopMatrix();
 
     //Ventanas frontales
@@ -806,16 +803,18 @@ void dibujar() {
     #pragma endregion
     // Aqui colocar todo el codigo
 
-    WorkSpace(texturas);
-
-    #pragma region Metodos de franklin
-    Isla(texturas, quad);
-
     glPushMatrix();
-        glTranslated(0, 5, 0);
-        glRotated(-180, 0, 1, 0);
-        Plankton();
+        glTranslated(0, -2, 0);
+        WorkSpace();
     glPopMatrix();
+    #pragma region Metodos de franklin
+    //Isla(texturas, quad);
+
+    //glPushMatrix();
+    //    glTranslated(0, 5, 0);
+    //    glRotated(-180, 0, 1, 0);
+    //    Plankton();
+    //glPopMatrix();
     #pragma endregion
 
     #pragma region Metodos de boyita
