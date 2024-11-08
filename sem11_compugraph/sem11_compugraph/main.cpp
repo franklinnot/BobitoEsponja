@@ -157,7 +157,7 @@ void pista()
     glDisable(GL_TEXTURE_2D);
 }
 
-void calles()
+void callesCrustaceo()
 {
     glPushMatrix();
         glTranslated(-6, -1, 10);
@@ -444,7 +444,7 @@ void curstaceo_cascarudo()
 
     pilares();
 
-    calles();
+    callesCrustaceo();
 
     //madera anterior
     glPushMatrix();
@@ -1147,22 +1147,52 @@ void dibujar() {
     glPopMatrix();
 
     #pragma region Metodos de franklin
-    //Isla(texturas, quad);
+    Isla(texturas, quad);
 
-    //glPushMatrix();
-    //    glTranslated(0, 5, 0);
-    //    glRotated(-180, 0, 1, 0);
-    //    Plankton();
-    //glPopMatrix();
     #pragma endregion
 
     #pragma region Metodos de boyita
-    //casaPatricio(texturas,quad);
+   
+    //glPushMatrix();
     //burbujitas();
+    //glPopMatrix();
+
+    //glPushMatrix();
     //coralOne();
+    //glPopMatrix();
+
+    //glPushMatrix();
     //coralTwo();
-    //casaBobEsponja();
-    //bobEsponja();
+    //glPopMatrix();
+    glPushMatrix();
+    glRotated(120,0,1,0);
+    glTranslated(20,0,-10);
+    glPushMatrix();
+    glTranslated(0, 0, -14);
+    glScaled(0.6, 0.6, 0.6);
+    casaBobEsponja();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0, -1, -4);
+    glScaled(0.3, 0.3, 0.3);
+    bobEsponja();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(20, -1, -12);
+    glScaled(2, 2, 2);
+    glRotated(-15, 0, 1 , 0);
+    casacalamardo(texturas,quad);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-20, 0, -8);
+    glScaled(0.5, 0.5, 0.5);
+    casaPatricio(texturas, quad);
+    glPopMatrix();
+    glPopMatrix();
+
     #pragma endregion
 
     #pragma region Metodos de jose
@@ -1172,37 +1202,65 @@ void dibujar() {
     #pragma endregion
 
     // Jesus
-    //curstaceo_cascarudo();
+    glPushMatrix();
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(-135, 0, 1 , 0);
+    glTranslated(0, 0, -90);
+    curstaceo_cascarudo();
+    glPopMatrix();
 
     #pragma region Metodos de jair
-    glPushMatrix(); 
-    glRotated(40, 0, 1, 0);
-    glTranslated(30, 18, -22.5);
-    glColor3f(0.1922f, 0.2745f, 0.7176f); // Color azul/morado #3146B7
-    mano();
-    glPopMatrix();
-
-
+    // casa de plankton
     glPushMatrix();
-    glRotated(angulo, 0, 1, 0);
-    ejes();
+    glRotated(360, 0, 1, 0);
+    glTranslated(0, 0, 30);
+    dibujarEjes(50);
+    glTranslated(24, 0, -50);
+        glPushMatrix();
+        glScaled(0.3, 0.3, 0.3);
+        glTranslated(-80, 0, -30);
+        glRotated(40, 0 , 1, 0);
+            glPushMatrix();
+                glPushMatrix(); 
+                glRotated(40, 0, 1, 0);
+                glTranslated(30, 18, -22.5);
+                glColor3f(0.1922f, 0.2745f, 0.7176f); // Color azul/morado #3146B7
+                mano();
+                glPopMatrix();
+
+                glPushMatrix();   
+                baldecarnada();
+                glPopMatrix();
+            glPopMatrix();
+        glPopMatrix();
+
+        glPushMatrix();
+            glTranslated(-22, 0, -2);
+            glRotated(105, 0, 1, 0);
+            glScaled(0.2, 0.2, 0.2);
+            Plankton();
+        glPopMatrix();
     glPopMatrix();
 
-
-    glPushMatrix();   
-    baldecarnada();
-    glPopMatrix();
-
-
+    // carrito burger
     glPushMatrix();
-    hamburguesa();
+        glRotated(90, 0 ,1 ,0);
+        glScaled(0.1, 0.1, 0.1);
+        glPushMatrix();
+            hamburguesa();
+        glPopMatrix();
     glPopMatrix();
 
-
+    // anclita
     glPushMatrix();
-    glTranslated(-2, 8, -2);
-    glRotated(25, 0, 1, 0);
-    ancla();
+        glTranslated(10, 0, -30);
+        glRotated(55, 0, 1, 0);
+        glScaled(0.4, 0.4, 0.4);
+            glPushMatrix();
+            glTranslated(-2, 8, -2);
+            glRotated(25, 0, 1, 0);
+            ancla();
+            glPopMatrix();
     glPopMatrix();
     #pragma endregion
 
