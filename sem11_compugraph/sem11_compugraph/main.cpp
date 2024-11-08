@@ -1128,7 +1128,7 @@ void cielofondodebikini() {
     glTranslated(-35, 0, 35); // Traslación al punto 50 del eje X
 
     // Fondo de cielo
-    glColor4ub(15, 104, 247, 180);
+    glColor4ub(15, 104, 247, 0);
     glPushMatrix();
     glTranslated(150, 150, 0);
     glScalef(1, 0.5, 1);
@@ -1161,7 +1161,7 @@ void cielofondodebikini() {
     glTranslated(-35, 0, -60); 
 
     // Fondo de cielo
-    glColor4ub(15, 104, 247, 180);
+    glColor4ub(15, 104, 247, 0);
     glPushMatrix();
     glTranslated(150, 150, 0);
     glScalef(1, 0.5, 1);
@@ -1192,7 +1192,7 @@ void cielofondodebikini() {
     glTranslated(60, 0, 40); // Traslación al punto 50 del eje X
 
     // Fondo de cielo
-    glColor4ub(15, 104, 247, 180);
+    glColor4ub(15, 104, 247, 0);
     glPushMatrix();
     glTranslated(150, 150, 0);
     glScalef(1, 0.5, 1);
@@ -1226,7 +1226,7 @@ void cielofondodebikini() {
     glTranslated(-35, 0, 40); // Traslación al punto 50 del eje X
 
     // Fondo de cielo
-    glColor4ub(15, 104, 247, 180);
+    glColor4ub(15, 104, 247, 0);
     glPushMatrix();
     glTranslated(150, 150, 0);
     glScalef(1, 0.5, 1);
@@ -1334,7 +1334,6 @@ void dibujar() {
     #pragma region Metodos de jose
     //casagenerica(quad);
     //patricio(texturas,quad);
-    //casacalamardo(texturas, quad);
     cielofondodebikini();
     #pragma endregion
 
