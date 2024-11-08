@@ -208,10 +208,6 @@ void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
     glPopMatrix();
 }
 
-void cielofondodebikini(GLuint texturas[100], GLUquadric* quad) {
- 
-}
-
 
 void patricio(GLuint texturas[100],GLUquadric* quad) {
 

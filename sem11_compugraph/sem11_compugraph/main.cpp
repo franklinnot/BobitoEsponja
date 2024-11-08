@@ -17,7 +17,7 @@ using namespace std;
 #pragma region Codigo de cajon
 
 float camaraX = 30;
-float camaraY = 50;
+float camaraY = 30;
 float camaraZ = 30;
 float angulo = 0;
 
@@ -1121,6 +1121,142 @@ void mano() {
 
 }
 
+void cielofondodebikini() {
+
+    //CARA 1
+    glPushMatrix(); // Guarda el estado actual de la matriz
+    glTranslated(-35, 0, 35); // Traslación al punto 50 del eje X
+
+    // Fondo de cielo
+    glColor4ub(15, 104, 247, 180);
+    glPushMatrix();
+    glTranslated(150, 150, 0);
+    glScalef(1, 0.5, 1);
+    cubo(100);
+    glPopMatrix();
+
+    // Textura de fondo
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[62]);
+    glColor3ub(250, 250, 250);
+
+    glPushMatrix();
+    glTranslated(-12.8, 0, 12.81);
+    glScalef(4.0, 4.0, 1.0);
+    glBegin(GL_POLYGON);
+    glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
+    glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
+    glTexCoord2f(1, 0); glVertex3d(25.6, 0, 0);
+    glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+    glEnd();
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+
+    //CARA2
+
+    glPopMatrix(); // Restaura el estado de la matriz
+
+    glPushMatrix(); // Guarda el estado actual de la matriz
+    glTranslated(-35, 0, -60); 
+
+    // Fondo de cielo
+    glColor4ub(15, 104, 247, 180);
+    glPushMatrix();
+    glTranslated(150, 150, 0);
+    glScalef(1, 0.5, 1);
+    cubo(100);
+    glPopMatrix();
+
+    // Textura de fondo
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[62]);
+    glColor3ub(250, 250, 250);
+
+    glPushMatrix();
+    glTranslated(-12.8, 0, 12.81);
+    glScalef(4.0, 4.0, 1.0);
+    glBegin(GL_POLYGON);
+    glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
+    glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
+    glTexCoord2f(1, 0); glVertex3d(25.6, 0, 0);
+    glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+    glEnd();
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix(); // Restaura el estado de la matriz
+
+    //CARA 3
+    glPushMatrix(); // Guarda el estado actual de la matriz
+    glTranslated(60, 0, 40); // Traslación al punto 50 del eje X
+
+    // Fondo de cielo
+    glColor4ub(15, 104, 247, 180);
+    glPushMatrix();
+    glTranslated(150, 150, 0);
+    glScalef(1, 0.5, 1);
+    cubo(100);
+    glPopMatrix();
+
+    // Textura de fondo en una cara rotada
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[62]);
+    glColor3ub(250, 250, 250);
+
+    glPushMatrix();
+    glTranslated(-12.8, 0, 12.81);
+
+    // Aplica rotación (90 grados alrededor del eje Y para cambiar de cara)
+    glRotated(90, 0, 1, 0); // Cambia los ángulos y ejes según necesites (eje Y en este caso)
+    glScalef(4.0, 4.0, 1.0);
+    glBegin(GL_POLYGON);
+    glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
+    glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
+    glTexCoord2f(1, 0); glVertex3d(25.6, 0, 0);
+    glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+    glEnd();
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix(); // Restaura el estado de la matriz
+
+    //CARA 3
+    glPushMatrix(); // Guarda el estado actual de la matriz
+    glTranslated(-35, 0, 40); // Traslación al punto 50 del eje X
+
+    // Fondo de cielo
+    glColor4ub(15, 104, 247, 180);
+    glPushMatrix();
+    glTranslated(150, 150, 0);
+    glScalef(1, 0.5, 1);
+    cubo(100);
+    glPopMatrix();
+
+    // Textura de fondo en una cara rotada
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[62]);
+    glColor3ub(250, 250, 250);
+
+    glPushMatrix();
+    glTranslated(-12.8, 0, 12.81);
+
+    // Aplica rotación (90 grados alrededor del eje Y para cambiar de cara)
+    glRotated(90, 0, 1, 0); // Cambia los ángulos y ejes según necesites (eje Y en este caso)
+    glScalef(4.0, 4.0, 1.0);
+    glBegin(GL_POLYGON);
+    glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
+    glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
+    glTexCoord2f(1, 0); glVertex3d(25.6, 0, 0);
+    glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+    glEnd();
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix(); // Restaura el estado de la matriz
+}
+
+
 #pragma endregion
 
 void dibujar() {
@@ -1199,6 +1335,7 @@ void dibujar() {
     //casagenerica(quad);
     //patricio(texturas,quad);
     //casacalamardo(texturas, quad);
+    cielofondodebikini();
     #pragma endregion
 
     // Jesus
