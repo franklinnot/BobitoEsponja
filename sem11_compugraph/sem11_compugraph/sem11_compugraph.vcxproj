@@ -138,6 +138,7 @@
     <ClInclude Include="boyita.h" />
     <ClInclude Include="Levi.h" />
     <ClInclude Include="franklin.h" />
+    <ClInclude Include="frozo.h" />
     <ClInclude Include="MetodosPoligonos.h" />
     <ClInclude Include="Texturas\RgbImage.h" />
   </ItemGroup>

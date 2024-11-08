@@ -138,6 +138,7 @@ void cubo(GLfloat size) {
     glVertex3f(halfSize, halfSize, -halfSize);  
     glEnd();
 
+
     // Cara inferior
     glBegin(GL_QUADS);
     glNormal3f(0.0f, -1.0f, 0.0f);
@@ -236,6 +237,9 @@ void semiEsfera(GLUquadric* quad, GLdouble radio) {
     glDisable(GL_CLIP_PLANE0);
     glPopMatrix();
 }
+
+
+
 #pragma endregion
 
 

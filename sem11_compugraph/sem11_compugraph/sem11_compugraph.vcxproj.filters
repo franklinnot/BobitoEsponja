@@ -44,5 +44,8 @@
         <ClInclude Include="boyita.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="frozo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

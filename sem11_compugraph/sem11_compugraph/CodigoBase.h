@@ -9,7 +9,6 @@ using namespace std;
 
 void WorkSpace(GLuint texturas[100])
 {
-
     glColor4ub(15, 104, 247, 100);
     glPushMatrix();
     glTranslated(0, 25, 0);

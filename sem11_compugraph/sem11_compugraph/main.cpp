@@ -9,6 +9,7 @@
 #include "Levi.h"
 #include "franklin.h"
 #include "boyita.h"
+#include "frozo.h"
 using namespace std;
 #pragma endregion
 
@@ -179,6 +180,11 @@ void cargarImagenes() {
      //Texturas - Boyita
     loadTexturesFromFile("Texturas/casa_patricio.bmp", 10);
 
+    //Jose
+    loadTexturesFromFile("Texturas/shortpatricio.bmp", 41);
+    loadTexturesFromFile("Texturas/casacalamardo.bmp", 42);
+    loadTexturesFromFile("Texturas/texturamadera.bmp", 43);
+
     // texturas - franklin
     loadTexturesFromFile("Texturas/awita.bmp", 85);
     loadTexturesFromFile("Texturas/arenita_mar.bmp", 86); 
@@ -225,6 +231,12 @@ void dibujar() {
     //coralTwo();
     //casaBobEsponja();
     bobEsponja();
+
+    //JOSE: 
+    casagenerica(quad);
+    //patricio(texturas,quad);
+    //casacalamardo(texturas, quad);
+    // aqui termina
 
     // aqui termina
 
