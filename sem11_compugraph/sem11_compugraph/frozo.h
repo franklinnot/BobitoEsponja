@@ -21,14 +21,14 @@ void casagenerica(GLUquadric* quad) {
     glTranslated(0, 0, 0);
     glScaled(1.2, 1.2, 1.2);
     glRotatef(-90, 1, 0, 0); 
-    cilindro(2, 2, 7, 20); 
+    cilindroDiv(2, 2, 7, 20); 
     glPopMatrix();
 
     glPushMatrix();
     glTranslated(0, 6, 0);
     glScaled(1.2, 1.2, 1.2);
     glRotatef(-90, 1, 0, 0); 
-    cilindro(2, 2.8, 4, 20);
+    cilindroDiv(2, 2.8, 4, 20);
     glPopMatrix();
     
     //techodelacasa
@@ -44,28 +44,28 @@ void casagenerica(GLUquadric* quad) {
     glTranslated(-0.2, 10.8, 0);
     glRotatef(-90,1,0,0);
     glRotatef(-10, 0, 1, 0);
-    cilindro(0.5, 0.5, 1.5, 20); 
+    cilindroDiv(0.5, 0.5, 1.5, 20); 
     glPopMatrix();
 
     glPushMatrix();
     glTranslated(-0.5, 11.5, 0);
     glScalef(1.2f, 1.0f, 1.2f);
     glRotatef(-90, 1, 0, 0);
-    cilindro(0.5, 1, 2, 10); 
+    cilindroDiv(0.5, 1, 2, 10); 
     glPopMatrix();
     
     // Chimenea? horizontal
     glPushMatrix();
     glTranslated(1.2, 5.0, 1.5);
     glRotatef(40, 0, 1, 0); 
-    cilindro(0.5, 0.5, 4, 20);
+    cilindroDiv(0.5, 0.5, 4, 20);
     glPopMatrix();
 
     glPushMatrix();
     glTranslated(3.5, 4.5, 4.4);
     glScalef(1.2f, 1.0f, 1.2f);
     glRotatef(-90, 1, 0, 0);
-    cilindro(0.5, 1, 4, 10);
+    cilindroDiv(0.5, 1, 4, 10);
     glPopMatrix();
 
     // Dibujar la puerta
@@ -122,7 +122,7 @@ void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
     glScaled(1.2, 1.2, 1.2);
     glRotatef(-90, 1, 0, 0);
     glColor3ub(11,51,123); // Color del cuerpo
-    cilindro(1.5, 0.8, 4, 20); // Llamada al método cilindro
+    cilindroDiv(1.5, 0.8, 4, 20); // Llamada al método cilindro
     glPopMatrix();
     //techodelacasa
     glPushMatrix();
@@ -154,7 +154,7 @@ void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
     glScaled(1.2, 1.2, 0.8);
     glRotatef(-90, 0, 1, 0);
     glColor3ub(108, 212, 249); 
-    cilindro(0.1, 0.1, 1.3, 10); 
+    cilindroDiv(0.1, 0.1, 1.3, 10); 
     glPopMatrix();
 
     //nariz
@@ -163,7 +163,7 @@ void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
     glScaled(1.2, 1.2, 1);
     glRotatef(-95, 1, 0, 0);
     glColor3ub(108, 212, 249); 
-    cilindro(0.4, 0.1, 1.2, 10); 
+    cilindroDiv(0.4, 0.1, 1.2, 10); 
     glPopMatrix();
 
     //puerta
@@ -196,7 +196,7 @@ void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
     glScaled(1.2, 1.2, 1.2);
     glRotatef(-90, 1, 0, 0);
     glColor3ub(11, 51, 123);
-    cilindro(0.4, 0.4, 1.1, 20); 
+    cilindroDiv(0.4, 0.4, 1.1, 20); 
     glPopMatrix();
 
     glPushMatrix();
@@ -204,7 +204,7 @@ void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
     glScaled(1.2, 1.2, 1.2);
     glRotatef(-90, 1, 0, 0);
     glColor3ub(11, 51, 123);
-    cilindro(0.4, 0.4, 1.1, 20);
+    cilindroDiv(0.4, 0.4, 1.1, 20);
     glPopMatrix();
 }
 
@@ -221,7 +221,7 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
     glScaled(1.2, 1.2, 1.2);
     glRotatef(-90, 1.4, 0, 0); // Rotar 90 grados alrededor del eje X para que esté vertical
     glColor3ub(252,154,156);
-    cilindro(1, 0.3, 3, 20); // Llamada al método cilindro
+    cilindroDiv(1, 0.3, 3, 20); // Llamada al método cilindro
     glPopMatrix();
 
     glPushMatrix();
@@ -236,7 +236,7 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
     glScaled(1.2, 1.2, 1.2);
     glRotatef(-90, 1, 0, 0);
     glColor3ub(252, 154, 156); // Color del cuerpo
-    cilindro(2,1, 3, 20); // Llamada al método cilindro
+    cilindroDiv(2,1, 3, 20); // Llamada al método cilindro
     glPopMatrix();
 
     //cinturaabajo
@@ -254,13 +254,13 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
     glTranslated(0.7, 2.2, 0);
     glRotatef(-90, 1, 0, 0);
     glColor3ub(93, 224, 0); // Color de las piernas
-    cilindro(0.6, 0.6, 1.5, 20); // Llamada al método cilindro
+    cilindroDiv(0.6, 0.6, 1.5, 20); // Llamada al método cilindro
     glPopMatrix();
     glPushMatrix();
     glTranslated(-0.7, 2.2, 0);
     glRotatef(-90, 1, 0, 0);
     glColor3ub(93, 224, 0); // Color de las piernas
-    cilindro(0.6, 0.6, 1.5, 20); // Llamada al método cilindro
+    cilindroDiv(0.6, 0.6, 1.5, 20); // Llamada al método cilindro
     glPopMatrix();
 
 
@@ -271,7 +271,7 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
     glTranslated(1.4, 6.5, 0);
     glRotatef(60, 0, 1, 0);
     glColor3ub(252, 154, 156); // Color piel
-    cilindro(0.9, 0, 4, 20); // Llamada al método cilindro
+    cilindroDiv(0.9, 0, 4, 20); // Llamada al método cilindro
     glPopMatrix();
 
     // Brazo izquierdo
@@ -279,7 +279,7 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
     glTranslated(-1.4, 6.5, 0);
     glRotatef(-60, 0, 1, 0);
     glColor3ub(252, 154, 156); // Color piel
-    cilindro(0.9, 0, 4, 20); // Llamada al método cilindro
+    cilindroDiv(0.9, 0, 4, 20); // Llamada al método cilindro
     glPopMatrix();
 
     // Pierna derecha
@@ -287,7 +287,7 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
     glTranslated(0.7, 1, 0);
     glRotatef(-90, 1, 0, 0);
     glColor3ub(252, 154, 156); // Color de las piernas
-    cilindro(0.5, 0.5, 4, 20); // Llamada al método cilindro
+    cilindroDiv(0.5, 0.5, 4, 20); // Llamada al método cilindro
     glPopMatrix();
 
     // Pierna izquierda
@@ -295,7 +295,7 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
     glTranslated(-0.7, 1, 0);
     glRotatef(-90, 1, 0, 0);
     glColor3ub(252, 154, 156); // Color de las piernas
-    cilindro(0.5, 0.5, 4, 20); // Llamada al método cilindro
+    cilindroDiv(0.5, 0.5, 4, 20); // Llamada al método cilindro
     glPopMatrix();
 
     //ojos

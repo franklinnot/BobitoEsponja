@@ -37,26 +37,26 @@ void palitos()
 	glPushMatrix();
 		glTranslated(0, 10, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.25, 0.25, 3, 50);
+		cilindro(0.25, 0.25, 3);
 	glPopMatrix();
 
 	glColor3ub(102, 82, 44);
 	glPushMatrix();
 		glTranslated(0, 11.5, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.3, 0.3, 0.1, 50);
+		cilindro(0.3, 0.3, 0.1);
 	glPopMatrix();
 
 	glPushMatrix();
 		glTranslated(0, 10, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.3, 0.3, 0.1, 50);
+		cilindro(0.3, 0.3, 0.1);
 	glPopMatrix();
 
 	glPushMatrix();
 		glTranslated(0, 13, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.3, 0.3, 0.1, 50);
+		cilindro(0.3, 0.3, 0.1);
 	glPopMatrix();
 }
 
@@ -66,32 +66,32 @@ void palitos2()
 	glPushMatrix();
 		glTranslated(0, 10, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.25, 0.25, 4.5, 50);
+		cilindro(0.25, 0.25, 4.5);
 	glPopMatrix();
 
 	glColor3ub(102, 82, 44);
 		glPushMatrix();
 		glTranslated(0, 11.5, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.3, 0.3, 0.1, 50);
+		cilindro(0.3, 0.3, 0.1);
 	glPopMatrix();
 
 	glPushMatrix();
 		glTranslated(0, 10, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.3, 0.3, 0.1, 50);
+		cilindro(0.3, 0.3, 0.1);
 	glPopMatrix();
 
 	glPushMatrix();
 		glTranslated(0, 13, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.3, 0.3, 0.1, 50);
+		cilindro(0.3, 0.3, 0.1);
 	glPopMatrix();
 
 	glPushMatrix();
 		glTranslated(0, 14.5, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.3, 0.3, 0.1, 50);
+		cilindro(0.3, 0.3, 0.1);
 	glPopMatrix();
 }
 
@@ -102,7 +102,7 @@ void flecha(float posX,float posZ, float rot)
 		glTranslated(posX, 13.3, posZ);
 		glRotated(90, 0, 0, 1);
 		glRotated(rot, 1, 0, 0);
-		cilindro(0.25, 0.25, 1.5, 50);
+		cilindro(0.25, 0.25, 1.5);
 	glPopMatrix();
 
 }
@@ -114,7 +114,7 @@ void borde(float posX, float posZ, float rot)
 	glTranslated(posX, 13.3, posZ);
 	glRotated(90, 0, 0, 1);
 	glRotated(rot, 1, 0, 0);
-	cilindro(0.3, 0.3, 0.1, 50);
+	cilindro(0.3, 0.3, 0.1);
 	glPopMatrix();
 }
 
@@ -174,7 +174,7 @@ void coralBase()
 
 	glPushMatrix();
 	glRotated(-90, 1, 0, 0);
-	cilindro(0.5, 1, 6, 50);
+	cilindro(0.5, 1, 6);
 	glPopMatrix();
 
 	glPushMatrix();
@@ -348,7 +348,7 @@ void bordeP(float posX,float posY, float rot)
 	glTranslated(posX, posY, 0);
 	glRotated(90, 0, 1, 0);
 	glRotated(rot, 1, 0, 0);
-	cilindro(9.7, 9.7, 0.15, 50);
+	cilindro(9.7, 9.7, 0.15);
 	glPopMatrix();
 }
 
@@ -562,7 +562,7 @@ void tubo()
 	glPushMatrix();
 		glTranslated(0, 10, 0);
 		glRotated(90, 0, 1, 0);
-		cilindro(0.5, 0.9, 6, 50);
+		cilindro(0.5, 0.9, 6);
 	glPopMatrix();
 
 	glPushMatrix();
@@ -573,13 +573,13 @@ void tubo()
 	glPushMatrix();
 		glTranslated(6, 10, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.8, 1.1, 3, 50);
+		cilindro(0.8, 1.1, 3);
 	glPopMatrix();
 
 	glPushMatrix();
 		glTranslated(6, 10, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.5, 1, 5, 50);
+		cilindro(0.5, 1, 5);
 	glPopMatrix();
 
 
@@ -774,21 +774,21 @@ void media(float posX)
 	glPushMatrix();
 		glTranslated(posX, 0, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.4, 0.4, 4.5, 50);
+		cilindro(0.4, 0.4, 4.5);
 	glPopMatrix();
 
 	glColor3ub(234, 89, 71);
 	glPushMatrix();
 		glTranslated(posX, 3, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.43, 0.43, 0.1, 50);
+		cilindro(0.43, 0.43, 0.1);
 	glPopMatrix();
 
 	glColor3ub(94, 132, 182);
 	glPushMatrix();
 		glTranslated(posX, 3.7, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.43, 0.43, 0.1, 50);
+		cilindro(0.43, 0.43, 0.1);
 	glPopMatrix();
 }
 
@@ -797,7 +797,7 @@ void pierna(float posX)
 	glPushMatrix();
 		glTranslated(posX, 4.4, 0);
 		glRotated(-90, 1, 0, 0);
-		cilindro(0.4, 0.4, 3, 50);
+		cilindro(0.4, 0.4, 3);
 	glPopMatrix();
 
 }
@@ -815,7 +815,7 @@ void pantalon(float posX)
 	glPushMatrix();
 	glTranslated(posX, 5.5, 0);
 	glRotated(-90, 1, 0, 0);
-	cilindro(1, 0.5, 2.5, 50);
+	cilindro(1, 0.5, 2.5);
 	glPopMatrix();
 }
 
@@ -869,7 +869,7 @@ void brazo(float posX, float rot)
 		glTranslated(posX, 13, 0);
 		glRotated(90, 0, 1, 0);
 		glRotated(rot, 1, 0, 0);
-		cilindro(0.3,0.3,6,50);
+		cilindro(0.3,0.3,6);
 	glPopMatrix();
 }
 
@@ -913,7 +913,7 @@ void mangas(float posX, float rot)
 		glTranslated(posX, 12.5, 0);
 		glRotated(90, 0, 1, 0);
 		glRotated(rot, 1, 0, 0);
-		cilindro(0.3, 0.9, 2.5, 50);
+		cilindro(0.3, 0.9, 2.5);
 	glPopMatrix();
 }
 
