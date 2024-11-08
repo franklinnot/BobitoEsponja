@@ -187,8 +187,8 @@ void semiEsfera(float radius, int slices, int stacks) {
             float y2 = radius * cosf(theta2);
             float z2 = radius * sinf(theta2) * sinf(phi);
 
-            glVertex3f(x1, y1, z1);  // Primer vértice
-            glVertex3f(x2, y2, z2);  // Segundo vértice
+            glVertex3f(x1, y1, z1);  // Primer vï¿½rtice
+            glVertex3f(x2, y2, z2);  // Segundo vï¿½rtice
         }
         glEnd();
     }
@@ -213,8 +213,8 @@ void semiEsfera(float radius) {
             float y2 = radius * cosf(theta2);
             float z2 = radius * sinf(theta2) * sinf(phi);
 
-            glVertex3f(x1, y1, z1);  // Primer vértice
-            glVertex3f(x2, y2, z2);  // Segundo vértice
+            glVertex3f(x1, y1, z1);  // Primer vï¿½rtice
+            glVertex3f(x2, y2, z2);  // Segundo vï¿½rtice
         }
         glEnd();
     }
