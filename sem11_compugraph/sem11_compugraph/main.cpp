@@ -806,8 +806,9 @@ void dibujar() {
     #pragma endregion
     // Aqui colocar todo el codigo
 
-    #pragma region Metodos de boyita
     WorkSpace(texturas);
+
+    #pragma region Metodos de franklin
     Isla(texturas, quad);
 
     glPushMatrix();
@@ -823,17 +824,17 @@ void dibujar() {
     //coralOne();
     //coralTwo();
     //casaBobEsponja();
-    bobEsponja();
+    //bobEsponja();
     #pragma endregion
 
     #pragma region Metodos de jose
-    casagenerica(quad);
+    //casagenerica(quad);
     //patricio(texturas,quad);
     //casacalamardo(texturas, quad);
     #pragma endregion
 
     // Jesus
-    curstaceo_cascarudo();
+    //curstaceo_cascarudo();
 
     // aqui termina
     #pragma region No tocar
