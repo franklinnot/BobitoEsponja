@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CodigoBase.h" />
+    <ClInclude Include="boyita.h" />
     <ClInclude Include="Levi.h" />
     <ClInclude Include="franklin.h" />
     <ClInclude Include="MetodosPoligonos.h" />

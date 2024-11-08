@@ -1,4 +1,3 @@
-
 #pragma region Includes
 #include <GL/glut.h>
 #include <Math.h>
@@ -9,6 +8,7 @@
 #include "CodigoBase.h"
 #include "Levi.h"
 #include "franklin.h"
+#include "boyita.h"
 using namespace std;
 #pragma endregion
 
@@ -176,6 +176,9 @@ void cubito() {
 void cargarImagenes() {
     loadTexturesFromFile("Texturas/textura_cuadros.bmp",0);
 
+     //Texturas - Boyita
+    loadTexturesFromFile("Texturas/casa_patricio.bmp", 10);
+
     // texturas - franklin
     loadTexturesFromFile("Texturas/awita.bmp", 85);
     loadTexturesFromFile("Texturas/arenita_mar.bmp", 86); 
@@ -204,6 +207,7 @@ void dibujar() {
 
     // Aqui colocar todo el codigo
 
+    // franklin
     WorkSpace(texturas);
     Isla(texturas, quad);
 
@@ -212,6 +216,16 @@ void dibujar() {
         glRotated(-180, 0, 1, 0);
         Plankton();
     glPopMatrix();
+
+
+    // Metodos de Boyita :D
+    //casaPatricio(texturas,quad);
+    //burbujitas();
+    //coralOne();
+    //coralTwo();
+    //casaBobEsponja();
+    bobEsponja();
+
     // aqui termina
 
     #pragma region No tocar
