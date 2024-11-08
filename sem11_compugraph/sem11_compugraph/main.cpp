@@ -132,9 +132,7 @@ void teclado(int tecla, int x, int y) {
 
 //Metodos de clase
 
-#pragma region Metodos de ejemplo de la semana 11
-
-//Levi
+#pragma region Codigo de jesus
 
 void pista()
 {
@@ -751,6 +749,8 @@ void curstaceo_cascarudo()
 }
 #pragma endregion
 
+#pragma region Codigo de jair
+
 void cargarImagenes() {
     loadTexturesFromFile("Texturas/textura_cuadros.bmp",0);
 
@@ -812,18 +812,14 @@ void baldecarnada() {
 
 }
 
-
-void dibujarDedo(float x, float y, float z, float tama�o) {
+void dibujarDedo(float x, float y, float z, float tamano) {
     glPushMatrix();
     glTranslatef(x, y, z);
-    glutSolidSphere(tama�o, 10, 10);  // Dedo como esfera
+    glutSolidSphere(tamano, 10, 10);  // Dedo como esfera
     glPopMatrix();
 }
 
-// Funci�n para dibujar un pu�o
-
-
-
+// Funcion para dibujar un puno
 void dibujarDisco(float radioInterior, float radioExterior, int cortes) {
     GLUquadric* quadric = gluNewQuadric();
     gluDisk(quadric, radioInterior, radioExterior, cortes, 1);
@@ -891,11 +887,6 @@ void hamburguesa() {
     glPopMatrix();
 
 }
-
-
-
-
-
 
 void anclalateral() {
 
@@ -1005,11 +996,8 @@ void anclalateral() {
 
 
 }
+
 void ancla() {
-
-
-
-
    anclalateral();
 
 
@@ -1021,11 +1009,7 @@ void ancla() {
 
 }
 
-
-
 void mano() {
-
-    
 
     glPushMatrix();
     glTranslated(-30, 30, 23);
@@ -1137,6 +1121,8 @@ void mano() {
 
 }
 
+#pragma endregion
+
 void dibujar() {
     #pragma region No tocar
     inicializarLuces();
@@ -1159,6 +1145,7 @@ void dibujar() {
         glTranslated(0, -2, 0);
         WorkSpace();
     glPopMatrix();
+
     #pragma region Metodos de franklin
     //Isla(texturas, quad);
 
