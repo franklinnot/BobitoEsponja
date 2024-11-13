@@ -15,6 +15,8 @@ using namespace std;
 
 #pragma region Codigo de cajon
 
+#pragma region Variables
+
 float camaraX = 20;
 float camaraY = 20;
 float camaraZ = 20;
@@ -31,6 +33,9 @@ bool isMousePressed = false;
 GLuint texturas[100];
 GLUquadric* quad;
 
+#pragma endregion
+
+#pragma region No tocar, gracias
 void loadTexturesFromFile(const char* filename, int index) {
     RgbImage theTextMap(filename);
     glGenTextures(1, &texturas[index]);
@@ -72,7 +77,7 @@ void inicializarLuces() {
 void piso() {
 
     glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texturas[63]);
+	glBindTexture(GL_TEXTURE_2D, texturas[86]);
     glColor3ub(255,255,255);
 
     glPushMatrix();
@@ -108,8 +113,10 @@ void timer(int t) {
     glutTimerFunc(20, timer, 0);
 
 }
+#pragma endregion
 
-// Función para actualizar la posición de la cámara
+#pragma region Mover con el mouse
+
 void actualizarCamara() {
     // Calcula el vector de dirección en el que está mirando la cámara.
     float dirX = cos(anguloVertical) * sin(anguloHorizontal);
@@ -175,8 +182,6 @@ void teclado(unsigned char tecla, int x, int y) {
     glutPostRedisplay();
 }
 
-
-
 void mouse(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON) {
         if (state == GLUT_DOWN) {
@@ -219,10 +224,56 @@ void mouseMotion(int x, int y) {
     }
 }
 
+#pragma endregion
 
 #pragma endregion
 
-//Metodos de clase
+void cargarImagenes() {
+    loadTexturesFromFile("Texturas/textura_cuadros.bmp", 0);
+
+    //Texturas - Boyita
+    loadTexturesFromFile("Texturas/casa_patricio.bmp", 10);
+    loadTexturesFromFile("Texturas/roquita.bmp", 11);
+    loadTexturesFromFile("Texturas/medusa.bmp", 12);
+    //Jose
+    loadTexturesFromFile("Texturas/shortpatricio.bmp", 41);
+    loadTexturesFromFile("Texturas/casacalamardo.bmp", 42);
+    loadTexturesFromFile("Texturas/texturamadera.bmp", 43);
+
+    // texturas - jesus
+    loadTexturesFromFile("Texturas/madera.bmp", 61);
+    loadTexturesFromFile("Texturas/fondito_mar.bmp", 62);
+    loadTexturesFromFile("Texturas/arena.bmp", 63);
+    loadTexturesFromFile("Texturas/pista.bmp", 65);
+    loadTexturesFromFile("Texturas/BanderaCrustaceo.bmp", 66);
+    loadTexturesFromFile("Texturas/ventanalateral.bmp", 67);
+    loadTexturesFromFile("Texturas/puerta.bmp", 68);
+    loadTexturesFromFile("Texturas/ventanafrontalderecha.bmp", 69);
+    loadTexturesFromFile("Texturas/ventanafrontalizquierda.bmp", 70);
+    loadTexturesFromFile("Texturas/maderah.bmp", 71);
+    loadTexturesFromFile("Texturas/chimenea.bmp", 72);
+
+    // texturas - franklin
+    loadTexturesFromFile("Texturas/awita.bmp", 85);
+    loadTexturesFromFile("Texturas/arenita_mar.bmp", 86);
+    loadTexturesFromFile("Texturas/maderita.bmp", 87);
+    loadTexturesFromFile("Texturas/palmerita.bmp", 88);
+    loadTexturesFromFile("Texturas/arbustito.bmp", 89);
+    loadTexturesFromFile("Texturas/cielito.bmp", 90);
+
+
+
+    // texturas - jair
+    loadTexturesFromFile("Texturas/balde.bmp", 19);
+    loadTexturesFromFile("Texturas/manija.bmp", 20);
+    loadTexturesFromFile("Texturas/ancla.bmp", 21);
+    loadTexturesFromFile("Texturas/pan.bmp", 22);
+    loadTexturesFromFile("Texturas/queso.bmp", 23);
+    loadTexturesFromFile("Texturas/lechuga.bmp", 24);
+    loadTexturesFromFile("Texturas/carne.bmp", 25);
+    loadTexturesFromFile("Texturas/guante.bmp", 26);
+
+}
 
 #pragma region Codigo de jesus
 
@@ -911,52 +962,6 @@ void curstaceo_cascarudo()
 
 #pragma region Codigo de jair
 
-void cargarImagenes() {
-    loadTexturesFromFile("Texturas/textura_cuadros.bmp",0);
-
-     //Texturas - Boyita
-    loadTexturesFromFile("Texturas/casa_patricio.bmp", 10);
-    loadTexturesFromFile("Texturas/roquita.bmp", 11);
-    loadTexturesFromFile("Texturas/medusa.bmp", 12);
-    //Jose
-    loadTexturesFromFile("Texturas/shortpatricio.bmp", 41);
-    loadTexturesFromFile("Texturas/casacalamardo.bmp", 42);
-    loadTexturesFromFile("Texturas/texturamadera.bmp", 43);
-
-    // texturas - jesus
-    loadTexturesFromFile("Texturas/madera.bmp", 61);
-    loadTexturesFromFile("Texturas/fondito_mar.bmp", 62);
-    loadTexturesFromFile("Texturas/arena.bmp", 63);
-    loadTexturesFromFile("Texturas/pista.bmp", 65);
-    loadTexturesFromFile("Texturas/BanderaCrustaceo.bmp", 66);
-    loadTexturesFromFile("Texturas/ventanalateral.bmp", 67);
-    loadTexturesFromFile("Texturas/puerta.bmp", 68);
-    loadTexturesFromFile("Texturas/ventanafrontalderecha.bmp", 69);
-    loadTexturesFromFile("Texturas/ventanafrontalizquierda.bmp", 70);
-    loadTexturesFromFile("Texturas/maderah.bmp", 71);
-    loadTexturesFromFile("Texturas/chimenea.bmp", 72);
-    
-    // texturas - franklin
-    loadTexturesFromFile("Texturas/awita.bmp", 85);
-    loadTexturesFromFile("Texturas/arenita_mar.bmp", 86); 
-    loadTexturesFromFile("Texturas/maderita.bmp", 87);
-    loadTexturesFromFile("Texturas/palmerita.bmp", 88);
-    loadTexturesFromFile("Texturas/arbustito.bmp", 89);
-    loadTexturesFromFile("Texturas/cielito.bmp", 90);
-
-
-
-    // texturas - jair
-    loadTexturesFromFile("Texturas/balde.bmp", 19);
-    loadTexturesFromFile("Texturas/manija.bmp", 20);
-    loadTexturesFromFile("Texturas/ancla.bmp", 21);
-    loadTexturesFromFile("Texturas/pan.bmp", 22);
-    loadTexturesFromFile("Texturas/queso.bmp", 23);
-    loadTexturesFromFile("Texturas/lechuga.bmp", 24);
-    loadTexturesFromFile("Texturas/carne.bmp", 25);
-    loadTexturesFromFile("Texturas/guante.bmp", 26);
-
-}
 void mano() {
 
     glPushMatrix();
@@ -1489,20 +1494,131 @@ void dibujar() {
     piso();
     #pragma endregion
 
-   // Aqui colocar todo el codigo
+    // ------------------------------------------------
 
-   glPushMatrix();
-   glTranslated(0, -2, 0);
-   WorkSpace();
-   glPopMatrix();
+    #pragma region Codigo para el entorno
 
-    #pragma region Metodos de franklin
+    glPushMatrix();
+        glTranslated(0, -2, 0);
+        WorkSpace();
+    glPopMatrix();
+
     Isla(texturas, quad);
+
+    cielofondodebikini();
 
     #pragma endregion
 
-    #pragma region Metodos de boyita
-   
+    // ------------------------------------------------
+
+    #pragma region Casas
+
+    // casa de bob esponja
+    glPushMatrix();
+        glTranslated(-34, -0.75, 34);
+        glScaled(0.4, 0.4, 0.4);
+        glRotated(160, 0, 1, 0);
+        casaBobEsponja();
+    glPopMatrix();
+
+    // casa de calamardo
+    glPushMatrix();
+        glTranslated(-20, 0, 34);
+        glScaled(1.8, 1.8, 1.8);
+        glRotated(170, 0, 1, 0);
+        casacalamardo(texturas, quad);
+    glPopMatrix();
+
+    // casa de patricio
+    glPushMatrix();
+        glTranslated(-6, 0, 36);
+        glScaled(0.4, 0.4, 0.4);
+        casaPatricio(texturas,quad);
+    glPopMatrix();
+
+
+    // crustaceo cascarudo
+    glPushMatrix();
+        glTranslated(30, 0, 27);
+        glScaled(0.3, 0.3, 0.3);
+        glRotated(-128, 0, 1, 0);
+        glTranslated(0, 0, 0);
+        curstaceo_cascarudo();
+    glPopMatrix();
+
+    // balde de carnada
+    glPushMatrix();
+        glTranslated(28, 0, -28);
+        glScaled(0.3, 0.3, 0.3);
+        glRotated(35, 0, 1, 0);
+        baldecarnada();
+    glPopMatrix();
+
+    // casas genericas
+    //glPushMatrix();
+    //    casagenerica(quad);
+    //glPopMatrix();
+
+    #pragma endregion
+
+    // ------------------------------------------------
+
+    #pragma region Personajes
+    
+    //patricio(texturas,quad);
+    glPushMatrix();
+        glTranslated(-8, -1.2, 22);
+        glScaled(0.3, 0.3, 0.3);
+        dibujarEjes(50);
+        glRotated(185, 0, 1, 0);
+        patricio(texturas, quad);
+    glPopMatrix();
+
+    // bob esponja
+    glPushMatrix();
+        glTranslated(-16, -1, 22);
+        glScaled(0.15, 0.15, 0.15);
+        dibujarEjes(50);
+        glRotated(160, 0, 1, 0);
+        bobEsponja();
+    glPopMatrix();
+
+    // plankton el pepinillo
+    glPushMatrix();
+        glTranslated(23, 0, -24.5);
+        glScaled(0.2, 0.2, 0.2);
+        glRotated(35, 0, 1, 0);
+        Plankton();
+    glPopMatrix();
+
+    #pragma endregion
+
+    // ------------------------------------------------
+
+    #pragma region Elementos adicionales
+
+    glPushMatrix();
+        glTranslated(0, -0.85, -4);
+        calles();
+    glPopMatrix();
+
+    // carrito burger
+    glPushMatrix();
+        glRotated(90, 0, 1, 0);
+        glScaled(0.1, 0.1, 0.1);
+        hamburguesa();
+    glPopMatrix();
+
+    // anclita
+    glPushMatrix();
+        glTranslated(-24, 2, -44);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(-40, 0, 1, 0);
+        glRotated(16, 0, 0, 1);
+        glRotated(4, 1, 0, 0);
+        ancla();
+    glPopMatrix();
+
     //glPushMatrix();
     //burbujitas();
     //glPopMatrix();
@@ -1515,99 +1631,32 @@ void dibujar() {
     //coralTwo();
     //glPopMatrix();
 
-    glPushMatrix();
-        glTranslated(-28, -0.75, 28);
-        glScaled(0.35, 0.35, 0.35);
-        dibujarEjes(50);
-        casaBobEsponja();
-    glPopMatrix();
-
-
-    //glPushMatrix();
-    //glTranslated(0, -1, -4);
-    //glScaled(0.3, 0.3, 0.3);
-    //bobEsponja();
-    //glPopMatrix();
-
-    //glPushMatrix();
-    //glTranslated(20, -1, -12);
-    //glScaled(2, 2, 2);
-    //glRotated(-15, 0, 1 , 0);
-    //casacalamardo(texturas,quad);
-    //glPopMatrix();
-
-    //glPushMatrix();
-    //glTranslated(-20, 0, -8);
-    //glScaled(0.5, 0.5, 0.5);
-    //casaPatricio(texturas, quad);
-    //glPopMatrix();
-    //glPopMatrix();
-
     //roquita(texturas);
     //alga();
 
-    tiempo += 0.05;
-    medusa(texturas);
+    #pragma region Medusas
 
-    #pragma endregion
-
-    #pragma region Metodos de jose
-    //casagenerica(quad);
-    //patricio(texturas,quad);
-    cielofondodebikini();
-    #pragma endregion
-
-    #pragma region Metodos de jesus
     glPushMatrix();
-        glTranslated(30, 0, 27);
-        glScaled(0.2, 0.2, 0.2);
-        glRotated(-110, 0, 1 , 0);
-        curstaceo_cascarudo();
+        glTranslated(-18, 2, -18);
+        tiempo += 0.05;
+        glRotated(25, 0, 0, 1);
+        glRotated(-12, 1, 0, 0);
+        medusa(texturas);
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(0, -0.85, -4);
-        calles();
-    glPopMatrix();
-    #pragma endregion
-
-    #pragma region Metodos de jair
-    // casa de plankton
-    glPushMatrix();
-         glTranslated(28, 0, -24);
-         glScaled(0.3, 0.3, 0.3);
-         glRotated(26, 0, 1, 0);
-         baldecarnada();
-     glPopMatrix();
-
-     //glPushMatrix();
-     //    glTranslated(-22, 0, -2);
-     //    glRotated(105, 0, 1, 0);
-     //    glScaled(0.2, 0.2, 0.2);
-     //    Plankton();
-     //glPopMatrix();
-
-    // carrito burger
-    glPushMatrix();
-        glRotated(90, 0, 1, 0);
-        glScaled(0.1, 0.1, 0.1);
-        hamburguesa();
+        glTranslated(12, 12, 20);
+        tiempo += 0.05;
+        glRotated(25, 1, 0, 0);
+        medusa(texturas);
     glPopMatrix();
 
-    //// anclita
-    //glPushMatrix();
-    //    glTranslated(10, 0, -30);
-    //    glRotated(55, 0, 1, 0);
-    //    glScaled(0.4, 0.4, 0.4);
-    //        glPushMatrix();
-    //        glTranslated(-2, 8, -2);
-    //        glRotated(25, 0, 1, 0);
-    //        ancla();
-    //        glPopMatrix();
-    //glPopMatrix();
     #pragma endregion
 
-    // aqui termina
+    #pragma endregion
+
+    // ------------------------------------------------
+
     #pragma region No tocar
     glPopMatrix();
     glutSwapBuffers();

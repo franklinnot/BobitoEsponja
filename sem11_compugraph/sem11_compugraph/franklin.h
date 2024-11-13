@@ -173,33 +173,35 @@ void arbusto(GLuint texturas[100]) {
 
 	GLUquadric* quad = gluNewQuadric();
 	gluQuadricTexture(quad, GL_TRUE);
-
-	// Crear varias esferas para la estructura del arbusto
+	
 	glPushMatrix();
-	glColor3ub(34, 139, 34);  // Color verde para camuflar con la textura
-	glTranslatef(0, 0, 0);
-	gluSphere(quad, 3.0, 20, 20);  // Esfera principal
+		// Crear varias esferas para la estructura del arbusto
+		glPushMatrix();
+		glColor3ub(34, 139, 34);  // Color verde para camuflar con la textura
+		glTranslatef(0, 0, 0);
+		gluSphere(quad, 3.0, 20, 20);  // Esfera principal
+		glPopMatrix();
 
-	// Varias esferas alrededor para una forma irregular
-	glPushMatrix();
-	glTranslatef(-2, 1, 2);
-	gluSphere(quad, 2.0, 20, 20);
-	glPopMatrix();
+		// Varias esferas alrededor para una forma irregular
+		glPushMatrix();
+		glTranslatef(-2, 1, 2);
+		gluSphere(quad, 2.0, 20, 20);
+		glPopMatrix();
 
-	glPushMatrix();
-	glTranslatef(2, 1, -2);
-	gluSphere(quad, 2.0, 20, 20);
-	glPopMatrix();
+		glPushMatrix();
+		glTranslatef(2, 1, -2);
+		gluSphere(quad, 2.0, 20, 20);
+		glPopMatrix();
 
-	glPushMatrix();
-	glTranslatef(1.5, 2, 1.5);
-	gluSphere(quad, 1.8, 20, 20);
-	glPopMatrix();
+		glPushMatrix();
+		glTranslatef(1.5, 2, 1.5);
+		gluSphere(quad, 1.8, 20, 20);
+		glPopMatrix();
 
-	glPushMatrix();
-	glTranslatef(-1.5, 2, -1.5);
-	gluSphere(quad, 1.5, 20, 20);
-	glPopMatrix();
+		glPushMatrix();
+		glTranslatef(-1.5, 2, -1.5);
+		gluSphere(quad, 1.5, 20, 20);
+		glPopMatrix();
 
 	glPopMatrix();
 
@@ -213,6 +215,7 @@ void elArbustito(GLuint texturas[100]) {
 	glTranslated(0, 60, 0);
 	arbusto(texturas);
 	glPopMatrix();
+
 	glPushMatrix();
 	glTranslated(4, 58, 0);
 	glRotated(-35, 0, 1, 0);
@@ -404,7 +407,7 @@ void sonrisa() {
 		glPopMatrix();
 
 		glColor3ub(245, 245, 245);
-			glPushMatrix();
+		glPushMatrix();
 			glTranslated(-2.3, 3.4, 0);
 			cubo(0.2, 0.2, 1.4, 1);
 		glPopMatrix();
