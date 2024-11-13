@@ -158,75 +158,73 @@ void pista()
 
 void callesCrustaceo()
 {
-    glPushMatrix();
-        glTranslated(-6, -1, 10);
 
+    glPushMatrix();
+        glTranslated(-51, 0, 0);
+        glScaled(0.8,0.8,0.8);
+        pista();
+    glPopMatrix();
+    glPushMatrix();
+        glTranslated(-42, 0, 0);
+        glScaled(0.8,0.8,0.8);
+        pista();
+    glPopMatrix();
+    glPushMatrix();
+        glTranslated(-33, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(-6, -1, 20.5);
+        glTranslated(-24, 0, 0);
+        glScaled(0.8,0.8,0.8);
+        glRotated(1,1,0,0);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(-6, -1, 30.5);
+        glTranslated(-15, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(-6, -1, 40.5);
+        glTranslated(-6, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(40, -1, 40.5);
+        glTranslated(3, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(30, -1, 40.5);
+        glTranslated(12, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(20, -1, 40.5);
+        glTranslated(21, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(10, -1, 40.5);
+        glTranslated(30, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
     glPushMatrix();
-        glTranslated(0, -1, 40.5);
+        glTranslated(39, 0, 0);
+        glScaled(0.8,0.8,0.8);
         pista();
     glPopMatrix();
 
-    glPushMatrix();
-        glTranslated(-10, -1, 40.5);
-        pista();
-    glPopMatrix();
 
-    glPushMatrix();
-        glTranslated(-20, -1, 40.5);
-        pista();
-    glPopMatrix();
-
-    glPushMatrix();
-        glTranslated(-30, -1, 40.5);
-        pista();
-    glPopMatrix();
-
-    glPushMatrix();
-        glTranslated(-40, -1, 40.5);
-        pista();
-        glPopMatrix();
-        glPushMatrix();
-        glTranslated(-50, -1, 40.5);
-        pista();
-    glPopMatrix();
 }
 
 void madera()
@@ -1399,13 +1397,16 @@ void dibujar() {
     cielofondodebikini();
     #pragma endregion
 
-    // Jesus
+    #pragma region Metodos de jesus
     glPushMatrix();
     glScaled(0.5, 0.5, 0.5);
     glRotated(-135, 0, 1 , 0);
     glTranslated(0, 0, -90);
     curstaceo_cascarudo();
     glPopMatrix();
+
+    calles();
+    #pragma endregion
 
     #pragma region Metodos de jair
     // casa de plankton
