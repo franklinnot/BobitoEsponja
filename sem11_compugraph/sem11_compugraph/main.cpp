@@ -156,6 +156,78 @@ void pista()
     glDisable(GL_TEXTURE_2D);
 }
 
+void calles()
+{
+
+    glPushMatrix();
+    glTranslated(-51, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(-42, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(-33, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-24, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    glRotated(1, 1, 0, 0);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-15, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-6, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(3, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(12, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(21, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(30, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(39, 0, 0);
+    glScaled(0.8, 0.8, 0.8);
+    pista();
+    glPopMatrix();
+
+
+}
+
+
 void callesCrustaceo()
 {
 
@@ -441,7 +513,14 @@ void curstaceo_cascarudo()
 
     pilares();
 
+    glPushMatrix();
+    glScaled(1.9, 1, 1.6);
+    glRotated(50,0, 1, 0);
+    glTranslated(-48, 0, 0);
+    glScaled(0.9, 1, 1);
+    dibujarEjes(50);
     callesCrustaceo();
+    glPopMatrix();
 
     //madera anterior
     glPushMatrix();
@@ -1332,7 +1411,8 @@ void dibujar() {
     piso();
     ejes();
     #pragma endregion
-    // Aqui colocar todo el codigo
+
+   // Aqui colocar todo el codigo
 
    //glPushMatrix();
    //glTranslated(0, -2, 0);
