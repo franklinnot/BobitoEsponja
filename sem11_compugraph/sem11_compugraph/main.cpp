@@ -1569,8 +1569,11 @@ void dibujar() {
 
     Isla(texturas, quad);
 
-    cielofondodebikini();
-
+    glPushMatrix();
+        glTranslated(0, -0.8, 0);
+        glScaled(1, 0.85, 0.85);
+        cielofondodebikini();
+    glPopMatrix();
     #pragma endregion
 
     // ------------------------------------------------
@@ -1580,22 +1583,22 @@ void dibujar() {
     // casa de bob esponja
     glPushMatrix();
         glTranslated(-34, -0.75, 34);
-        glScaled(0.4, 0.4, 0.4);
+        glScaled(0.6, 0.6, 0.6);
         glRotated(160, 0, 1, 0);
         casaBobEsponja();
     glPopMatrix();
 
     // casa de calamardo
     glPushMatrix();
-        glTranslated(-20, 0, 34);
-        glScaled(1.8, 1.8, 1.8);
+        glTranslated(-20, -0.85, 34);
+        glScaled(2, 2, 2);
         glRotated(170, 0, 1, 0);
         casacalamardo(texturas, quad);
     glPopMatrix();
 
     // casa de patricio
     glPushMatrix();
-        glTranslated(-6, 0, 36);
+        glTranslated(-6, -0.85, 36);
         glScaled(0.4, 0.4, 0.4);
         casaPatricio(texturas,quad);
     glPopMatrix();
@@ -1603,8 +1606,8 @@ void dibujar() {
 
     // crustaceo cascarudo
     glPushMatrix();
-        glTranslated(30, 0, 27);
-        glScaled(0.3, 0.3, 0.3);
+        glTranslated(30, -0.85, 27);
+        glScaled(0.4, 0.4, 0.4);
         glRotated(-128, 0, 1, 0);
         glTranslated(0, 0, 0);
         curstaceo_cascarudo();
@@ -1612,7 +1615,7 @@ void dibujar() {
 
     // balde de carnada
     glPushMatrix();
-        glTranslated(28, 0, -28);
+        glTranslated(28, -0.6, -28);
         glScaled(0.3, 0.3, 0.3);
         glRotated(35, 0, 1, 0);
         baldecarnada();
@@ -1628,12 +1631,10 @@ void dibujar() {
     // ------------------------------------------------
 
     #pragma region Personajes
-    
-    //patricio(texturas,quad);
+
     glPushMatrix();
         glTranslated(-8, -1.2, 22);
         glScaled(0.3, 0.3, 0.3);
-        dibujarEjes(50);
         glRotated(185, 0, 1, 0);
         patricio(texturas, quad);
     glPopMatrix();
@@ -1641,16 +1642,15 @@ void dibujar() {
     // bob esponja
     glPushMatrix();
         glTranslated(-16, -1, 22);
-        glScaled(0.15, 0.15, 0.15);
-        dibujarEjes(50);
+        glScaled(0.1, 0.1, 0.1);
         glRotated(160, 0, 1, 0);
         bobEsponja();
     glPopMatrix();
 
     // plankton el pepinillo
     glPushMatrix();
-        glTranslated(23, 0, -24.5);
-        glScaled(0.2, 0.2, 0.2);
+        glTranslated(23, -0.5, -24.5);
+        glScaled(0.15, 0.15, 0.15);
         glRotated(35, 0, 1, 0);
         Plankton();
     glPopMatrix();
@@ -1668,10 +1668,11 @@ void dibujar() {
 
     // carrito burger
     glPushMatrix();
-        glRotated(90, 0, 1, 0);
+        glTranslated(0, -0.8, 4);
         glScaled(0.1, 0.1, 0.1);
-        hamburguesa();
+        carroBurger();
     glPopMatrix();
+
 
     // anclita
     glPushMatrix();
