@@ -1232,6 +1232,45 @@ void alga() {
 
 // Medusa
 
+// Posiciones de la medusa
+float posXMedusa = 0.0f;
+float posYMedusa = 4.0f;  // Comienza a una altura de 4
+float posZMedusa = 0.0f;
+
+// Velocidades de la medusa
+float velocidadX = 0.02f;
+float velocidadY = 0.01f;
+float velocidadZ = 0.015f;
+
+// Limites de movimiento
+float limiteX = 5.0f;
+float limiteY = 6.0f;
+float limiteZ = 5.0f;
+
+void movimiento()
+{
+	// Actualización de la posición
+	posXMedusa += velocidadX;
+	posYMedusa += velocidadY;
+	posZMedusa += velocidadZ;
+
+	// Movimiento en el eje X (izquierda/derecha)
+	if (posXMedusa > limiteX || posXMedusa < -limiteX) {
+		velocidadX = -velocidadX;  // Invertir dirección
+	}
+
+	// Movimiento en el eje Y (arriba/abajo)
+	if (posYMedusa > limiteY || posYMedusa < 2.0f) {  // Limitar el rango inferior
+		velocidadY = -velocidadY;  // Invertir dirección
+	}
+
+	// Movimiento en el eje Z (adelante/atrás)
+	if (posZMedusa > limiteZ || posZMedusa < -limiteZ) {
+		velocidadZ = -velocidadZ;  // Invertir dirección
+	}
+}
+
+
 void tentaculo(float longitud, int segmentos, float tiempoOffset) {
 	glColor3ub(237, 162, 185);
 	glBegin(GL_LINE_STRIP);
@@ -1249,6 +1288,8 @@ void tentaculo(float longitud, int segmentos, float tiempoOffset) {
 void medusa(GLuint texturas[100]) {
 	
 	glPushMatrix();
+
+	glTranslated(posXMedusa, posYMedusa, posZMedusa);
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[12]);
@@ -1274,4 +1315,11 @@ void medusa(GLuint texturas[100]) {
 	}
 
 	glPopMatrix();
+}
+
+void medusaMoviendose(GLuint texturas[100])
+{
+	movimiento();
+	tiempo += 0.05;
+	medusa(texturas);
 }

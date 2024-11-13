@@ -1469,8 +1469,8 @@ void dibujar() {
     //roquita(texturas);
     //alga();
 
-    tiempo += 0.05;
-    medusa(texturas);
+    //medusaMoviendose(texturas);
+
 
     #pragma endregion
 
