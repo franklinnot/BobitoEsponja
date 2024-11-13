@@ -1517,9 +1517,9 @@ void dibujar() {
         glPopMatrix();
 
         glPushMatrix();
-            glTranslated(-22, 0, -2);
+            glTranslated(-22, 4, -2); // LO HICE VOLAR PARA VERLO MEJOR
             glRotated(105, 0, 1, 0);
-            glScaled(0.2, 0.2, 0.2);
+            glScaled(1, 1, 1); // CAMBIE ESCALA PARA PODER VERLO
             Plankton();
         glPopMatrix();
     glPopMatrix();

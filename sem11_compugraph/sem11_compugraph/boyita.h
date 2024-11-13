@@ -1016,13 +1016,6 @@ float ladoPierna1 = 1;
 float anguloPierna2 = 0;
 float ladoPierna2 = -1;
 
-float anguloBrazo1 = 0;
-float ladoBrazo1 = 1;
-float anguloBrazo2 = 0;
-float ladoBrazo2 = 1;
-
-float posZpersonaje = -45;
-
 void bobEsponja()
 {
 	// Movimiento pierna 1

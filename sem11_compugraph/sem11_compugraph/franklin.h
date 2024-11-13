@@ -423,6 +423,13 @@ void sonrisa() {
 	glPopMatrix();
 }
 
+// Variables de personajes
+float velocidadPersonaje2 = 2;
+float angulo2Pierna1 = 0;
+float lado2Pierna1 = 1;
+float angulo2Pierna2 = 0;
+float lado2Pierna2 = -1;
+
 void Plankton() {
 
 	glPushMatrix();
@@ -477,16 +484,49 @@ void Plankton() {
 		bracitop();
 	glPopMatrix();
 
-	// patita izquierda
+	// patita izquierda movimiento
+
 	glPushMatrix();
-		patita();
+	angulo2Pierna1 += (velocidadPersonaje2 * lado2Pierna1);
+
+	if (angulo2Pierna1 >= 0)
+	{
+		lado2Pierna1 = -1;
+	}
+	if (angulo2Pierna1 <= -10)
+	{
+		lado2Pierna1 = 1;
+	}
+
+	glTranslated(0.5, 5, -0.1);
+	glRotated(angulo2Pierna1, 0, 0, 1);
+	glTranslated(0, -5, 0.1);
+	patita();
 	glPopMatrix();
 
-	// patita derecha
+
+	// patita derecha movimiento
 	glPushMatrix();
+	angulo2Pierna2 += (velocidadPersonaje2 * lado2Pierna2);
+
+	if (angulo2Pierna2 <= 0)
+	{
+		lado2Pierna2 = 1;
+	}
+	if (angulo2Pierna2 >= 10)
+	{
+		lado2Pierna2 = -1;
+	}
+	glTranslated(-0.5, 5, -0.1);
+	glRotated(angulo2Pierna2, 0, 0, 1);
+	glTranslated(0, -5, 0.1);
+
 	glRotated(-180, 0, 1, 0);
-		patita();
+	patita();
+
 	glPopMatrix();
+
+
 
 	// ojito
 	
