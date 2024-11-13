@@ -209,6 +209,35 @@ void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
 }
 
 
+
+void pantalonPatricio(float posX)
+{
+    glPushMatrix();
+    glTranslated(posX, 2.2, 0);
+    glRotatef(-90, 1, 0, 0);
+    glColor3ub(93, 224, 0); // Color de las piernas
+    cilindroDiv(0.6, 0.6, 1.5, 20); // Llamada al método cilindro
+    glPopMatrix();
+
+}
+void piernaPatricio(float posX)
+{
+    // Pierna derecha
+    glPushMatrix();
+    glTranslated(posX, 1, 0);
+    glRotatef(-90, 1, 0, 0);
+    glColor3ub(252, 154, 156); // Color de las piernas
+    cilindroDiv(0.5, 0.5, 4, 20); // Llamada al método cilindro
+    glPopMatrix();
+}
+
+// Variables de personajes
+float velocidadPersonaje3 = 5;
+float angulo3Pierna1 = 0;
+float lado3Pierna1 = 1;
+float angulo3Pierna2 = 0;
+float lado3Pierna2 = -1;
+
 void patricio(GLuint texturas[100],GLUquadric* quad) {
 
     // Cabeza
@@ -246,20 +275,49 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
         semiEsfera(quad, 10);
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
-    glPushMatrix();
-    glTranslated(0.7, 2.2, 0);
-    glRotatef(-90, 1, 0, 0);
-    glColor3ub(93, 224, 0); // Color de las piernas
-    cilindroDiv(0.6, 0.6, 1.5, 20); // Llamada al método cilindro
-    glPopMatrix();
-    glPushMatrix();
-    glTranslated(-0.7, 2.2, 0);
-    glRotatef(-90, 1, 0, 0);
-    glColor3ub(93, 224, 0); // Color de las piernas
-    cilindroDiv(0.6, 0.6, 1.5, 20); // Llamada al método cilindro
-    glPopMatrix();
 
 
+    // Movimiento pierna 1
+    glPushMatrix();
+        angulo3Pierna1 += (velocidadPersonaje3 * lado3Pierna1);
+        if (angulo3Pierna1 >= 25)
+        {
+            lado3Pierna1 = -1;
+        }
+        if (angulo3Pierna1 <= -25)
+        {
+            lado3Pierna1 = 1;
+        }
+
+        glTranslated(0.5, 5, -0.1);
+        glRotated(angulo3Pierna1, 1, 0, 0);
+        glTranslated(0, -5, 0.1);
+
+        pantalonPatricio(0.7);
+        piernaPatricio(0.7);
+    glPopMatrix();
+    
+    //Movimiento pierna 2
+
+    glPushMatrix();
+        angulo3Pierna2 += (velocidadPersonaje3 * lado3Pierna2);
+
+        if (angulo3Pierna2 <= -25)
+        {
+            lado3Pierna2 = 1;
+        }
+        if (angulo3Pierna2 >= 25)
+        {
+            lado3Pierna2 = -1;
+        }
+        glTranslated(-0.5, 5, -0.1);
+        glRotated(angulo3Pierna2, 1, 0, 0);
+        glTranslated(0, -5, 0.1);
+
+        pantalonPatricio(-0.7);
+        piernaPatricio(-0.7);
+
+    glPopMatrix();
 
 
     // Brazo derecho
@@ -278,21 +336,6 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
     cilindroDiv(0.9, 0, 4, 20); // Llamada al método cilindro
     glPopMatrix();
 
-    // Pierna derecha
-    glPushMatrix();
-    glTranslated(0.7, 1, 0);
-    glRotatef(-90, 1, 0, 0);
-    glColor3ub(252, 154, 156); // Color de las piernas
-    cilindroDiv(0.5, 0.5, 4, 20); // Llamada al método cilindro
-    glPopMatrix();
-
-    // Pierna izquierda
-    glPushMatrix();
-    glTranslated(-0.7, 1, 0);
-    glRotatef(-90, 1, 0, 0);
-    glColor3ub(252, 154, 156); // Color de las piernas
-    cilindroDiv(0.5, 0.5, 4, 20); // Llamada al método cilindro
-    glPopMatrix();
 
     //ojos
     glPushMatrix();

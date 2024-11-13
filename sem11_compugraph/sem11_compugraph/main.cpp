@@ -1476,7 +1476,7 @@ void dibujar() {
 
     #pragma region Metodos de jose
     //casagenerica(quad);
-    //patricio(texturas,quad);
+    patricio(texturas,quad);
     cielofondodebikini();
     #pragma endregion
 
