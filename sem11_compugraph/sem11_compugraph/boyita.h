@@ -1160,3 +1160,50 @@ void alga() {
 	glPopMatrix();
 	
 }
+
+
+// Medusa
+
+void tentaculo(float longitud, int segmentos, float tiempoOffset) {
+	glColor3ub(237, 162, 185);
+	glBegin(GL_LINE_STRIP);
+	for (int i = 0; i <= segmentos; ++i) {
+		float t = (float)i / segmentos;
+		float y = -t * longitud; 
+
+		float desplazamiento = sin(t * 3.1415 * 2 + tiempo + tiempoOffset) * 0.1;
+
+		glVertex3f(desplazamiento, y, 0);
+	}
+	glEnd();
+}
+
+void medusa(GLuint texturas[100]) {
+	
+	glPushMatrix();
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[12]);
+	glColor3ub(250, 250, 250);
+
+	glPushMatrix();
+		glTranslated(0, 4, 0);
+		semiEsferaT(2, 50, 50);
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+
+
+	// Tentáculos
+	int numeroDeTentaculos = 10;
+	for (int i = 0; i < numeroDeTentaculos; ++i) {
+		glPushMatrix();
+		float angulo = (2 * 3.1415 / numeroDeTentaculos) * i;
+		glTranslated(sin(angulo) * 0.5, 4, cos(angulo) * 0.5);
+		glScaled(2,1.5,2);
+		tentaculo(2, 30, angulo);
+		glPopMatrix();
+	}
+
+	glPopMatrix();
+}
