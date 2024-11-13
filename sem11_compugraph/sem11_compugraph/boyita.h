@@ -1094,3 +1094,17 @@ void bobEsponja()
 
 	
 }
+
+// Roquita
+void roquita(GLuint texturas[100]) {
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[11]);
+	glColor3ub(250, 250, 250);
+
+	glPushMatrix();
+	semiEsferaT(10, 6, 25); // radio, slices, stacks
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+}

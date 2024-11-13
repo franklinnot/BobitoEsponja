@@ -756,6 +756,7 @@ void cargarImagenes() {
 
      //Texturas - Boyita
     loadTexturesFromFile("Texturas/casa_patricio.bmp", 10);
+    loadTexturesFromFile("Texturas/roquita.bmp", 11);
 
     //Jose
     loadTexturesFromFile("Texturas/shortpatricio.bmp", 41);
@@ -1299,6 +1300,7 @@ void dibujar() {
     //coralTwo();
     //casaBobEsponja();
     //bobEsponja();
+    roquita(texturas);
     #pragma endregion
 
     #pragma region Metodos de jose
