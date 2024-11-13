@@ -1300,7 +1300,8 @@ void dibujar() {
     //coralTwo();
     //casaBobEsponja();
     //bobEsponja();
-    roquita(texturas);
+    //roquita(texturas);
+    alga();
     #pragma endregion
 
     #pragma region Metodos de jose
