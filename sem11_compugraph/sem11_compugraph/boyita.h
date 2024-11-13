@@ -1009,11 +1009,80 @@ void lengua()
 	glPopMatrix();
 }
 
+// Variables de personajes
+float velocidadPersonaje = 4;
+float anguloPierna1 = 0;
+float ladoPierna1 = 1;
+float anguloPierna2 = 0;
+float ladoPierna2 = -1;
+
 void bobEsponja()
 {
+	// Movimiento pierna 1
+	glPushMatrix();
+	anguloPierna1 += (velocidadPersonaje * ladoPierna1);
+
+	if (anguloPierna1 >= 20)
+	{
+		ladoPierna1 = -1;
+	}
+	if (anguloPierna1 <= -20)
+	{
+		ladoPierna1 = 1;
+	}
+
+	glTranslated(0.5, 5, -0.1);
+	glRotated(anguloPierna1, 1, 0, 0);
+	glTranslated(0, -5, 0.1);
+	
+		glColor3ub(0, 0, 0);
+		zapato(2.5);
+
+		media(2.5);
+
+		glColor3ub(255, 238, 57);
+		pierna(2.5);
+
+		glColor3ub(156, 73, 41);
+		pantalon(2.5);
+
+	glPopMatrix();
+
+
+	//Movimiento pierna 2
+
+	glPushMatrix();
+	anguloPierna2 += (velocidadPersonaje * ladoPierna2);
+
+	if (anguloPierna2 <= -20)
+	{
+		ladoPierna2 = 1;
+	}
+	if (anguloPierna2 >= 20)
+	{
+		ladoPierna2 = -1;
+	}
+	glTranslated(-0.5, 5, -0.1);
+	glRotated(anguloPierna2, 1, 0, 0);
+	glTranslated(0, -5, 0.1);
+	
+		glColor3ub(0, 0, 0);
+		zapato(-2.5);
+
+		media(-2.5);
+
+		glColor3ub(255, 238, 57);
+		pierna(-2.5);
+
+		glColor3ub(156, 73, 41);
+		pantalon(-2.5);
+
+	glPopMatrix();
+
+
 	glColor3ub(0, 0, 0);
-	zapato(2.5);
-	zapato(-2.5);
+	//zapato(2.5);
+	//zapato(-2.5);
 
 	camisa(1.5, 30);
 	camisa(0.8, -30);
@@ -1046,12 +1115,12 @@ void bobEsponja()
 	pestaña(-2.5, 17);
 
 
-	media(2.5);
-	media(-2.5);
+	//media(2.5);
+	//media(-2.5);
 
 	glColor3ub(255, 238, 57);
-	pierna(2.5);
-	pierna(-2.5);
+	//pierna(2.5);
+	//pierna(-2.5);
 	cara();
 	brazo(4, 50);
 	brazo(-4, 130);
@@ -1064,8 +1133,8 @@ void bobEsponja()
 
 	glColor3ub(156, 73, 41);
 	pantalon();
-	pantalon(2.5);
-	pantalon(-2.5);
+	//pantalon(2.5);
+	//pantalon(-2.5);
 
 	glColor3ub(255, 255, 255);
 	camisa();
@@ -1089,11 +1158,10 @@ void bobEsponja()
 	boca();
 
 	glColor3ub(255, 183, 188);
-	lengua();
-
-
-	
+	lengua();	
 }
+
+
 
 // Roquita
 void roquita(GLuint texturas[100]) {
@@ -1164,6 +1232,45 @@ void alga() {
 
 // Medusa
 
+// Posiciones de la medusa
+float posXMedusa = 0.0f;
+float posYMedusa = 4.0f;  // Comienza a una altura de 4
+float posZMedusa = 0.0f;
+
+// Velocidades de la medusa
+float velocidadX = 0.02f;
+float velocidadY = 0.01f;
+float velocidadZ = 0.015f;
+
+// Limites de movimiento
+float limiteX = 5.0f;
+float limiteY = 6.0f;
+float limiteZ = 5.0f;
+
+void movimiento()
+{
+	// Actualización de la posición
+	posXMedusa += velocidadX;
+	posYMedusa += velocidadY;
+	posZMedusa += velocidadZ;
+
+	// Movimiento en el eje X (izquierda/derecha)
+	if (posXMedusa > limiteX || posXMedusa < -limiteX) {
+		velocidadX = -velocidadX;  // Invertir dirección
+	}
+
+	// Movimiento en el eje Y (arriba/abajo)
+	if (posYMedusa > limiteY || posYMedusa < 2.0f) {  // Limitar el rango inferior
+		velocidadY = -velocidadY;  // Invertir dirección
+	}
+
+	// Movimiento en el eje Z (adelante/atrás)
+	if (posZMedusa > limiteZ || posZMedusa < -limiteZ) {
+		velocidadZ = -velocidadZ;  // Invertir dirección
+	}
+}
+
+
 void tentaculo(float longitud, int segmentos, float tiempoOffset) {
 	glColor3ub(237, 162, 185);
 	glBegin(GL_LINE_STRIP);
@@ -1181,6 +1288,8 @@ void tentaculo(float longitud, int segmentos, float tiempoOffset) {
 void medusa(GLuint texturas[100]) {
 	
 	glPushMatrix();
+
+	glTranslated(posXMedusa, posYMedusa, posZMedusa);
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[12]);
@@ -1206,4 +1315,11 @@ void medusa(GLuint texturas[100]) {
 	}
 
 	glPopMatrix();
+}
+
+void medusaMoviendose(GLuint texturas[100])
+{
+	movimiento();
+	tiempo += 0.05;
+	medusa(texturas);
 }

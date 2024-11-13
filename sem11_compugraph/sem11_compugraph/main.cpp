@@ -1128,9 +1128,52 @@ void dibujarDisco(float radioInterior, float radioExterior, int cortes) {
     gluDeleteQuadric(quadric);
 }
 
+//RUEDA
+float anguloRueda = 0;
 
+float posicionCarro = 0;   
+float velocidadCarro = 2;  
+int direccionCarro = 1;       
+float limiteIzquierdo = -4; 
+float limiteDerecho = 410;
+
+void rueda()
+{
+    anguloRueda += 6;
+
+    glPushMatrix();
+        glColor3ub(65, 104, 19);
+        glTranslated(-33, 1.5, -37); 
+        glRotated(anguloRueda, 0, 0, 1);
+        dona(1.5, 1.5, 20, 20); 
+    glPopMatrix();
+
+    glPushMatrix();
+        glColor3ub(65, 104, 19);
+        glTranslated(-17, 1.5, -37);
+        glRotated(anguloRueda, 0, 0, 1);
+        dona(1.5, 1.5, 20, 20);
+    glPopMatrix();
+
+    glPushMatrix();
+        glColor3ub(65, 104, 19);
+        glTranslated(-33, 1.5, -13);
+        glRotated(anguloRueda, 0, 0, 1);
+        dona(1.5, 1.5, 20, 20);
+    glPopMatrix();
+
+    glPushMatrix();
+        glColor3ub(65, 104, 19);
+        glTranslated(-17, 1.5, -13);
+        glRotated(anguloRueda, 0, 0, 1);
+        dona(1.5, 1.5, 20, 20);
+    glPopMatrix();
+}
 
 void hamburguesa() {
+    //RUEDA
+        
+    rueda();
 
     // pan2
     glEnable(GL_TEXTURE_2D);
@@ -1210,6 +1253,27 @@ void hamburguesa() {
 
 
 
+}
+
+void carroBurger()
+{
+    glPushMatrix();
+
+    posicionCarro += velocidadCarro * direccionCarro;
+
+    if (posicionCarro >= limiteDerecho)
+    {
+        direccionCarro = -1; 
+    }
+    else if (posicionCarro <= limiteIzquierdo)
+    {
+        direccionCarro = 1; 
+    }
+
+    glTranslated(-posicionCarro, 0, 0);
+    hamburguesa(); 
+
+    glPopMatrix();
 }
 
 void anclalateral() {
@@ -1638,17 +1702,15 @@ void dibujar() {
 
     glPushMatrix();
         glTranslated(-18, 2, -18);
-        tiempo += 0.05;
         glRotated(25, 0, 0, 1);
         glRotated(-12, 1, 0, 0);
-        medusa(texturas);
+        medusaMoviendose(texturas);
     glPopMatrix();
 
     glPushMatrix();
         glTranslated(12, 12, 20);
-        tiempo += 0.05;
         glRotated(25, 1, 0, 0);
-        medusa(texturas);
+        medusaMoviendose(texturas);
     glPopMatrix();
 
     #pragma endregion
