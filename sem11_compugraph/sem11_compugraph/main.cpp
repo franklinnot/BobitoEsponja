@@ -1,4 +1,3 @@
-
 #pragma region Includes
 #include <GL/glut.h>
 #include <Math.h>
@@ -783,73 +782,247 @@ void cargarImagenes() {
     loadTexturesFromFile("Texturas/arbustito.bmp", 89);
     loadTexturesFromFile("Texturas/cielito.bmp", 90);
 
-}
 
+
+    // texturas - jair
+    loadTexturesFromFile("Texturas/balde.bmp", 19);
+    loadTexturesFromFile("Texturas/manija.bmp", 20);
+    loadTexturesFromFile("Texturas/ancla.bmp", 21);
+    loadTexturesFromFile("Texturas/pan.bmp", 22);
+    loadTexturesFromFile("Texturas/queso.bmp", 23);
+    loadTexturesFromFile("Texturas/lechuga.bmp", 24);
+    loadTexturesFromFile("Texturas/carne.bmp", 25);
+    loadTexturesFromFile("Texturas/guante.bmp", 26);
+
+}
+void mano() {
+
+    glPushMatrix();
+    glTranslated(-30, 30, 23);
+    glScaled(0.3, 0.4, 0.5);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(9, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-31, 30, 23);
+    glScaled(0.3, 0.4, 0.5);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(9, 16, 20);
+    glPopMatrix();
+
+
+
+    glPushMatrix();
+    glTranslated(-30.5, 35, 23);
+    glScaled(0.5, 0.4, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 8, 8, 10.5, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+
+    glPushMatrix();
+    glTranslated(-30, 30, 20);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 22, 20);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 30, 22);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 22, 22);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 30, 24);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 22, 24);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-30, 30, 26);
+    glScaled(0.5, 0.5, 0.5);
+    glRotated(90, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 22, 26);
+    glRotated(270, 1, 0, 0);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-32.5, 26, 22);
+    glScaled(0.5, 0.5, 0.3);
+    glRotated(5, 1, 0, 0);
+    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-32.5, 26, 22);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-32.5, 25.5, 27);
+    glutSolidSphere(1.5, 16, 20);
+    glPopMatrix();
+
+
+
+
+
+
+}
 void baldecarnada() {
 
 
-    //balde
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[26]);
+    glColor3ub(255, 255, 255);
     glPushMatrix();
-    glColor3f(0.1333f, 0.2353f, 0.3176f);  // Color #223C51 (Azul oscuro con verde)
+    glRotated(0, 0, 1, 0);
+    glTranslated(30, 18, -22.5);
+    mano();
+    glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
+
+
+
+
+    //balde
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[19]);
+    glColor3ub(255, 255, 255);
+    GLUquadric* quad = gluNewQuadric();
+    gluQuadricTexture(quad, GL_TRUE);
+    gluQuadricNormals(quad, GLU_SMOOTH);
+    glPushMatrix();
     glTranslated(0, 29, 0);
     glRotated(90, 1, 0, 0);
     glScaled(1.2, 1.5, 1.2);
-    gluCylinder(gluNewQuadric(), 10, 8, 25, 35, 30); 
+    gluCylinder(quad, 10, 8, 25, 35, 30);
     glPopMatrix();
-
+    gluDeleteQuadric(quad);
+    glDisable(GL_TEXTURE_2D);
 
 
     //manija
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[20]);
+    glColor3ub(255, 255, 255);
     glPushMatrix();
-    glColor3f(0.1333f, 0.2353f, 0.3176f);  // Color #223C51 (Azul oscuro con verde)
     glTranslated(0, 29, 0);   
-    glRotated(135, 0, 1, 0);
-    glScalef(1.0f, 1.0f, 0.5f);  
-    glutSolidTorus(0.5, 13, 10, 50);
+    glRotated(90, 0, 1, 0);
+    glScalef(1.0f, 1.0f, 0.5f); 
+    glScaled(1, 1, 4);
+    glutSolidTorus(0.5, 13, 40, 50);
     glPopMatrix();
-
+    glDisable(GL_TEXTURE_2D);
 
 
 }
-
 void dibujarDedo(float x, float y, float z, float tamano) {
     glPushMatrix();
     glTranslatef(x, y, z);
     glutSolidSphere(tamano, 10, 10);  // Dedo como esfera
     glPopMatrix();
 }
-
-// Funcion para dibujar un puno
 void dibujarDisco(float radioInterior, float radioExterior, int cortes) {
     GLUquadric* quadric = gluNewQuadric();
     gluDisk(quadric, radioInterior, radioExterior, cortes, 1);
     gluDeleteQuadric(quadric);
 }
 
+
+
 void hamburguesa() {
 
-    //pan2
+    // pan2
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[22]);
+    glColor3ub(255, 255, 255);
+
+    // Crear un quadric para la esfera
+    GLUquadric* quad = gluNewQuadric();
+    gluQuadricTexture(quad, GL_TRUE); // Activar el mapeo de textura
+    gluQuadricNormals(quad, GLU_SMOOTH); // Suavizar las normales
+
     glPushMatrix();
     glTranslated(-25, 10, -25);
     glScaled(1.2, 0.75, 1.2);
-    glColor3ub(234, 197, 83);
     glRotated(270, 1, 0, 0);
-    glutSolidSphere(15, 19, 15);
+
+    // Dibujar la esfera con textura
+    gluSphere(quad, 15, 19, 15);
+
     glPopMatrix();
 
+    // Liberar el quadric y deshabilitar la textura
+    gluDeleteQuadric(quad);
+    glDisable(GL_TEXTURE_2D);
 
-
-    //Carne
+    //Queso1
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[23]);
+    glColor3ub(255, 255, 255);
     glPushMatrix();
-    glTranslated(-25, 8, -25);
-    glScaled(1.2, 0.75, 1.2);
-    glColor3ub(159, 34, 4);
+    glTranslated(-25, 10, -25);
+    glScaled(0.9, 0.03, 0.9);
     glRotated(270, 1, 0, 0);
-    glutSolidTorus(5, 11, 20, 32);
+    glutSolidCube(35);
     glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
+
+    //Queso2
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[23]);
+    glColor3ub(255, 255, 255);
+    glPushMatrix();
+    glTranslated(-25, 10, -25);
+    glScaled(0.9, 0.03, 0.9);
+    glRotated(215, 0, 1, 0);
+    glutSolidCube(35);
+    glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
+
 
 
     //lechuga
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[24]);
     glPushMatrix();
     glTranslated(-25, 10, -25);
     glScaled(1.2, 0.35, 1.2);
@@ -857,34 +1030,23 @@ void hamburguesa() {
     glRotated(270, 1, 0, 0);
     glutSolidTorus(5, 10.5, 20, 32);
     glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
 
 
-
-
-    //Queso1
+    //Carne
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturas[25]);
     glPushMatrix();
-    glTranslated(-25, 10, -25);
-    glScaled(0.9, 0.03, 0.9);
-    glColor3ub(214, 182, 11);
+    glTranslated(-25, 8, -25);
+    glScaled(1.2, 0.75, 1.2);
+    glColor3ub(159, 34, 4);
     glRotated(270, 1, 0, 0);
-    glutSolidCube(35);
+    glutSolidTorus(5, 11, 20, 32);
     glPopMatrix();
-
-    //Queso2
-    glPushMatrix();
-    glTranslated(-25, 10, -25);
-    glScaled(0.9, 0.03, 0.9);
-    glColor3ub(214, 182, 11);
-    glRotated(215, 0, 1, 0);
-    glutSolidCube(35);
-    glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
 
 
-    glPushMatrix();
-    glTranslated(-25, 20, -25); // Posici�n del disco
-    glColor3ub(200, 200, 200); // Color del disco
-    dibujarDisco(0, 15, 30); // Disco con radio exterior de 15
-    glPopMatrix();
+
 
 }
 
@@ -996,7 +1158,6 @@ void anclalateral() {
 
 
 }
-
 void ancla() {
    anclalateral();
 
@@ -1008,118 +1169,15 @@ void ancla() {
   glPopMatrix();
 
 }
+void anclatextura() {
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, texturas[21]);
+        glPushMatrix();
+        ancla();  // Llama a la función ancla sin "void"
+        glPopMatrix();
+        glDisable(GL_TEXTURE_2D);
+    }
 
-void mano() {
-
-    glPushMatrix();
-    glTranslated(-30, 30, 23);
-    glScaled(0.3, 0.4, 0.5);
-    glRotated(270, 1, 0, 0);
-    glutSolidSphere(9, 16, 20);
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslated(-31, 30, 23);
-    glScaled(0.3, 0.4, 0.5);
-    glRotated(270, 1, 0, 0);
-    glutSolidSphere(9, 16, 20);
-    glPopMatrix();
-
-
-
-    glPushMatrix();
-    glTranslated(-30.5, 35, 23);
-    glScaled(0.5, 0.4, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 8, 8, 10.5, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-
-
-    glPushMatrix();
-    glTranslated(-30, 30, 20);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslated(-30, 22, 20);
-    glRotated(270, 1, 0, 0);
-    glutSolidSphere(1.5, 16, 20);
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslated(-30, 30, 22);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslated(-30, 22, 22);
-    glRotated(270, 1, 0, 0);
-    glutSolidSphere(1.5, 16, 20);
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslated(-30, 30, 24);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslated(-30, 22, 24);
-    glRotated(270, 1, 0, 0);
-    glutSolidSphere(1.5, 16, 20);
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(-30, 30, 26);
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(90, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslated(-30, 22, 26);
-    glRotated(270, 1, 0, 0);
-    glutSolidSphere(1.5, 16, 20);
-    glPopMatrix();
-   
-
-    glPushMatrix();
-    glTranslated(-32.5, 26, 22);
-    glScaled(0.5, 0.5, 0.3);
-    glRotated(5, 1, 0, 0);
-    gluCylinder(gluNewQuadric(), 3, 3, 16, 30, 30); // Aumentar los radios a 6
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(-32.5, 26, 22);
-    glutSolidSphere(1.5, 16, 20);
-    glPopMatrix();
-
-
-    glPushMatrix();
-    glTranslated(-32.5, 25.5, 27);
-    glutSolidSphere(1.5, 16, 20);
-    glPopMatrix();
-
-
-
-
-
-
-}
 
 void cielofondodebikini() {
 
@@ -1277,10 +1335,10 @@ void dibujar() {
     #pragma endregion
     // Aqui colocar todo el codigo
 
-    glPushMatrix();
-        glTranslated(0, -2, 0);
-        WorkSpace();
-    glPopMatrix();
+   //glPushMatrix();
+   //glTranslated(0, -2, 0);
+   // WorkSpace();
+   //glPopMatrix();
 
     #pragma region Metodos de franklin
     Isla(texturas, quad);
