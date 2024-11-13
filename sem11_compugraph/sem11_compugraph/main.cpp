@@ -110,6 +110,7 @@ void timer(int t) {
 
 }
 
+// Función para actualizar la posición de la cámara
 void actualizarCamara() {
     camaraX = camaraTargetX + distanciaCamara * cos(anguloVertical) * sin(anguloHorizontal);
     camaraY = camaraTargetY + distanciaCamara * sin(anguloVertical);
@@ -179,6 +180,7 @@ void mouse(int button, int state, int x, int y) {
 // Función para manejar el movimiento del mouse
 void mouseMotion(int x, int y) {
     if (isMousePressed) {
+        // Movimiento de rotación con el botón izquierdo
         int deltaX = x - mouseX;
         int deltaY = y - mouseY;
 
@@ -195,8 +197,29 @@ void mouseMotion(int x, int y) {
         actualizarCamara();
         glutPostRedisplay();
     }
-}
+    else if (isRightMousePressed) {
+        // Movimiento de desplazamiento con el botón derecho
+        int deltaX = x - mouseX;
+        int deltaY = y - mouseY;
 
+        // Desplazamiento en el eje X y Z en función de la orientación de la cámara
+        float desplazamientoX = deltaX * 0.1f * cos(anguloHorizontal);
+        float desplazamientoZ = deltaX * 0.1f * sin(anguloHorizontal);
+
+        // Ajustar los valores para el movimiento en X y Z
+        camaraX += desplazamientoX;
+        camaraZ += desplazamientoZ;
+        camaraTargetX += desplazamientoX;
+        camaraTargetZ += desplazamientoZ;
+
+        // Actualizar la posición del mouse
+        mouseX = x;
+        mouseY = y;
+
+        actualizarCamara();
+        glutPostRedisplay();
+    }
+}
 
 #pragma endregion
 
