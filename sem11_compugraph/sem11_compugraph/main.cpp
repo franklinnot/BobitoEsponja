@@ -27,7 +27,6 @@ float distanciaCamara = 20.0f;
 
 int mouseX, mouseY;
 bool isMousePressed = false;
-bool isRightMousePressed = false;
 
 GLuint texturas[100];
 GLUquadric* quad;
@@ -112,38 +111,50 @@ void timer(int t) {
 
 // Función para actualizar la posición de la cámara
 void actualizarCamara() {
+
     camaraX = camaraTargetX + distanciaCamara * cos(anguloVertical) * sin(anguloHorizontal);
     camaraY = camaraTargetY + distanciaCamara * sin(anguloVertical);
     camaraZ = camaraTargetZ + distanciaCamara * cos(anguloVertical) * cos(anguloHorizontal);
+
 }
 
-// Función de manejo del teclado
-void teclado(int tecla, int x, int y) {
+void teclado(unsigned char tecla, int x, int y) {
     switch (tecla) {
-    case 101: // Flecha hacia arriba
-        camaraTargetY += 1.0f;
+    case 'w':  // Flecha arriba
+        std::cout << "Subir en Z" << std::endl;
+        camaraZ += 2;  // Subir en Z
+        camaraTargetZ += 2;  // Subir el punto de enfoque
         break;
-    case 103: // Flecha hacia abajo
-        camaraTargetY -= 1.0f;
+    case 's':  // Flecha abajo
+        std::cout << "Bajar en Z" << std::endl;
+        camaraZ -= 2;  // Bajar en Z
+        camaraTargetZ -= 2;  // Bajar el punto de enfoque
         break;
-    case 102: // Flecha derecha
-        anguloHorizontal += 0.05f;
+    case 'a':  // Flecha izquierda
+        std::cout << "Desplazar en -X" << std::endl;
+        camaraX -= 2;  // Desplazamiento en el eje X negativo
+        camaraTargetX -= 2;  // Mover el punto de enfoque en X
         break;
-    case 100: // Flecha izquierda
-        anguloHorizontal -= 0.05f;
+    case 'd':  // Flecha derecha
+        std::cout << "Desplazar en +X" << std::endl;
+        camaraX += 2;  // Desplazamiento en el eje X positivo
+        camaraTargetX += 2;  // Mover el punto de enfoque en X
         break;
-    case '+': // Tecla de más para acercar
-        distanciaCamara *= 0.9f;
+    case '+':  // Tecla H (acercar cámara)
+        std::cout << "Acercar en Y" << std::endl;
+        camaraY += 2;  // Acercar cámara en Y
+        camaraTargetY += 2;
         break;
-    case '-': // Tecla de menos para alejar
-        distanciaCamara /= 0.9f;
+    case '-':  // Tecla I (alejar cámara)
+        std::cout << "Alejar en Y" << std::endl;
+        camaraY -= 2;  // Alejar cámara en Y
+        camaraTargetY -= 2;
         break;
     }
-    actualizarCamara();
+
     glutPostRedisplay();
 }
 
-// Función de manejo del mouse
 void mouse(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON) {
         if (state == GLUT_DOWN) {
@@ -153,16 +164,6 @@ void mouse(int button, int state, int x, int y) {
         }
         else if (state == GLUT_UP) {
             isMousePressed = false;
-        }
-    }
-    else if (button == GLUT_RIGHT_BUTTON) {
-        if (state == GLUT_DOWN) {
-            isRightMousePressed = true;
-            mouseX = x;
-            mouseY = y;
-        }
-        else if (state == GLUT_UP) {
-            isRightMousePressed = false;
         }
     }
     else if (button == 3) { // Scroll hacia arriba
@@ -177,17 +178,14 @@ void mouse(int button, int state, int x, int y) {
     }
 }
 
-// Función para manejar el movimiento del mouse
 void mouseMotion(int x, int y) {
     if (isMousePressed) {
-        // Movimiento de rotación con el botón izquierdo
         int deltaX = x - mouseX;
         int deltaY = y - mouseY;
 
         anguloHorizontal += deltaX * 0.005f;
         anguloVertical += deltaY * 0.005f;
 
-        // Limitar el ángulo vertical para no pasar sobre la cámara
         if (anguloVertical > 1.5f) anguloVertical = 1.5f;
         if (anguloVertical < -1.5f) anguloVertical = -1.5f;
 
@@ -197,29 +195,8 @@ void mouseMotion(int x, int y) {
         actualizarCamara();
         glutPostRedisplay();
     }
-    else if (isRightMousePressed) {
-        // Movimiento de desplazamiento con el botón derecho
-        int deltaX = x - mouseX;
-        int deltaY = y - mouseY;
-
-        // Desplazamiento en el eje X y Z en función de la orientación de la cámara
-        float desplazamientoX = deltaX * 0.1f * cos(anguloHorizontal);
-        float desplazamientoZ = deltaX * 0.1f * sin(anguloHorizontal);
-
-        // Ajustar los valores para el movimiento en X y Z
-        camaraX += desplazamientoX;
-        camaraZ += desplazamientoZ;
-        camaraTargetX += desplazamientoX;
-        camaraTargetZ += desplazamientoZ;
-
-        // Actualizar la posición del mouse
-        mouseX = x;
-        mouseY = y;
-
-        actualizarCamara();
-        glutPostRedisplay();
-    }
 }
+
 
 #pragma endregion
 
@@ -1625,7 +1602,7 @@ int main(int argc, char* argv[]) {
     glutReshapeFunc(iniciarVentana);
     cargarImagenes();
     glutDisplayFunc(dibujar);
-    glutSpecialFunc(teclado);
+    glutKeyboardFunc(teclado);
     glutMouseFunc(mouse);
     glutMotionFunc(mouseMotion);
     glutTimerFunc(0, timer, 0);
