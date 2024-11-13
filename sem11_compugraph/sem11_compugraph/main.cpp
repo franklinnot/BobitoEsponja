@@ -111,49 +111,71 @@ void timer(int t) {
 
 // Función para actualizar la posición de la cámara
 void actualizarCamara() {
+    // Calcula el vector de dirección en el que está mirando la cámara.
+    float dirX = cos(anguloVertical) * sin(anguloHorizontal);
+    float dirY = sin(anguloVertical);
+    float dirZ = cos(anguloVertical) * cos(anguloHorizontal);
 
-    camaraX = camaraTargetX + distanciaCamara * cos(anguloVertical) * sin(anguloHorizontal);
-    camaraY = camaraTargetY + distanciaCamara * sin(anguloVertical);
-    camaraZ = camaraTargetZ + distanciaCamara * cos(anguloVertical) * cos(anguloHorizontal);
-
+    // Actualiza las coordenadas de la cámara.
+    camaraX = camaraTargetX + distanciaCamara * dirX;
+    camaraY = camaraTargetY + distanciaCamara * dirY;
+    camaraZ = camaraTargetZ + distanciaCamara * dirZ;
 }
 
+// Función de teclado
 void teclado(unsigned char tecla, int x, int y) {
+    float desplazamiento = 2.0f;  // Velocidad de desplazamiento
+
+    // Calculamos el vector de dirección en función de los ángulos de la cámara.
+    float dirX = cos(anguloVertical) * sin(anguloHorizontal);
+    float dirY = sin(anguloVertical);
+    float dirZ = cos(anguloVertical) * cos(anguloHorizontal);
+
     switch (tecla) {
-    case 'w':  // Flecha arriba
-        std::cout << "Subir en Z" << std::endl;
-        camaraZ += 2;  // Subir en Z
-        camaraTargetZ += 2;  // Subir el punto de enfoque
+    case 's':  // Mover hacia adelante
+        std::cout << "Mover hacia adelante (eje Z)" << std::endl;
+        // Mover la cámara en la dirección hacia la que está mirando (Z)
+        camaraTargetX += dirX * desplazamiento;
+        camaraTargetY += dirY * desplazamiento;
+        camaraTargetZ += dirZ * desplazamiento;
         break;
-    case 's':  // Flecha abajo
-        std::cout << "Bajar en Z" << std::endl;
-        camaraZ -= 2;  // Bajar en Z
-        camaraTargetZ -= 2;  // Bajar el punto de enfoque
+    case 'w':  // Mover hacia atrás
+        std::cout << "Mover hacia atrás (eje Z)" << std::endl;
+        // Mover la cámara en la dirección opuesta a la que está mirando (Z)
+        camaraTargetX -= dirX * desplazamiento;
+        camaraTargetY -= dirY * desplazamiento;
+        camaraTargetZ -= dirZ * desplazamiento;
         break;
-    case 'a':  // Flecha izquierda
-        std::cout << "Desplazar en -X" << std::endl;
-        camaraX -= 2;  // Desplazamiento en el eje X negativo
-        camaraTargetX -= 2;  // Mover el punto de enfoque en X
+    case 'a':  // Mover a la izquierda (X)
+        std::cout << "Mover a la izquierda (eje X)" << std::endl;
+        // Mover lateralmente usando el eje X de la cámara
+        camaraTargetX -= dirZ * desplazamiento;  // Lateral en X
+        camaraTargetZ += dirX * desplazamiento;  // Lateral en Z
         break;
-    case 'd':  // Flecha derecha
-        std::cout << "Desplazar en +X" << std::endl;
-        camaraX += 2;  // Desplazamiento en el eje X positivo
-        camaraTargetX += 2;  // Mover el punto de enfoque en X
+    case 'd':  // Mover a la derecha (X)
+        std::cout << "Mover a la derecha (eje X)" << std::endl;
+        // Mover lateralmente usando el eje X de la cámara
+        camaraTargetX += dirZ * desplazamiento;  // Lateral en X
+        camaraTargetZ -= dirX * desplazamiento;  // Lateral en Z
         break;
-    case '+':  // Tecla H (acercar cámara)
+    case '+':  // Acercar cámara (en el eje Y)
         std::cout << "Acercar en Y" << std::endl;
-        camaraY += 2;  // Acercar cámara en Y
-        camaraTargetY += 2;
+        camaraY += desplazamiento;
+        camaraTargetY += desplazamiento;
         break;
-    case '-':  // Tecla I (alejar cámara)
+    case '-':  // Alejar cámara (en el eje Y)
         std::cout << "Alejar en Y" << std::endl;
-        camaraY -= 2;  // Alejar cámara en Y
-        camaraTargetY -= 2;
+        camaraY -= desplazamiento;
+        camaraTargetY -= desplazamiento;
         break;
     }
 
+    // Actualiza la cámara después del movimiento
+    actualizarCamara();
     glutPostRedisplay();
 }
+
+
 
 void mouse(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON) {
