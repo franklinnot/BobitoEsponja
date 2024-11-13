@@ -1009,11 +1009,87 @@ void lengua()
 	glPopMatrix();
 }
 
+// Variables de personajes
+float velocidadPersonaje = 4;
+float anguloPierna1 = 0;
+float ladoPierna1 = 1;
+float anguloPierna2 = 0;
+float ladoPierna2 = -1;
+
+float anguloBrazo1 = 0;
+float ladoBrazo1 = 1;
+float anguloBrazo2 = 0;
+float ladoBrazo2 = 1;
+
+float posZpersonaje = -45;
+
 void bobEsponja()
 {
+	// Movimiento pierna 1
+	glPushMatrix();
+	anguloPierna1 += (velocidadPersonaje * ladoPierna1);
+
+	if (anguloPierna1 >= 20)
+	{
+		ladoPierna1 = -1;
+	}
+	if (anguloPierna1 <= -20)
+	{
+		ladoPierna1 = 1;
+	}
+
+	glTranslated(0.5, 5, -0.1);
+	glRotated(anguloPierna1, 1, 0, 0);
+	glTranslated(0, -5, 0.1);
+	
+		glColor3ub(0, 0, 0);
+		zapato(2.5);
+
+		media(2.5);
+
+		glColor3ub(255, 238, 57);
+		pierna(2.5);
+
+		glColor3ub(156, 73, 41);
+		pantalon(2.5);
+
+	glPopMatrix();
+
+
+	//Movimiento pierna 2
+
+	glPushMatrix();
+	anguloPierna2 += (velocidadPersonaje * ladoPierna2);
+
+	if (anguloPierna2 <= -20)
+	{
+		ladoPierna2 = 1;
+	}
+	if (anguloPierna2 >= 20)
+	{
+		ladoPierna2 = -1;
+	}
+	glTranslated(-0.5, 5, -0.1);
+	glRotated(anguloPierna2, 1, 0, 0);
+	glTranslated(0, -5, 0.1);
+	
+		glColor3ub(0, 0, 0);
+		zapato(-2.5);
+
+		media(-2.5);
+
+		glColor3ub(255, 238, 57);
+		pierna(-2.5);
+
+		glColor3ub(156, 73, 41);
+		pantalon(-2.5);
+
+	glPopMatrix();
+
+
 	glColor3ub(0, 0, 0);
-	zapato(2.5);
-	zapato(-2.5);
+	//zapato(2.5);
+	//zapato(-2.5);
 
 	camisa(1.5, 30);
 	camisa(0.8, -30);
@@ -1046,12 +1122,12 @@ void bobEsponja()
 	pestaña(-2.5, 17);
 
 
-	media(2.5);
-	media(-2.5);
+	//media(2.5);
+	//media(-2.5);
 
 	glColor3ub(255, 238, 57);
-	pierna(2.5);
-	pierna(-2.5);
+	//pierna(2.5);
+	//pierna(-2.5);
 	cara();
 	brazo(4, 50);
 	brazo(-4, 130);
@@ -1064,8 +1140,8 @@ void bobEsponja()
 
 	glColor3ub(156, 73, 41);
 	pantalon();
-	pantalon(2.5);
-	pantalon(-2.5);
+	//pantalon(2.5);
+	//pantalon(-2.5);
 
 	glColor3ub(255, 255, 255);
 	camisa();
@@ -1089,11 +1165,10 @@ void bobEsponja()
 	boca();
 
 	glColor3ub(255, 183, 188);
-	lengua();
-
-
-	
+	lengua();	
 }
+
+
 
 // Roquita
 void roquita(GLuint texturas[100]) {
