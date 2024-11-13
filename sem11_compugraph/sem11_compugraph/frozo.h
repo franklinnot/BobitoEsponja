@@ -113,8 +113,6 @@ void casagenerica(GLUquadric* quad) {
 
 }
 
-
-
 void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
     //casa
     glPushMatrix();
@@ -207,8 +205,6 @@ void casacalamardo(GLuint texturas[100],GLUquadric* quad) {
     cilindroDiv(0.4, 0.4, 1.1, 20);
     glPopMatrix();
 }
-
-
 
 void pantalonPatricio(float posX)
 {
