@@ -755,6 +755,7 @@ void cargarImagenes() {
 
      //Texturas - Boyita
     loadTexturesFromFile("Texturas/casa_patricio.bmp", 10);
+    loadTexturesFromFile("Texturas/roquita.bmp", 11);
 
     //Jose
     loadTexturesFromFile("Texturas/shortpatricio.bmp", 41);
@@ -1386,6 +1387,9 @@ void dibujar() {
     casaPatricio(texturas, quad);
     glPopMatrix();
     glPopMatrix();
+
+    //roquita(texturas);
+    alga();
 
     #pragma endregion
 

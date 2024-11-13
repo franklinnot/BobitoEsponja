@@ -1094,3 +1094,69 @@ void bobEsponja()
 
 	
 }
+
+// Roquita
+void roquita(GLuint texturas[100]) {
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[11]);
+	glColor3ub(250, 250, 250);
+
+	glPushMatrix();
+	semiEsferaT(10, 6, 25); // radio, slices, stacks
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+}
+//Alga
+float tiempo = 0.0f;
+
+void algaAnimada(float altura, int segmentos) {
+	glBegin(GL_TRIANGLE_STRIP);
+	for (int i = 0; i <= segmentos; ++i) {
+		float t = (float)i / segmentos; // Proporción actual de la altura
+		float y = t * altura;
+
+		float desplazamiento = sin(t * 3.1415 + tiempo) * 0.3;
+
+		float ancho = 0.8 * (1.2 - t); 
+
+		// Vértices del TRIANGLE_STRIP
+		glVertex3f(-ancho + desplazamiento, y, 0.0f);
+		glVertex3f(ancho + desplazamiento, y, 0.0f);
+	}
+	glEnd();
+}
+
+void alga() {
+	tiempo += 0.05;
+	glColor3ub(110, 133, 53);
+	algaAnimada(15, 20);
+
+	glColor3ub(118, 226, 49);
+	glPushMatrix();
+		glTranslated(2, 0, 0);
+		glScaled(1, 0.8, 1);
+		algaAnimada(15, 20);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(-2, 0, 0);
+		glScaled(1, 0.8, 1);
+		algaAnimada(15, 20);
+	glPopMatrix();
+
+	glColor3ub(82, 173, 31);
+	glPushMatrix();
+		glTranslated(-1, 0, 0.5);
+		glScaled(1, 0.5, 1);
+		algaAnimada(15, 20);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(1, 0, 0.5);
+		glScaled(1, 0.5, 1);
+		algaAnimada(15, 20);
+	glPopMatrix();
+	
+}

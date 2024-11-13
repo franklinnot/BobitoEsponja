@@ -194,6 +194,51 @@ void semiEsfera(float radius, int slices, int stacks) {
     }
 }
 
+void semiEsferaT(float radius, int slices, int stacks) {
+    // Activamos texturizado
+    glEnable(GL_TEXTURE_2D);
+
+    // Dibujar la semiesfera
+    for (int i = 0; i <= stacks / 2; ++i) {
+        // Ángulos para los stacks actuales y el siguiente
+        float theta1 = (float)i / stacks * 3.1415;
+        float theta2 = (float)(i + 1) / stacks * 3.1415;
+
+        glBegin(GL_TRIANGLE_STRIP);
+        for (int j = 0; j <= slices; ++j) {
+            float phi = (float)j / slices * 2.0f * 3.1415;
+
+            // Vértices en el primer stack
+            float x1 = radius * sinf(theta1) * cosf(phi);
+            float y1 = radius * cosf(theta1);
+            float z1 = radius * sinf(theta1) * sinf(phi);
+
+            // Coordenadas de textura para el primer vértice
+            float u1 = (float)j / slices;
+            float v1 = (float)i / stacks;
+
+            glTexCoord2f(u1, v1);
+            glVertex3f(x1, y1, z1);
+
+            // Vértices en el segundo stack
+            float x2 = radius * sinf(theta2) * cosf(phi);
+            float y2 = radius * cosf(theta2);
+            float z2 = radius * sinf(theta2) * sinf(phi);
+
+            // Coordenadas de textura para el segundo vértice
+            float u2 = (float)j / slices;
+            float v2 = (float)(i + 1) / stacks;
+
+            glTexCoord2f(u2, v2);
+            glVertex3f(x2, y2, z2);
+        }
+        glEnd();
+    }
+
+    // Desactivar texturizado
+    glDisable(GL_TEXTURE_2D);
+}
+
 void semiEsfera(float radius) {
     int slices = 100;
     int stacks = 100;
