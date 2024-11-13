@@ -15,10 +15,19 @@ using namespace std;
 
 #pragma region Codigo de cajon
 
-float camaraX = 30;
-float camaraY = 30;
-float camaraZ = 30;
-float angulo = 0;
+float camaraX = 20;
+float camaraY = 20;
+float camaraZ = 20;
+float camaraTargetX = 0;
+float camaraTargetY = 8;
+float camaraTargetZ = 0;
+float anguloHorizontal = 0.0f;
+float anguloVertical = 0.0f;
+float distanciaCamara = 20.0f;
+
+int mouseX, mouseY;
+bool isMousePressed = false;
+bool isRightMousePressed = false;
 
 GLuint texturas[100];
 GLUquadric* quad;
@@ -101,31 +110,93 @@ void timer(int t) {
 
 }
 
+void actualizarCamara() {
+    camaraX = camaraTargetX + distanciaCamara * cos(anguloVertical) * sin(anguloHorizontal);
+    camaraY = camaraTargetY + distanciaCamara * sin(anguloVertical);
+    camaraZ = camaraTargetZ + distanciaCamara * cos(anguloVertical) * cos(anguloHorizontal);
+}
+
+// Función de manejo del teclado
 void teclado(int tecla, int x, int y) {
-
-    switch (tecla)
-    {
-    case 101:
-        std::cout << "Manito arriba" << std::endl;
-        camaraY += 2;
+    switch (tecla) {
+    case 101: // Flecha hacia arriba
+        camaraTargetY += 1.0f;
         break;
-
-    case 103:
-        std::cout << "Manito abajo" << std::endl;
-        camaraY -= 2;
+    case 103: // Flecha hacia abajo
+        camaraTargetY -= 1.0f;
         break;
-
-    case 102:
-        std::cout << "Patita derecha" << std::endl;
-        angulo -= 2;
+    case 102: // Flecha derecha
+        anguloHorizontal += 0.05f;
         break;
-
-    case 100:
-        std::cout << "Patita izquierda" << std::endl;
-        angulo += 2;
+    case 100: // Flecha izquierda
+        anguloHorizontal -= 0.05f;
+        break;
+    case '+': // Tecla de más para acercar
+        distanciaCamara *= 0.9f;
+        break;
+    case '-': // Tecla de menos para alejar
+        distanciaCamara /= 0.9f;
         break;
     }
+    actualizarCamara();
+    glutPostRedisplay();
 }
+
+// Función de manejo del mouse
+void mouse(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON) {
+        if (state == GLUT_DOWN) {
+            isMousePressed = true;
+            mouseX = x;
+            mouseY = y;
+        }
+        else if (state == GLUT_UP) {
+            isMousePressed = false;
+        }
+    }
+    else if (button == GLUT_RIGHT_BUTTON) {
+        if (state == GLUT_DOWN) {
+            isRightMousePressed = true;
+            mouseX = x;
+            mouseY = y;
+        }
+        else if (state == GLUT_UP) {
+            isRightMousePressed = false;
+        }
+    }
+    else if (button == 3) { // Scroll hacia arriba
+        distanciaCamara *= 0.9f;
+        actualizarCamara();
+        glutPostRedisplay();
+    }
+    else if (button == 4) { // Scroll hacia abajo
+        distanciaCamara /= 0.9f;
+        actualizarCamara();
+        glutPostRedisplay();
+    }
+}
+
+// Función para manejar el movimiento del mouse
+void mouseMotion(int x, int y) {
+    if (isMousePressed) {
+        int deltaX = x - mouseX;
+        int deltaY = y - mouseY;
+
+        anguloHorizontal += deltaX * 0.005f;
+        anguloVertical += deltaY * 0.005f;
+
+        // Limitar el ángulo vertical para no pasar sobre la cámara
+        if (anguloVertical > 1.5f) anguloVertical = 1.5f;
+        if (anguloVertical < -1.5f) anguloVertical = -1.5f;
+
+        mouseX = x;
+        mouseY = y;
+
+        actualizarCamara();
+        glutPostRedisplay();
+    }
+}
+
 
 #pragma endregion
 
@@ -512,15 +583,6 @@ void curstaceo_cascarudo()
     socalos();
 
     pilares();
-
-    glPushMatrix();
-    glScaled(1.9, 1, 1.6);
-    glRotated(50,0, 1, 0);
-    glTranslated(-48, 0, 0);
-    glScaled(0.9, 1, 1);
-    dibujarEjes(50);
-    callesCrustaceo();
-    glPopMatrix();
 
     //madera anterior
     glPushMatrix();
@@ -986,18 +1048,12 @@ void mano() {
 }
 void baldecarnada() {
 
-
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, texturas[26]);
-    glColor3ub(255, 255, 255);
     glPushMatrix();
+    glColor3ub(87, 106, 205);
     glRotated(0, 0, 1, 0);
     glTranslated(30, 18, -22.5);
     mano();
     glPopMatrix();
-    glDisable(GL_TEXTURE_2D);
-
-
 
 
     //balde
@@ -1010,6 +1066,7 @@ void baldecarnada() {
     glPushMatrix();
     glTranslated(0, 29, 0);
     glRotated(90, 1, 0, 0);
+    glRotated(180, 0, 0, 1);
     glScaled(1.2, 1.5, 1.2);
     gluCylinder(quad, 10, 8, 25, 35, 30);
     glPopMatrix();
@@ -1404,20 +1461,18 @@ void dibujar() {
     glEnable(GL_BLEND);
     glLoadIdentity();
     // Linea para modificar el punto al cual la camara debe enfocar
-    gluLookAt(camaraX, camaraY, camaraZ, 0, 5, 0, 0, 1, 0);
+    gluLookAt(camaraX, camaraY, camaraZ, camaraTargetX, camaraTargetY, camaraTargetZ, 0, 1, 0);
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
     glPushMatrix();
-    glRotated(angulo, 0, 1, 0);
     piso();
-    ejes();
     #pragma endregion
 
    // Aqui colocar todo el codigo
 
-   //glPushMatrix();
-   //glTranslated(0, -2, 0);
-   // WorkSpace();
-   //glPopMatrix();
+   glPushMatrix();
+   glTranslated(0, -2, 0);
+   WorkSpace();
+   glPopMatrix();
 
     #pragma region Metodos de franklin
     Isla(texturas, quad);
@@ -1437,34 +1492,34 @@ void dibujar() {
     //glPushMatrix();
     //coralTwo();
     //glPopMatrix();
-    glPushMatrix();
-    glRotated(120,0,1,0);
-    glTranslated(20,0,-10);
-    glPushMatrix();
-    glTranslated(0, 0, -14);
-    glScaled(0.6, 0.6, 0.6);
-    casaBobEsponja();
-    glPopMatrix();
 
     glPushMatrix();
-    glTranslated(0, -1, -4);
-    glScaled(0.3, 0.3, 0.3);
-    bobEsponja();
+        glTranslated(-28, -0.75, 28);
+        glScaled(0.35, 0.35, 0.35);
+        dibujarEjes(50);
+        casaBobEsponja();
     glPopMatrix();
 
-    glPushMatrix();
-    glTranslated(20, -1, -12);
-    glScaled(2, 2, 2);
-    glRotated(-15, 0, 1 , 0);
-    casacalamardo(texturas,quad);
-    glPopMatrix();
 
-    glPushMatrix();
-    glTranslated(-20, 0, -8);
-    glScaled(0.5, 0.5, 0.5);
-    casaPatricio(texturas, quad);
-    glPopMatrix();
-    glPopMatrix();
+    //glPushMatrix();
+    //glTranslated(0, -1, -4);
+    //glScaled(0.3, 0.3, 0.3);
+    //bobEsponja();
+    //glPopMatrix();
+
+    //glPushMatrix();
+    //glTranslated(20, -1, -12);
+    //glScaled(2, 2, 2);
+    //glRotated(-15, 0, 1 , 0);
+    //casacalamardo(texturas,quad);
+    //glPopMatrix();
+
+    //glPushMatrix();
+    //glTranslated(-20, 0, -8);
+    //glScaled(0.5, 0.5, 0.5);
+    //casaPatricio(texturas, quad);
+    //glPopMatrix();
+    //glPopMatrix();
 
     //roquita(texturas);
     //alga();
@@ -1482,68 +1537,52 @@ void dibujar() {
 
     #pragma region Metodos de jesus
     glPushMatrix();
-    glScaled(0.5, 0.5, 0.5);
-    glRotated(-135, 0, 1 , 0);
-    glTranslated(0, 0, -90);
-    curstaceo_cascarudo();
+        glTranslated(30, 0, 27);
+        glScaled(0.2, 0.2, 0.2);
+        glRotated(-110, 0, 1 , 0);
+        curstaceo_cascarudo();
     glPopMatrix();
 
-    calles();
+    glPushMatrix();
+        glTranslated(0, -0.85, -4);
+        calles();
+    glPopMatrix();
     #pragma endregion
 
     #pragma region Metodos de jair
     // casa de plankton
     glPushMatrix();
-    glRotated(360, 0, 1, 0);
-    glTranslated(0, 0, 30);
-    dibujarEjes(50);
-    glTranslated(24, 0, -50);
-        glPushMatrix();
-        glScaled(0.3, 0.3, 0.3);
-        glTranslated(-80, 0, -30);
-        glRotated(40, 0 , 1, 0);
-            glPushMatrix();
-                glPushMatrix(); 
-                glRotated(40, 0, 1, 0);
-                glTranslated(30, 18, -22.5);
-                glColor3f(0.1922f, 0.2745f, 0.7176f); // Color azul/morado #3146B7
-                mano();
-                glPopMatrix();
+         glTranslated(28, 0, -24);
+         glScaled(0.3, 0.3, 0.3);
+         glRotated(26, 0, 1, 0);
+         baldecarnada();
+     glPopMatrix();
 
-                glPushMatrix();   
-                baldecarnada();
-                glPopMatrix();
-            glPopMatrix();
-        glPopMatrix();
-
-        glPushMatrix();
-            glTranslated(-22, 0, -2);
-            glRotated(105, 0, 1, 0);
-            glScaled(0.2, 0.2, 0.2);
-            Plankton();
-        glPopMatrix();
-    glPopMatrix();
+     //glPushMatrix();
+     //    glTranslated(-22, 0, -2);
+     //    glRotated(105, 0, 1, 0);
+     //    glScaled(0.2, 0.2, 0.2);
+     //    Plankton();
+     //glPopMatrix();
 
     // carrito burger
     glPushMatrix();
-        glRotated(90, 0 ,1 ,0);
+        glRotated(90, 0, 1, 0);
         glScaled(0.1, 0.1, 0.1);
-        glPushMatrix();
-            hamburguesa();
-        glPopMatrix();
+        hamburguesa();
     glPopMatrix();
 
-    // anclita
-    glPushMatrix();
-        glTranslated(10, 0, -30);
-        glRotated(55, 0, 1, 0);
-        glScaled(0.4, 0.4, 0.4);
-            glPushMatrix();
-            glTranslated(-2, 8, -2);
-            glRotated(25, 0, 1, 0);
-            ancla();
-            glPopMatrix();
-    glPopMatrix();
+    //// anclita
+    //glPushMatrix();
+    //    glTranslated(10, 0, -30);
+    //    glRotated(55, 0, 1, 0);
+    //    glScaled(0.4, 0.4, 0.4);
+    //        glPushMatrix();
+    //        glTranslated(-2, 8, -2);
+    //        glRotated(25, 0, 1, 0);
+    //        ancla();
+    //        glPopMatrix();
+    //glPopMatrix();
     #pragma endregion
 
     // aqui termina
@@ -1564,7 +1603,10 @@ int main(int argc, char* argv[]) {
     cargarImagenes();
     glutDisplayFunc(dibujar);
     glutSpecialFunc(teclado);
+    glutMouseFunc(mouse);
+    glutMotionFunc(mouseMotion);
     glutTimerFunc(0, timer, 0);
+    glEnable(GL_DEPTH_TEST);
     glutMainLoop();
     return 0;
 }
