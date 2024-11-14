@@ -1409,10 +1409,14 @@ void cielofondodebikini() {
 
     //CARA 1
     glPushMatrix(); // Guarda el estado actual de la matriz
+    glTranslated(-35, 0, 35); // Traslación al punto 50 del eje X
 
     // Fondo de cielo
+    glColor4ub(15, 104, 247, 0);
     glPushMatrix();
-    cubo(1);
+    glTranslated(150, 150, 0);
+    glScalef(1, 0.5, 1);
+    cubo(100);
     glPopMatrix();
 
     // Textura de fondo
@@ -1421,13 +1425,13 @@ void cielofondodebikini() {
     glColor3ub(250, 250, 250);
 
     glPushMatrix();
-    glTranslated(-49, 0, 49);
-    glScalef(1, 0.5, 1.0);
+    glTranslated(-12.8, 0, 12.81);
+    glScalef(4.0, 4.0, 1.0);
     glBegin(GL_POLYGON);
-        glTexCoord2f(0, 1); glVertex3d(0, 100, 0);
-        glTexCoord2f(1, 1); glVertex3d(100, 100, 0);
-        glTexCoord2f(1, 0);  glVertex3d(100, 0, 0);
-        glTexCoord2f(0, 0);  glVertex3d(0, 0, 0);
+    glTexCoord2f(0, 1); glVertex3d(0, 14.4, 0);
+    glTexCoord2f(1, 1); glVertex3d(25.6, 14.4, 0);
+    glTexCoord2f(1, 0); glVertex3d(25.6, 0, 0);
+    glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
     glEnd();
     glPopMatrix();
 

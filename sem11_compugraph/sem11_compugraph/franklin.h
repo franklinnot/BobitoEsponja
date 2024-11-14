@@ -642,15 +642,17 @@ void Plankton() {
 void Isla(GLuint texturas[100], GLUquadric* quad) {
 
 	glPushMatrix();
-
+		
 		// awita sobre el cubito 
         glPushMatrix();
-			glTranslated(0, 50, 0);
+			glTranslated(0, 48, 0);
 			glScaled(1, 0.01, 1);
 			glRotated(-90, 1, 0, 0);
 	        Awita(texturas);
         glPopMatrix();
 
+		glTranslated(0, -1, 0);
+		glPushMatrix();
 		// arenita
 	    Arena(texturas, quad);
 
@@ -679,6 +681,7 @@ void Isla(GLuint texturas[100], GLUquadric* quad) {
 			glRotated(80, 1, 0, 0);
 			glRotated(-90, 1, 0, 0);
 			cielito(texturas, quad);
+		glPopMatrix();
 		glPopMatrix();
 
 	glPopMatrix();
