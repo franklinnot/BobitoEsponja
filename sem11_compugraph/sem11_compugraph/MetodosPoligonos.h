@@ -5,6 +5,9 @@
 #include <Math.h>
 #include <time.h>
 #include <iostream>
+#include <vector>
+#include <cmath>
+#include <stdexcept>
 using namespace std;
 #pragma endregion
 
@@ -25,6 +28,27 @@ void dibujarEjes(float tamano) {
     glColor3f(0.0, 0.0, 1.0);
     glVertex3f(0.0, 0.0, 0.0);
     glVertex3f(0.0, 0.0, tamano);
+
+    glEnd();
+}
+
+void dibujarEjes() {
+    glBegin(GL_LINES);
+
+    // Eje X en rojo
+    glColor3f(1.0, 0.0, 0.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(100, 0.0, 0.0);
+
+    // Eje Y en verde
+    glColor3f(0.0, 1.0, 0.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, 100, 0.0);
+
+    // Eje Z en azul
+    glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, 0.0, 100);
 
     glEnd();
 }
@@ -84,6 +108,49 @@ void esfera(GLUquadric* quadcito, GLdouble radio, GLint divisiones) {
     glPushMatrix();
     gluSphere(quadcito, radio, divisiones, divisiones);
     glPopMatrix();
+}
+
+void sphere(float radius, const std::vector<std::vector<int>>& colors) {
+    // Verifica que los colores de degradado sean válidos
+    if (colors.size() != 2 || colors[0].size() < 3 || colors[1].size() < 3) {
+        throw std::invalid_argument("Color degradado incorrecto. Se esperan dos colores RGB o RGBA.");
+    }
+
+    glBegin(GL_QUAD_STRIP);
+    for (int i = 0; i <= 100; ++i) {
+        float phi = 3.141516 * float(i) / float(100); // Ángulo en vertical
+        float y = cosf(phi);
+        float r = sinf(phi);
+
+        // Color degradado para el eje vertical
+        float t = float(i) / float(100);
+        if (colors[0].size() == 4 && colors[1].size() == 4) {
+            glColor4ub(
+                (1 - t) * colors[0][0] + t * colors[1][0],
+                (1 - t) * colors[0][1] + t * colors[1][1],
+                (1 - t) * colors[0][2] + t * colors[1][2],
+                (1 - t) * colors[0][3] + t * colors[1][3]
+            );
+        }
+        else {
+            glColor3ub(
+                (1 - t) * colors[0][0] + t * colors[1][0],
+                (1 - t) * colors[0][1] + t * colors[1][1],
+                (1 - t) * colors[0][2] + t * colors[1][2]
+            );
+        }
+
+        for (int j = 0; j <= 100; ++j) {
+            float theta = 2.0f * 3.141516 * float(j) / float(100); // Ángulo en horizontal
+            float x = r * cosf(theta);
+            float z = r * sinf(theta);
+
+            // Definimos dos vértices en el mismo ángulo horizontal para formar la banda
+            glVertex3f(radius * x, radius * y, radius * z);
+            glVertex3f(radius * x, -radius * y, radius * z);
+        }
+    }
+    glEnd();
 }
 
 #pragma endregion
