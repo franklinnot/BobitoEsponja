@@ -1759,9 +1759,26 @@ void dibujar() {
         ancla();
     glPopMatrix();
 
-    //glPushMatrix();
-    //burbujitas();
-    //glPopMatrix();
+    // BURBUJITAS
+    glPushMatrix();
+        glTranslated(0, -0.8, 30);
+        burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(32, -0.8, 14);
+        burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-40, -0.8, -37);
+        burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(40, -0.8, -20);
+        burbujitas();
+    glPopMatrix();
     
     // CORAL - Version 1
     glPushMatrix();
@@ -1789,9 +1806,9 @@ void dibujar() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(-42, -0.85, -27);
-    glScaled(0.3, 0.3, 0.3);
-    coralOne();
+        glTranslated(-42, -0.85, -27);
+        glScaled(0.3, 0.3, 0.3);
+        coralOne();
     glPopMatrix();
 
     glPushMatrix();
@@ -1813,9 +1830,17 @@ void dibujar() {
     glPopMatrix();
 
     // CORAL - Version 2
-    //glPushMatrix();
-    //coralTwo();
-    //glPopMatrix();
+    glPushMatrix();
+        glTranslated(-2, -0.85, -35);
+        glScaled(0.5, 0.5, 0.5);
+        coralTwo();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-13, -0.85, 35);
+        glScaled(0.4, 0.4, 0.4);
+        coralTwo();
+    glPopMatrix();
 
     // Roquitas
     glPushMatrix();
@@ -1856,9 +1881,9 @@ void dibujar() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(30, -0.85, 13);
-    glScaled(0.1, 0.1, 0.1);
-    roquita(texturas);
+        glTranslated(30, -0.85, 13);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
     glPopMatrix();
 
     glPushMatrix();
@@ -1880,15 +1905,15 @@ void dibujar() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(-40, -0.85, -10);
-    glScaled(0.1, 0.1, 0.1);
-    roquita(texturas);
+        glTranslated(-40, -0.85, -10);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(-37, -0.85, -24);
-    glScaled(0.2, 0.2, 0.2);
-    roquita(texturas);
+        glTranslated(-37, -0.85, -24);
+        glScaled(0.2, 0.2, 0.2);
+        roquita(texturas);
     glPopMatrix();
 
     glPushMatrix();
@@ -1899,6 +1924,62 @@ void dibujar() {
 
 
     // Algas
+
+    glPushMatrix();
+        glTranslated(-30, -0.85, -24);
+        glScaled(0.35, 0.6, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-28, -0.85, -26);
+        glScaled(0.35, 0.6, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-25, -0.85, -26);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-22, -0.85, -27);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-27, -0.85, -22);
+        glScaled(0.35, 0.6, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-27, -0.85, -18);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-20, -0.85, -21);
+        glScaled(0.35, 0.6, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-24, -0.85, -30);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
 
     glPushMatrix();
         glTranslated(30, -0.85, -22);
@@ -1993,6 +2074,7 @@ void dibujar() {
 
     glPushMatrix();
         glTranslated(-18, 2, -18);
+        glScaled(0.8, 0.8, 0.8);
         glRotated(25, 0, 0, 1);
         glRotated(-12, 1, 0, 0);
         medusaMoviendose(texturas);
@@ -2000,7 +2082,32 @@ void dibujar() {
 
     glPushMatrix();
         glTranslated(12, 12, 20);
+        glScaled(0.8, 0.8, 0.8);
         glRotated(25, 1, 0, 0);
+        medusaMoviendose(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-25, 6, -25);
+        glScaled(0.8, 0.8, 0.8);
+        glRotated(25, 0, 0, 1);
+        glRotated(-12, 1, 0, 0);
+        medusaMoviendose(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-18, 2, -32);
+        glScaled(0.8, 0.8, 0.8);
+        glRotated(25, 0, 0, 1);
+        glRotated(-12, 1, 0, 0);
+        medusaMoviendose(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-20, 2, 30);
+        glScaled(0.8, 0.8, 0.8);
+        glRotated(-25, 0, 0, 1);
+        glRotated(-12, 1, 0, 0);
         medusaMoviendose(texturas);
     glPopMatrix();
 
