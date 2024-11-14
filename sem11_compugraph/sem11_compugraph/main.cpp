@@ -1584,7 +1584,7 @@ void dibujar() {
     glPushMatrix();
         glTranslated(-34, -0.75, 34);
         glScaled(0.6, 0.6, 0.6);
-        glRotated(160, 0, 1, 0);
+        glRotated(180, 0, 1, 0);
         casaBobEsponja();
     glPopMatrix();
 
@@ -1592,7 +1592,7 @@ void dibujar() {
     glPushMatrix();
         glTranslated(-20, -0.85, 34);
         glScaled(2, 2, 2);
-        glRotated(170, 0, 1, 0);
+        glRotated(180, 0, 1, 0);
         casacalamardo(texturas, quad);
     glPopMatrix();
 
@@ -1622,9 +1622,38 @@ void dibujar() {
     glPopMatrix();
 
     // casas genericas
-    //glPushMatrix();
-    //    casagenerica(quad);
-    //glPopMatrix();
+    glPushMatrix();
+        glTranslated(10, 0, -10);
+        casagenerica(quad);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(30, 0, -10);
+        glRotated(-35, 0, 1, 0);
+        casagenerica(quad);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-30, 0, -10);
+        glRotated(35, 0, 1, 0);
+        casagenerica(quad);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-10, 0, -10);
+        casagenerica(quad);
+    glPopMatrix();
+
+
+    glPushMatrix();
+        glTranslated(-13, 0, -30);
+        casagenerica(quad);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(7, 0, -30);
+        casagenerica(quad);
+    glPopMatrix();
 
     #pragma endregion
 
@@ -1632,6 +1661,7 @@ void dibujar() {
 
     #pragma region Personajes
 
+    // Patricio
     glPushMatrix();
         glTranslated(-8, -1.2, 22);
         glScaled(0.3, 0.3, 0.3);
@@ -1661,8 +1691,53 @@ void dibujar() {
 
     #pragma region Elementos adicionales
 
+    // Pistas / calles 
     glPushMatrix();
         glTranslated(0, -0.85, -4);
+        calles();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-8.3, -0.85, 16);
+        glScaled(0.6,1,0.4);
+        glRotated(90,0,1,0);
+        calles();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-22.2, -0.85, 6);
+        glScaled(0.5, 1, 0.3);
+        pista();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-22.2, -0.85, 11);
+        glScaled(0.5, 1, 0.3);
+        pista();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-22.2, -0.85, 16);
+        glScaled(0.5, 1, 0.3);
+        pista();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-22.2, -0.85, 21);
+        glScaled(0.5, 1, 0.3);
+        pista();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-22.2, -0.85, 26);
+        glScaled(0.5, 1, 0.3);
+        pista();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-36.5, -0.85, 16);
+        glScaled(0.6, 1, 0.4);
+        glRotated(90, 0, 1, 0);
         calles();
     glPopMatrix();
 
@@ -1687,18 +1762,233 @@ void dibujar() {
     //glPushMatrix();
     //burbujitas();
     //glPopMatrix();
+    
+    // CORAL - Version 1
+    glPushMatrix();
+        glTranslated(40, -0.85, 10);
+        glScaled(0.2, 0.2, 0.2);
+        coralOne();
+    glPopMatrix();
 
-    //glPushMatrix();
-    //coralOne();
-    //glPopMatrix();
+    glPushMatrix();
+        glTranslated(40, -0.85, -25);
+        glScaled(0.2, 0.2, 0.2);
+        coralOne();
+    glPopMatrix();
 
+    glPushMatrix();
+        glTranslated(42, -0.85, -27);
+        glScaled(0.3, 0.3, 0.3);
+        coralOne();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-40, -0.85, -25);
+        glScaled(0.2, 0.2, 0.2);
+        coralOne();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-42, -0.85, -27);
+    glScaled(0.3, 0.3, 0.3);
+    coralOne();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-42, -0.85, -25);
+        glScaled(0.1, 0.1, 0.1);
+        coralOne();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-42, -0.85, 25);
+        glScaled(0.2, 0.2, 0.2);
+        coralOne();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(6, -0.85, -10);
+        glScaled(0.2, 0.2, 0.2);
+        coralOne();
+    glPopMatrix();
+
+    // CORAL - Version 2
     //glPushMatrix();
     //coralTwo();
     //glPopMatrix();
 
-    //roquita(texturas);
-    //alga();
+    // Roquitas
+    glPushMatrix();
+        glTranslated(31, -0.85, -22);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
+    glPopMatrix();
 
+
+    glPushMatrix();
+        glTranslated(30, -0.85, -24);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(30, -0.85, -20);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(29, -0.85, -22);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(2, -0.85, 30);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(3, -0.85, 31);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(30, -0.85, 13);
+    glScaled(0.1, 0.1, 0.1);
+    roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(32, -0.85, 14);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-25, -0.85, -13);
+        glScaled(0.2, 0.2, 0.2);
+        roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-24, -0.85, -10);
+        glScaled(0.1, 0.1, 0.1);
+        roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-40, -0.85, -10);
+    glScaled(0.1, 0.1, 0.1);
+    roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-37, -0.85, -24);
+    glScaled(0.2, 0.2, 0.2);
+    roquita(texturas);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-25, -0.85, 15);
+        glScaled(0.09, 0.09, 0.09);
+        roquita(texturas);
+    glPopMatrix();
+
+
+    // Algas
+
+    glPushMatrix();
+        glTranslated(30, -0.85, -22);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(100, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-20, -0.85, -25);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(27, -0.85, -10);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(-40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-24, -0.85, -20);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-23, -0.85, -23.5);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-27, -0.85, -10);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(4, -0.85, -30);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(-40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-10, -0.85, -30);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(0, -0.85,30);
+        glScaled(0.35, 0.35, 0.35);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-40, -0.85, 30);
+        glScaled(0.35, 0.35, 0.35);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(18, -0.85, 30);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(30, -0.85, 15);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(40, 0, 1, 0);
+        alga();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(35, -0.85, 15);
+        glScaled(0.35, 0.35, 0.35);
+        glRotated(180, 0, 1, 0);
+    alga();
+    glPopMatrix();
+  
     #pragma region Medusas
 
     glPushMatrix();
