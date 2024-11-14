@@ -18,7 +18,95 @@ Plankton
 */
 #pragma endregion
 
+// Postesito
+void poste() {
 
+	// cilindroDiv(GLdouble radio, GLdouble altura, int divisiones)
+	// todo el largo del poste
+	glPushMatrix();
+		glColor3ub(150, 150, 150);
+		glRotated(-90, 1, 0 , 0);
+		cilindroDiv(0.4, 8, 6);
+	glPopMatrix();
+	
+	// anillop
+	glPushMatrix();
+		glColor3ub(170, 170, 170);
+		glTranslated(0, 8, 0);
+		glRotated(-90, 1, 0, 0);
+		dona(0.18, 0.4, 20, 20);
+	glPopMatrix();
+
+	// codito superior
+	glPushMatrix();
+		glColor3ub(150, 150, 150);
+		glTranslated(0, 8, 0);
+		glRotated(-120, 1, 0, 0);
+		cilindroDiv(0.25, 1.2, 6);
+	glPopMatrix();
+
+	// esfera superior
+	glPushMatrix();
+		glColor3ub(150, 150, 150);
+		glTranslated(0, 9, -0.6);
+		esfera(0.25);
+	glPopMatrix();
+
+	// codito superior
+	glPushMatrix();
+		glColor3ub(150, 150, 150);
+		glTranslated(0, 9, -0.6);
+		glRotated(-180, 1, 0, 0);
+		cilindroDiv(0.2, 1, 6);
+	glPopMatrix();
+
+	// esfera superior
+	glPushMatrix();
+		glColor3ub(150, 150, 150);
+		glTranslated(0, 9, -1.6);
+		esfera(0.2);
+	glPopMatrix();
+
+	// codito superior derecho
+	glPushMatrix();
+		glColor3ub(150, 150, 150);
+		glTranslated(0, 9, -1.6);
+		glRotated(-240, 1, 0, 0);
+		cilindroDiv(0.18, 0.6, 6);
+	glPopMatrix();
+
+	// esfera superior
+	glPushMatrix();
+		glColor3ub(150, 150, 150);
+		glTranslated(0, 8.5, -1.9);
+		esfera(0.15);
+	glPopMatrix();
+
+	// foquito de pixar
+	glPushMatrix();
+		glColor3ub(150, 150, 150);
+		glTranslated(0, 7.8, -2);
+		glRotated(-85, 1, 0, 0);
+		cilindroDiv(0.5, 0.05, 0.8, 50);
+	glPopMatrix();
+
+	// foquito
+	glPushMatrix();
+		glTranslated(0, 7.8, -2);
+		sphere(0.4,
+			{ {255, 236, 70, 80},
+			{255, 196, 78, 80} });
+	glPopMatrix();
+
+	// haz de luz
+	glPushMatrix();
+		glColor4ub(255, 196, 78, 40);
+		glTranslated(0, 0, -2.7);
+		glRotated(-85, 1, 0, 0);
+		cilindroDiv(2.2, 0.4, 8, 50);
+	glPopMatrix();
+
+}
 
 // Awita
 void Awita(GLuint texturas[100]) {

@@ -1720,6 +1720,10 @@ void dibujar() {
 
     // ------------------------------------------------
 
+    glPushMatrix();
+    poste();
+    glPopMatrix();
+
     #pragma region No tocar
     glPopMatrix();
     glutSwapBuffers();
