@@ -1621,10 +1621,68 @@ void dibujar() {
         baldecarnada();
     glPopMatrix();
 
+    
+    
+    
     //casas genericas
-    //glPushMatrix();
-   // casagenerica(quad);
-    //glPopMatrix();
+
+  // Casa 2
+    glPushMatrix();
+    glTranslated(-12.5, 0, -37.5);
+    glRotated(20, 0, 1, 0); // Rotar hacia el centro
+    casagenerica(quad);
+    glPopMatrix();
+
+    // Casa 3
+    glPushMatrix();
+    glTranslated(12.5, 0, -37.5);
+    glRotated(-20, 0, 1, 0); // Rotar hacia el centro
+    casagenerica(quad);
+    glPopMatrix();
+
+
+
+
+
+
+    // Casa 5
+    glPushMatrix();
+    glTranslated(-37.5, 0, -12.5);
+    glScaled(0.7, 0.7, 0.7); // Escalar 30% más pequeño
+    glRotated(45, 0, 1, 0); // Rotar hacia el centro
+    casagenerica(quad);
+    glPopMatrix();
+
+    // Casa 6
+    glPushMatrix();
+    glTranslated(37.5, 0, -12.5);
+    glScaled(0.7, 0.7, 0.7); // Escalar 30% más pequeño
+    glRotated(-45, 0, 1, 0); // Rotar hacia el centro
+    casagenerica(quad);
+    glPopMatrix();
+
+
+
+
+
+    // Casa 9
+    glPushMatrix();
+    glTranslated(-37.5, 0, 12.5);
+    glScaled(0.7, 0.7, 0.7); // Escalar 30% más pequeño
+    glRotated(135, 0, 1, 0); // Rotar hacia el centro
+    casagenerica(quad);
+    glPopMatrix();
+
+    // Casa 10
+    glPushMatrix();
+    glTranslated(9, 0, 30);
+    glScaled(0.7, 0.7, 0.7); // Escalar 30% más pequeño
+    glRotated(180, 0, 1, 0); // Rotar hacia el centro
+    casagenerica(quad);
+    glPopMatrix();
+
+
+
 
     #pragma endregion
 
@@ -1634,7 +1692,7 @@ void dibujar() {
 
     glPushMatrix();
         glTranslated(-8, -1.2, 22);
-        glScaled(0.3, 0.3, 0.3);
+        glScaled(0.5, 0.5, 0.5);
         glRotated(185, 0, 1, 0);
         patricio(texturas, quad);
     glPopMatrix();
@@ -1642,15 +1700,15 @@ void dibujar() {
     // bob esponja
     glPushMatrix();
         glTranslated(-16, -1, 22);
-        glScaled(0.1, 0.1, 0.1);
+        glScaled(0.3, 0.3, 0.3);
         glRotated(160, 0, 1, 0);
         bobEsponja();
     glPopMatrix();
 
     // plankton el pepinillo
     glPushMatrix();
-        glTranslated(23, -0.5, -24.5);
-        glScaled(0.15, 0.15, 0.15);
+      glTranslated(28, -0.6, -22);
+        glScaled(0.2, 0.2, 0.2);
         glRotated(35, 0, 1, 0);
         Plankton();
     glPopMatrix();
@@ -1669,7 +1727,7 @@ void dibujar() {
     // carrito burger
     glPushMatrix();
         glTranslated(0, -0.8, 4);
-        glScaled(0.1, 0.1, 0.1);
+        glScaled(0.25, 0.25, 0.25);
         carroBurger();
     glPopMatrix();
 
@@ -1685,42 +1743,334 @@ void dibujar() {
     glPopMatrix();
 
 
-
-   // glPushMatrix();
-   // burbujitas();
-   // glPopMatrix();
-
-  glPushMatrix();
-  coralOne();
-  glPopMatrix();
-
- //   glPushMatrix();
- //   coralTwo();
- //   glPopMatrix();
-
-    //roquita(texturas);
-    //alga();
+    // burbujas 
 
 
+    // Burbujitas a los lados de la casa de Bob Esponja
+    glPushMatrix();
+    glTranslated(-40, -0.75, 34); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-28, -0.75, 34); // Derecha
+    burbujitas();
+    glPopMatrix();
+
+    // Burbujitas a los lados de la casa de Calamardo
+    glPushMatrix();
+    glTranslated(-26, -0.85, 34); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-14, -0.85, 34); // Derecha
+    burbujitas();
+    glPopMatrix();
 
 
- 
+    // Burbujitas a los lados de la casa de Patricio
+    glPushMatrix();
+    glTranslated(-10, -0.85, 36); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-2, -0.85, 36); // Derecha
+    burbujitas();
+    glPopMatrix();
 
 
 
+
+    // Burbujitas a los lados del Crustáceo Cascarudo
+    glPushMatrix();
+    glTranslated(18, -0.85, 27); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(28, -0.85, 15); // Derecha
+    burbujitas();
+    glPopMatrix();
+
+    // Burbujitas a los lados del Balde de Carnada
+    glPushMatrix();
+    glTranslated(22, -0.6, -28); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(34, -0.6, -28); // Derecha
+    burbujitas();
+    glPopMatrix();
+
+
+    // Burbujitas a los lados de la Casa 2
+    glPushMatrix();
+    glTranslated(-16.5, 0, -37.5); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-8.5, 0, -37.5); // Derecha
+    burbujitas();
+    glPopMatrix();
+
+    // Burbujitas a los lados de la Casa 3
+    glPushMatrix();
+    glTranslated(8.5, 0, -37.5); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(16.5, 0, -37.5); // Derecha
+    burbujitas();
+    glPopMatrix();
+
+
+    // Burbujitas a los lados de la Casa 5
+    glPushMatrix();
+    glTranslated(-41.5, 0, -12.5); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-33.5, 0, -12.5); // Derecha
+    burbujitas();
+    glPopMatrix();
+
+
+    // Burbujitas a los lados de la Casa 6
+    glPushMatrix();
+    glTranslated(33.5, 0, -12.5); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(41.5, 0, -12.5); // Derecha
+    burbujitas();
+    glPopMatrix();
+
+
+    // Burbujitas a los lados de la Casa 9
+    glPushMatrix();
+    glTranslated(-41.5, 0, 12.5); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-33.5, 0, 12.5); // Derecha
+    burbujitas();
+    glPopMatrix();
+
+
+    // Burbujitas a los lados de la Casa 10
+    glPushMatrix();
+    glTranslated(5, 0, 30); // Izquierda
+    burbujitas();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(13, 0, 30); // Derecha
+    burbujitas();
+    glPopMatrix();
+
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(0, 0, 28);  // Posición en Z
+    coralTwo();
+    glPopMatrix();
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(45, 0, 28);  // Posición en Z
+    coralTwo();
+    glPopMatrix();
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(-45, 0, 28);  // Posición en Z
+    coralTwo();
+    glPopMatrix();
+
+
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(0, 0, -28);  // Posición en Z
+    coralTwo();
+    glPopMatrix();
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(45, 0, -28);  // Posición en Z
+    coralTwo();
+    glPopMatrix();
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(-45, 0, -28);  // Posición en Z
+    coralTwo();
+    glPopMatrix();
+
+
+
+    float distanciaX = 2.0f;   // Distancia entre rocas en el eje Z
+    int numRocas = 50;        // Número de rocas a lo largo de un borde
+
+    // Borde superior (rocas colocadas a lo largo del eje X)
+    for (int i = 0; i < numRocas; i++) {
+        glPushMatrix();
+        // Posición en el borde superior, desplazamos X en cada iteración
+        glTranslated(-50.0f + i * distanciaX, -0.85, -4);  // Desplazamiento en X
+        glScaled(0.11, 0.11, 0.11);  // Escala de las rocas
+        roquita(texturas);  // Dibuja la roca
+        glPopMatrix();
+    }
+
+    // Borde inferior (rocas colocadas a lo largo del eje X)
+    for (int i = 0; i < numRocas; i++) {
+        glPushMatrix();
+        // Posición en el borde inferior, desplazamos X en cada iteración
+        glTranslated(-50.0f + i * distanciaX, -0.85, 4);  // Desplazamiento en X
+        glScaled(0.11, 0.11, 0.11); // Escala de las rocas
+        roquita(texturas);  // Dibuja la roca
+        glPopMatrix();
+    }
+
+
+   
+    
+
+
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(0, 0, 28);  // Posición en Z
+    alga();
+    glPopMatrix();
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(45, 0, 28);  // Posición en Z
+    alga();
+    glPopMatrix();
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(-45, 0, 28);  // Posición en Z
+    alga();
+    glPopMatrix();
+
+
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(0, 0, -28);  // Posición en Z
+    alga();
+    glPopMatrix();
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(45, 0, -28);  // Posición en Z
+    alga();
+    glPopMatrix();
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(-45, 0, -28);  // Posición en Z
+    alga();
+    glPopMatrix();
+
+
+
+
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.8, 0.8, 0.8);
+    glTranslated(0, -3, 40);  // Posición en Z
+    alga();
+    glPopMatrix();
+
+    // Segundo objeto en la parte derecha (mirando hacia el centro)
+    glPushMatrix();
+    glScaled(0.8, 0.8, 0.8);
+    glTranslated(0, -3, -40);  // Posición en Z
+    alga();
+    glPopMatrix();
+
+
+
+    glPushMatrix();
+    glTranslated(30, 0, -15);
+    coralOne();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-30, 0,  15);
+    coralOne();
+    glPopMatrix();
 
     #pragma region Medusas
 
 
   // 3 medusas
+    glPushMatrix();
+    glTranslated(-30, 2, 15);
+    glRotated(25, 0, 0, 1);
+    glRotated(-12, 1, 0, 0);
+    medusaMoviendose(texturas);
+    glPopMatrix();
+
+
+    // 3 medusas
+    glPushMatrix();
+    glTranslated(30, 2, -15);
+    glRotated(25, 0, 0, 1);
+    glRotated(-12, 1, 0, 0);
+    medusaMoviendose(texturas);
+    glPopMatrix();
+
+
 
 
     glPushMatrix();
-        glTranslated(-18, 2, -18);
+        glTranslated(-18, 2, -15);
         glRotated(25, 0, 0, 1);
         glRotated(-12, 1, 0, 0);
         medusaMoviendose(texturas);
     glPopMatrix();
+
+
+
 
     glPushMatrix();
         glTranslated(12, 12, 20);
