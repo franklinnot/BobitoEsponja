@@ -1621,9 +1621,9 @@ void dibujar() {
         baldecarnada();
     glPopMatrix();
 
-    // casas genericas
+    //casas genericas
     //glPushMatrix();
-    //    casagenerica(quad);
+   // casagenerica(quad);
     //glPopMatrix();
 
     #pragma endregion
@@ -1684,22 +1684,36 @@ void dibujar() {
         ancla();
     glPopMatrix();
 
-    //glPushMatrix();
-    //burbujitas();
-    //glPopMatrix();
 
-    //glPushMatrix();
-    //coralOne();
-    //glPopMatrix();
 
-    //glPushMatrix();
-    //coralTwo();
-    //glPopMatrix();
+   // glPushMatrix();
+   // burbujitas();
+   // glPopMatrix();
+
+  glPushMatrix();
+  coralOne();
+  glPopMatrix();
+
+ //   glPushMatrix();
+ //   coralTwo();
+ //   glPopMatrix();
 
     //roquita(texturas);
     //alga();
 
+
+
+
+ 
+
+
+
+
     #pragma region Medusas
+
+
+  // 3 medusas
+
 
     glPushMatrix();
         glTranslated(-18, 2, -18);
