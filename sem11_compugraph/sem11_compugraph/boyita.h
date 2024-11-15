@@ -1296,7 +1296,7 @@ void BobCamina()
 
 	// Aplicamos la traslación, la escala y la rotación
 	glTranslated(posXBob, -1, posZBob);  // Traslación en Z y X
-	glScaled(0.1, 0.1, 0.1);             // Escala de Bob Esponja
+	glScaled(0.15, 0.15, 0.15);             // Escala de Bob Esponja
 	glRotated(anguloBob, 0, 1, 0);       // Rotación sobre el eje Y
 
 	bobEsponja();  // Dibuja a Bob Esponja

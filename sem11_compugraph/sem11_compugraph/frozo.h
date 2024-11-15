@@ -450,7 +450,7 @@ void caminapatricio(GLuint texturas[100], GLUquadric* quad)
     }
 
     // Aplicamos la traslación, la escala y la rotación
-    glTranslated(posPatricioX, -1.2, posPatricioZ);  // Traslación en Z y X
+    glTranslated(posPatricioX, -1.4, posPatricioZ);  // Traslación en Z y X
     glScaled(0.3, 0.3, 0.3);                         // Escala de Patricio
     glRotated(anguloPatricio, 0, 1, 0);              // Rotación sobre el eje Y
 

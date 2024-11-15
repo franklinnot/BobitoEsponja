@@ -729,8 +729,8 @@ void movimientoPlankton()
 	}
 
 	// 5. Aplicar todas las transformaciones a Plankton
-	glTranslated(23, -0.5, posPlanktonZ);  // Traslación en Z, manteniendo las otras coordenadas constantes
-	glScaled(0.15, 0.15, 0.15);  // Escala de Plankton
+	glTranslated(23, -0.8, posPlanktonZ);  // Traslación en Z, manteniendo las otras coordenadas constantes
+	glScaled(0.1, 0.1, 0.1);  // Escala de Plankton
 	glRotated(anguloPlankton, 0, 1, 0);  // Rotación sobre el eje Y
 
 	Plankton();  // Dibuja a Plankton

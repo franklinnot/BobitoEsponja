@@ -17,9 +17,9 @@ using namespace std;
 
 #pragma region Variables
 
-float camaraX = 50;
-float camaraY = 40;
-float camaraZ = 50;
+float camaraX = 20;
+float camaraY = 20;
+float camaraZ = 20;
 float camaraTargetX = 0;
 float camaraTargetY = 8;
 float camaraTargetZ = 0;
@@ -1518,13 +1518,13 @@ void dibujar() {
     glEnable(GL_BLEND);
     glLoadIdentity();
     // Linea para modificar el punto al cual la camara debe enfocar
-    //gluLookAt(camaraX, camaraY, camaraZ, camaraTargetX, camaraTargetY, camaraTargetZ, 0, 1, 0);
+    gluLookAt(camaraX, camaraY, camaraZ, camaraTargetX, camaraTargetY, camaraTargetZ, 0, 1, 0);
 
-    gluLookAt(camaraX, camaraY, camaraZ, 0, 60, 0, 0, 1, 0);
+    //gluLookAt(camaraX, camaraY, camaraZ, 0, 60, 0, 0, 1, 0);
 
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
     glPushMatrix();
-    glRotated(angulo, 0, 1, 0); // 
+    //glRotated(angulo, 0, 1, 0); // 
     piso();
 
     #pragma endregion
@@ -1638,12 +1638,13 @@ void dibujar() {
 
     // bob esponja
     glPushMatrix();
-     BobCamina();
+        BobCamina();
     glPopMatrix();
-    glPushMatrix();
-    movimientoPlankton();
-    glPopMatrix();
+
     // plankton el pepinillo
+    glPushMatrix();
+        movimientoPlankton();
+    glPopMatrix();
 
 
     #pragma endregion
@@ -2136,10 +2137,10 @@ int main(int argc, char* argv[]) {
     glutReshapeFunc(iniciarVentana);
     cargarImagenes();
     glutDisplayFunc(dibujar);
-    //glutKeyboardFunc(teclado);
-    glutSpecialFunc(tecladin);
-    //glutMouseFunc(mouse);
-    //glutMotionFunc(mouseMotion);
+    glutKeyboardFunc(teclado);
+    //glutSpecialFunc(tecladin);
+    glutMouseFunc(mouse);
+    glutMotionFunc(mouseMotion);
     glutTimerFunc(0, timer, 0);
     glEnable(GL_DEPTH_TEST);
     glutMainLoop();
