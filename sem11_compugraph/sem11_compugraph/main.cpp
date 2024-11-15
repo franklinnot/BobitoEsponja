@@ -17,9 +17,9 @@ using namespace std;
 
 #pragma region Variables
 
-float camaraX = 20;
-float camaraY = 30;
-float camaraZ = 20;
+float camaraX = 50;
+float camaraY = 40;
+float camaraZ = 50;
 float camaraTargetX = 0;
 float camaraTargetY = 8;
 float camaraTargetZ = 0;
@@ -2148,8 +2148,8 @@ int main(int argc, char* argv[]) {
     glutDisplayFunc(dibujar);
     //glutKeyboardFunc(teclado);
     glutSpecialFunc(tecladin);
-    glutMouseFunc(mouse);
-    glutMotionFunc(mouseMotion);
+    //glutMouseFunc(mouse);
+    //glutMotionFunc(mouseMotion);
     glutTimerFunc(0, timer, 0);
     glEnable(GL_DEPTH_TEST);
     glutMainLoop();
