@@ -1633,27 +1633,18 @@ void dibujar() {
     #pragma region Personajes
 
     glPushMatrix();
-        glTranslated(-8, -1.2, 22);
-        glScaled(0.3, 0.3, 0.3);
-        glRotated(185, 0, 1, 0);
-        patricio(texturas, quad);
+        caminapatricio(texturas,   quad);
     glPopMatrix();
 
     // bob esponja
     glPushMatrix();
-        glTranslated(-16, -1, 22);
-        glScaled(0.1, 0.1, 0.1);
-        glRotated(160, 0, 1, 0);
-        bobEsponja();
+     BobCamina();
     glPopMatrix();
-
-    // plankton el pepinillo
     glPushMatrix();
-        glTranslated(23, -0.5, -24.5);
-        glScaled(0.15, 0.15, 0.15);
-        glRotated(35, 0, 1, 0);
-        Plankton();
+    movimientoPlankton();
     glPopMatrix();
+    // plankton el pepinillo
+
 
     #pragma endregion
 

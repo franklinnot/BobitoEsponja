@@ -369,3 +369,93 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
     glutSolidSphere(0.2, 50, 50);
     glPopMatrix();
 }
+
+
+
+
+
+// Variables globales
+float posPatricioZ = 33;        // Posición inicial de Patricio en Z
+float posPatricioX = -6;        // Posición inicial de Patricio en X
+bool detenerPatricio = false;   // Control para detener el movimiento de Patricio en Z
+bool pausaAntesDeRotar1 = false; // Control para la pausa antes de la rotación
+bool moverEnX1 = false;          // Control para iniciar el movimiento en X después de la rotación
+float anguloPatricio = 180;     // Ángulo inicial de rotación
+float primerGirox = 90;         // Primer ángulo de giro
+float tiempoTranscurrido = 0.0f; // Variable para contar el tiempo transcurrido
+bool animacionesIniciadas = false; // Controla si las animaciones han comenzado
+
+void caminapatricio(GLuint texturas[100], GLUquadric* quad)
+{
+    // Aseguramos que las animaciones solo comiencen después de 5 segundos
+    if (!animacionesIniciadas)
+    {
+        tiempoTranscurrido += 0.01f; // Aumenta el tiempo transcurrido en cada cuadro (ajustar según el tiempo de frame)
+
+        if (tiempoTranscurrido >= 4.0f) // Si han pasado 5 segundos
+        {
+            animacionesIniciadas = true; // Inicia las animaciones
+        }
+    }
+
+    // 1. Siempre dibujamos a Patricio, pero sus movimientos solo inician después de los 5 segundos
+    glPushMatrix();
+
+    // 2. Si las animaciones han comenzado, realizamos el movimiento
+    if (animacionesIniciadas)
+    {
+        // 1. Movimiento en Z hasta alcanzar la posición deseada
+        if (!detenerPatricio && posPatricioZ > 20)  // Avanzar hasta posZMax
+        {
+            posPatricioZ -= 0.1;  // Avanza Patricio en Z
+        }
+        else
+        {
+            detenerPatricio = true;  // Detiene el movimiento cuando se alcanza posZMax
+        }
+
+        // 2. Pausa antes de la rotación (después de detener el movimiento en Z)
+        if (detenerPatricio && !pausaAntesDeRotar1)
+        {
+            pausaAntesDeRotar1 = true;  // Activa la pausa antes de rotar
+        }
+
+        // 3. Primer rotación después de avanzar en Z
+        if (pausaAntesDeRotar1)
+        {
+            // Primer giro
+            if (anguloPatricio < primerGirox)  // Primer giro
+            {
+                anguloPatricio += 0.1;  // Incrementa el ángulo
+            }
+            else
+            {
+                anguloPatricio = primerGirox;  // Asegura que el ángulo no pase del primer giro
+                moverEnX1 = true;  // Activa el movimiento en X después de la rotación
+            }
+        }
+
+        // 4. Movimiento en X después de la rotación
+        if (moverEnX1)
+        {
+            if (posPatricioX < 25)  // Si la posición de X es menor que el tope
+            {
+                posPatricioX += 0.1;  // Avanza Patricio en X
+            }
+        }
+    }
+
+    // Aplicamos la traslación, la escala y la rotación
+    glTranslated(posPatricioX, -1.2, posPatricioZ);  // Traslación en Z y X
+    glScaled(0.3, 0.3, 0.3);                         // Escala de Patricio
+    glRotated(anguloPatricio, 0, 1, 0);              // Rotación sobre el eje Y
+
+    patricio(texturas, quad);  // Dibuja a Patricio
+
+    glPopMatrix();  // Restauramos las transformaciones
+}
+
+
+
+
+

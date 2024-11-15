@@ -375,7 +375,6 @@ void cejita() {
 	glPopMatrix();
 }
 
-
 void sonrisa() {
 	glPushMatrix();
 
@@ -548,9 +547,109 @@ void Plankton() {
 	glPopMatrix();
 }
 
+float posPlanktonZ = -24.5;  // Posición inicial de Plankton en Z
+float velocidadPlankton = 0.5;  // Velocidad de movimiento en Z
+double anguloPlankton = 90;   // Ángulo de rotación inicial
+bool detenerPlankton = false;  // Para controlar si Plankton se detiene o sigue
+bool pausaAntesDeGiros = false;  // Para controlar la pausa antes de los giros
+bool girandoPrimero = false;  // Para controlar el primer giro
+bool girandoSegundo = false;  // Para controlar el segundo giro
+bool girandoTercero = false;  // Para controlar el tercer giro (para regresar a la rotación original)
+bool avanzandoDeNuevo = false;  // Para controlar el regreso al avance en Z
+
+// Ángulos que el usuario ingresa para los giros
+double primerGiro = 180;  // Primer ángulo de giro (puedes modificar este valor)
+double segundoGiro = -90;  // Segundo ángulo de giro (puedes modificar este valor)
+double anguloOriginal = 45;  // El ángulo original de rotación que tendrá Plankton al final (puedes modificar este valor)
 
 
-// Toda la isla
+void movimientoPlankton()
+{
+	glPushMatrix();
+
+	// 1. Movimiento en Z (avanzar hasta la posición deseada)
+	if (!detenerPlankton && posPlanktonZ < -6)  // Modifica el valor de 23 si deseas un rango diferente
+	{
+		posPlanktonZ += velocidadPlankton / 10.0;  // Mueve a Plankton en Z
+	}
+	else
+	{
+		detenerPlankton = true;  // Detiene el movimiento en Z
+	}
+
+	// 2. Pausa antes de los giros
+	if (detenerPlankton && !pausaAntesDeGiros)
+	{
+		pausaAntesDeGiros = true;  // Activamos la pausa antes de los giros
+	}
+
+	// 3. Giros (todos después de la pausa)
+	if (pausaAntesDeGiros)
+	{
+		// Primer giro
+		if (!girandoPrimero)
+		{
+			if (anguloPlankton < primerGiro)  // Giro de primer valor
+			{
+				anguloPlankton += velocidadPlankton;  // Gira en el sentido deseado
+			}
+			else
+			{
+				anguloPlankton = primerGiro;  // Aseguramos que el ángulo no pase del primer giro
+				girandoPrimero = true;  // Detiene el primer giro
+			}
+		}
+		// Segundo giro
+		else if (!girandoSegundo)
+		{
+			if (anguloPlankton > segundoGiro)  // Giro de segundo valor
+			{
+				anguloPlankton -= 1;  // Gira en sentido opuesto
+			}
+			else
+			{
+				anguloPlankton = segundoGiro;  // Aseguramos que el ángulo no pase del segundo giro
+				girandoSegundo = true;  // Detiene el segundo giro
+			}
+		}
+		// Tercer giro (regresar a la rotación original)
+		else if (!girandoTercero)
+		{
+			if (anguloPlankton < anguloOriginal)  // Regresa a la rotación original
+			{
+				anguloPlankton += 1;  // Gira hacia la rotación original
+			}
+			else
+			{
+				anguloPlankton = anguloOriginal;  // Asegura que el ángulo vuelva a su valor original
+				girandoTercero = true;  // Detiene el tercer giro
+			}
+		}
+	}
+
+	// 4. Después de los giros, avanzar nuevamente en Z
+	if (girandoPrimero && girandoSegundo && girandoTercero && !avanzandoDeNuevo)
+	{
+		if (posPlanktonZ < 20)  // Continúa avanzando en Z hasta llegar a 28
+		{
+			posPlanktonZ += 1 / 10.0;
+		}
+		else
+		{
+			avanzandoDeNuevo = true;  // Termina el movimiento en Z
+		}
+	}
+
+	// 5. Aplicar todas las transformaciones a Plankton
+	glTranslated(23, -0.5, posPlanktonZ);  // Traslación en Z, manteniendo las otras coordenadas constantes
+	glScaled(0.15, 0.15, 0.15);  // Escala de Plankton
+	glRotated(anguloPlankton, 0, 1, 0);  // Rotación sobre el eje Y
+
+	Plankton();  // Dibuja a Plankton
+
+	glPopMatrix();  // Restauramos las transformaciones
+}
+
 void Isla(GLuint texturas[100], GLUquadric* quad) {
 
 	glPushMatrix();
