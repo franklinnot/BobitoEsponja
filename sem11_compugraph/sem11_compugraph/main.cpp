@@ -18,7 +18,7 @@ using namespace std;
 #pragma region Variables
 
 float camaraX = 20;
-float camaraY = 20;
+float camaraY = 30;
 float camaraZ = 20;
 float camaraTargetX = 0;
 float camaraTargetY = 8;
@@ -26,6 +26,8 @@ float camaraTargetZ = 0;
 float anguloHorizontal = 0.0f;
 float anguloVertical = 0.0f;
 float distanciaCamara = 20.0f;
+
+float angulo = 0;
 
 int mouseX, mouseY;
 bool isMousePressed = false;
@@ -127,6 +129,32 @@ void actualizarCamara() {
     camaraX = camaraTargetX + distanciaCamara * dirX;
     camaraY = camaraTargetY + distanciaCamara * dirY;
     camaraZ = camaraTargetZ + distanciaCamara * dirZ;
+}
+
+void tecladin(int tecla, int x, int y) {
+
+    switch (tecla)
+    {
+    case 101:
+        std::cout << "Manito arriba" << std::endl;
+        camaraY += 2;
+        break;
+
+    case 103:
+        std::cout << "Manito abajo" << std::endl;
+        camaraY -= 2;
+        break;
+
+    case 102:
+        std::cout << "Patita derecha" << std::endl;
+        angulo -= 2;
+        break;
+
+    case 100:
+        std::cout << "Patita izquierda" << std::endl;
+        angulo += 2;
+        break;
+    }
 }
 
 // Función de teclado
@@ -1490,10 +1518,15 @@ void dibujar() {
     glEnable(GL_BLEND);
     glLoadIdentity();
     // Linea para modificar el punto al cual la camara debe enfocar
-    gluLookAt(camaraX, camaraY, camaraZ, camaraTargetX, camaraTargetY, camaraTargetZ, 0, 1, 0);
+    //gluLookAt(camaraX, camaraY, camaraZ, camaraTargetX, camaraTargetY, camaraTargetZ, 0, 1, 0);
+
+    gluLookAt(camaraX, camaraY, camaraZ, 0, 60, 0, 0, 1, 0);
+
     glClearColor(255 / 255.0, 255 / 255.0, 210 / 255.0, 1);
     glPushMatrix();
+    glRotated(angulo, 0, 1, 0); // 
     piso();
+
     #pragma endregion
 
     // ------------------------------------------------
@@ -1599,29 +1632,29 @@ void dibujar() {
 
     #pragma region Personajes
 
-    // Patricio
-    glPushMatrix();
-        glTranslated(-8, -1.2, 22);
-        glScaled(0.3, 0.3, 0.3);
-        glRotated(185, 0, 1, 0);
-        patricio(texturas, quad);
-    glPopMatrix();
+    //// Patricio
+    //glPushMatrix();
+    //    glTranslated(-8, -1.2, 22);
+    //    glScaled(0.3, 0.3, 0.3);
+    //    glRotated(185, 0, 1, 0);
+    //    patricio(texturas, quad);
+    //glPopMatrix();
 
-    // bob esponja
-    glPushMatrix();
-        glTranslated(-16, -1, 22);
-        glScaled(0.1, 0.1, 0.1);
-        glRotated(160, 0, 1, 0);
-        bobEsponja();
-    glPopMatrix();
+    //// bob esponja
+    //glPushMatrix();
+    //    glTranslated(-16, -1, 22);
+    //    glScaled(0.1, 0.1, 0.1);
+    //    glRotated(160, 0, 1, 0);
+    //    bobEsponja();
+    //glPopMatrix();
 
-    // plankton el pepinillo
-    glPushMatrix();
-        glTranslated(23, -0.5, -24.5);
-        glScaled(0.15, 0.15, 0.15);
-        glRotated(35, 0, 1, 0);
-        Plankton();
-    glPopMatrix();
+    //// plankton el pepinillo
+    //glPushMatrix();
+    //    glTranslated(23, -0.5, -24.5);
+    //    glScaled(0.15, 0.15, 0.15);
+    //    glRotated(35, 0, 1, 0);
+    //    Plankton();
+    //glPopMatrix();
 
     #pragma endregion
 
@@ -2113,7 +2146,8 @@ int main(int argc, char* argv[]) {
     glutReshapeFunc(iniciarVentana);
     cargarImagenes();
     glutDisplayFunc(dibujar);
-    glutKeyboardFunc(teclado);
+    //glutKeyboardFunc(teclado);
+    glutSpecialFunc(tecladin);
     glutMouseFunc(mouse);
     glutMotionFunc(mouseMotion);
     glutTimerFunc(0, timer, 0);
