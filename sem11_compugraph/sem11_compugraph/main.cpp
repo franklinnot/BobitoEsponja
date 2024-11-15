@@ -1412,7 +1412,9 @@ void cielofondodebikini() {
 
     // Fondo de cielo
     glPushMatrix();
-    cubo(1);
+        glColor4ub(250, 250, 250, 0);
+        glTranslated(-100, -100, 100);
+        cubo(1);
     glPopMatrix();
 
     // Textura de fondo
@@ -1627,7 +1629,8 @@ void dibujar() {
 
     #pragma region Elementos adicionales
 
-    // Pistas / calles 
+    #pragma region pistas / calles
+
     glPushMatrix();
         glTranslated(0, -0.85, -4);
         calles();
@@ -1676,6 +1679,7 @@ void dibujar() {
         glRotated(90, 0, 1, 0);
         calles();
     glPopMatrix();
+    #pragma endregion
 
     // carrito burger
     glPushMatrix();
@@ -1695,7 +1699,8 @@ void dibujar() {
         ancla();
     glPopMatrix();
 
-    // BURBUJITAS
+    #pragma region Burbujas
+
     glPushMatrix();
         glTranslated(0, -0.8, 30);
         burbujitas();
@@ -1715,7 +1720,11 @@ void dibujar() {
         glTranslated(40, -0.8, -20);
         burbujitas();
     glPopMatrix();
-    
+  
+    #pragma endregion
+
+    #pragma region Corales, rocas y algas
+
     // CORAL - Version 1
     glPushMatrix();
         glTranslated(40, -0.85, 10);
@@ -2005,7 +2014,8 @@ void dibujar() {
         glRotated(180, 0, 1, 0);
     alga();
     glPopMatrix();
-  
+    #pragma endregion
+
     #pragma region Medusas
 
     glPushMatrix();
@@ -2049,13 +2059,43 @@ void dibujar() {
 
     #pragma endregion
 
+    #pragma region Postes
+    glPushMatrix();
+        glTranslated(0, -2, 7);
+        glScaled(1.4, 1.4, 1.4);
+        poste();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(20, -2, -7);
+        glScaled(1.4, 1.4, 1.4);
+        glRotated(180, 0, 1, 0);
+        poste();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(40, -2, 7);
+        glScaled(1.4, 1.4, 1.4);
+        poste();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(-40, -2, 7);
+        glScaled(1.4, 1.4, 1.4);
+        poste();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-20, -2, -7);
+    glScaled(1.4, 1.4, 1.4);
+    glRotated(180, 0, 1, 0);
+    poste();
+    glPopMatrix();
+    #pragma endregion
+
     #pragma endregion
 
     // ------------------------------------------------
-
-    glPushMatrix();
-    poste();
-    glPopMatrix();
 
     #pragma region No tocar
     glPopMatrix();

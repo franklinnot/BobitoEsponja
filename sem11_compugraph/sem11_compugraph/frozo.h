@@ -15,7 +15,9 @@ using namespace std;
 void casagenerica(GLUquadric* quad) {
     
     glColor3ub(83, 150, 166);
-
+    glPushMatrix();
+    glTranslated(0, -1, 0);
+    glPushMatrix();
     //casas
     glPushMatrix();
     glTranslated(0, 0, 0);
@@ -111,6 +113,8 @@ void casagenerica(GLUquadric* quad) {
     glutSolidSphere(0.2, 50, 50);
     glPopMatrix();
 
+    glPopMatrix();
+    glPopMatrix();
 }
 
 void casacalamardo(GLuint texturas[100],GLUquadric* quad) {

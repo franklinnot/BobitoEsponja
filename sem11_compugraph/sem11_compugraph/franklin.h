@@ -101,8 +101,8 @@ void poste() {
 	// haz de luz
 	glPushMatrix();
 		glColor4ub(255, 196, 78, 40);
-		glTranslated(0, 0, -2.7);
-		glRotated(-85, 1, 0, 0);
+		glTranslated(0, 0, -3.5);
+		glRotated(-80, 1, 0, 0);
 		cilindroDiv(2.2, 0.4, 8, 50);
 	glPopMatrix();
 
