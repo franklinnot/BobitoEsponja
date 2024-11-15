@@ -375,7 +375,7 @@ void patricio(GLuint texturas[100],GLUquadric* quad) {
 
 
 // Variables globales
-float posPatricioZ = 33;        // Posición inicial de Patricio en Z
+float posPatricioZ = 30;        // Posición inicial de Patricio en Z
 float posPatricioX = -6;        // Posición inicial de Patricio en X
 bool detenerPatricio = false;   // Control para detener el movimiento de Patricio en Z
 bool pausaAntesDeRotar1 = false; // Control para la pausa antes de la rotación
