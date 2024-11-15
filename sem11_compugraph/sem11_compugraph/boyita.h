@@ -1009,6 +1009,8 @@ void lengua()
 	glPopMatrix();
 }
 
+
+
 // Variables de personajes
 float velocidadPersonaje = 4;
 float anguloPierna1 = 0;
@@ -1034,17 +1036,17 @@ void bobEsponja()
 	glTranslated(0.5, 5, -0.1);
 	glRotated(anguloPierna1, 1, 0, 0);
 	glTranslated(0, -5, 0.1);
-	
-		glColor3ub(0, 0, 0);
-		zapato(2.5);
 
-		media(2.5);
+	glColor3ub(0, 0, 0);
+	zapato(2.5);
 
-		glColor3ub(255, 238, 57);
-		pierna(2.5);
+	media(2.5);
 
-		glColor3ub(156, 73, 41);
-		pantalon(2.5);
+	glColor3ub(255, 238, 57);
+	pierna(2.5);
+
+	glColor3ub(156, 73, 41);
+	pantalon(2.5);
 
 	glPopMatrix();
 
@@ -1065,17 +1067,17 @@ void bobEsponja()
 	glTranslated(-0.5, 5, -0.1);
 	glRotated(anguloPierna2, 1, 0, 0);
 	glTranslated(0, -5, 0.1);
-	
-		glColor3ub(0, 0, 0);
-		zapato(-2.5);
 
-		media(-2.5);
+	glColor3ub(0, 0, 0);
+	zapato(-2.5);
 
-		glColor3ub(255, 238, 57);
-		pierna(-2.5);
+	media(-2.5);
 
-		glColor3ub(156, 73, 41);
-		pantalon(-2.5);
+	glColor3ub(255, 238, 57);
+	pierna(-2.5);
+
+	glColor3ub(156, 73, 41);
+	pantalon(-2.5);
 
 	glPopMatrix();
 
@@ -1105,7 +1107,7 @@ void bobEsponja()
 	pupila(1.6);
 	pupila(-1.6);
 
-	pestaña(-1,17);
+	pestaña(-1, 17);
 	pestaña(1, 17);
 
 	pestaña(-1.75, 17.1);
@@ -1158,12 +1160,158 @@ void bobEsponja()
 	boca();
 
 	glColor3ub(255, 183, 188);
-	lengua();	
+	lengua();
 }
 
 
 
-// Roquita
+float posZBob = 28;        // Posición inicial de Bob en Z
+float posXBob = -30;       // Posición inicial de Bob en X
+bool detenerBob = false;   // Control para detener el movimiento de Bob en Z
+bool detenerBobX = false;  // Control para detener el movimiento de Bob en X
+bool pausaAntesDeRotar = false;  // Control para la pausa antes de la rotación
+bool moverEnX = false;     // Control para iniciar el movimiento en X después de la rotación
+bool rotarOtraVez = false; // Control para rotar nuevamente
+bool giroFinal = false;    // Control para el giro final
+float anguloBob = 180;           // Ángulo inicial de rotación
+float primerGiro1 = 90;         // Primer ángulo de giro
+float giroFinalAngulo = 0;   // Ángulo del giro final
+bool avanzarZFinal = false; // Control para el avance final en Z
+bool detenerZFinal = false; // Control para detener el avance final en Z
+bool rotarUltimaVez = false; // Control para el último giro
+
+// Nuevo ángulo para el último giro
+float ultimoGiroAngulo = 90; // Ángulo para el último giro
+
+// Control para el avance final en X
+bool avanzarXFinal = false; // Control para el avance final en X
+bool detenerXFinal = false; // Control para detener el avance final en X
+
+void BobCamina()
+{
+	glPushMatrix();
+
+	// 1. Movimiento en Z hasta alcanzar la posición deseada
+	if (!detenerBob && posZBob > 10)  // Avanzar hasta posZMax
+	{
+		posZBob -= 0.1;  // Avanza Bob en Z
+	}
+	else
+	{
+		detenerBob = true;  // Detiene el movimiento cuando se alcanza posZMax
+	}
+
+	// 2. Pausa antes de la rotación (después de detener el movimiento en Z)
+	if (detenerBob && !pausaAntesDeRotar)
+	{
+		pausaAntesDeRotar = true;  // Activa la pausa antes de rotar
+	}
+
+	// 3. Primer rotación después de avanzar en Z
+	if (pausaAntesDeRotar)
+	{
+		// Primer giro
+		if (anguloBob < primerGiro1)  // Primer giro
+		{
+			anguloBob += 0.1;  // Incrementa el ángulo
+		}
+		else
+		{
+			anguloBob = primerGiro1;  // Asegura que el ángulo no pase del primer giro
+			moverEnX = true;  // Activa el movimiento en X después de la rotación
+		}
+	}
+
+	// 4. Movimiento en X después de la rotación
+	if (moverEnX && !detenerBobX)
+	{
+		if (posXBob < -4)  // Si la posición de X es menor que el tope
+		{
+			posXBob += 0.1;  // Avanza Bob en X
+		}
+		else
+		{
+			detenerBobX = true;  // Detiene el movimiento cuando se alcanza el tope en X
+			rotarOtraVez = true; // Activa el control para rotar nuevamente
+		}
+	}
+
+	// 5. Giro final después de detenerse en X
+	if (rotarOtraVez && detenerBobX)
+	{
+		if (anguloBob < giroFinalAngulo)
+		{
+			anguloBob += 0.1;  // Incrementa el ángulo para el giro final
+		}
+		else
+		{
+			anguloBob = giroFinalAngulo;  // Finaliza el giro
+			giroFinal = true;  // Marca el giro como completado
+			avanzarZFinal = true; // Activa el movimiento en Z nuevamente
+		}
+	}
+
+	// 6. Avance final en Z hasta el tope
+	if (avanzarZFinal && !detenerZFinal)
+	{
+		if (posZBob < 18) // Avanza hasta el tope definido
+		{
+			posZBob += 0.1; // Continúa avanzando en Z
+		}
+		else
+		{
+			detenerZFinal = true; // Detiene el avance final
+			rotarUltimaVez = true; // Activa el último giro
+		}
+	}
+
+	// 7. Último giro
+
+
+	// 8. Avance final en X hasta el tope
+	if (avanzarXFinal && !detenerXFinal)
+	{
+		if (posXBob < 25) // Avanza hasta el tope definido
+		{
+			posXBob += 0.1; // Continúa avanzando en X
+		}
+		else
+		{
+			detenerXFinal = true; // Detiene el avance final en X
+		}
+	}
+	
+	if (rotarUltimaVez && detenerZFinal)
+	{
+		if (anguloBob > ultimoGiroAngulo)
+		{
+			anguloBob -= 0.1;  // Decrementa el ángulo para el último giro
+		}
+		else
+		{
+			anguloBob = ultimoGiroAngulo;  // Finaliza el último giro
+			avanzarXFinal = true; // Activa el movimiento en X nuevamente
+		}
+	}
+
+	// Aplicamos la traslación, la escala y la rotación
+	glTranslated(posXBob, -1, posZBob);  // Traslación en Z y X
+	glScaled(0.1, 0.1, 0.1);             // Escala de Bob Esponja
+	glRotated(anguloBob, 0, 1, 0);       // Rotación sobre el eje Y
+
+	bobEsponja();  // Dibuja a Bob Esponja
+
+	glPopMatrix();  // Restauramos las transformaciones
+}
+
+
+
+
+
+
+
+
+
 void roquita(GLuint texturas[100]) {
 
 	glEnable(GL_TEXTURE_2D);
@@ -1247,6 +1395,8 @@ float limiteX = 5.0f;
 float limiteY = 6.0f;
 float limiteZ = 5.0f;
 
+
+
 void movimiento()
 {
 	// Actualización de la posición
@@ -1316,6 +1466,7 @@ void medusa(GLuint texturas[100]) {
 
 	glPopMatrix();
 }
+
 
 void medusaMoviendose(GLuint texturas[100])
 {
