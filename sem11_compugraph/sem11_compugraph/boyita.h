@@ -1474,3 +1474,186 @@ void medusaMoviendose(GLuint texturas[100])
 	tiempo += 0.05;
 	medusa(texturas);
 }
+
+// Burbuja Gigante
+float posY = 40;         // Altura inicial de la burbuja
+float velocidad = 0.2;   // Velocidad de descenso
+bool reventada = false;  // Controla si la burbuja está reventando
+float alpha = 1.0f;      // Transparencia de la burbuja
+float movimientoGary = 0; // Movimiento horizontal de Gary
+bool garyAvanza = false; // Controla si Gary empieza a avanzar
+
+void burbujaGary()
+{
+	glPushMatrix();
+	glTranslated(0, posY, -20);
+	float color = posY / 10; 
+	glColor4f(1, 131, 206, alpha * color);
+
+	esfera(4); 
+	glPopMatrix();
+}
+
+void actualizarBurbuja()
+{
+	if (!reventada)
+	{
+		posY -= velocidad; // Baja la burbuja
+
+		if (posY <= 0) // Cuando llega al suelo
+		{
+			posY = 0;      // Detenemos la burbuja
+			reventada = true; // Cambiamos el estado
+			garyAvanza = true; // Iniciamos el movimiento de Gary
+		}
+	}
+	else
+	{
+		alpha -= 0.03f;
+		if (alpha <= 0)
+		{
+			alpha = 0; 
+		}
+	}
+
+	// Movimiento de Gary hacia adelante
+	if (garyAvanza)
+	{
+		movimientoGary -= 0.1f; 
+	}
+}
+
+void cuerpo()
+{
+	glColor3ub(242, 248, 213);
+	glPushMatrix();
+		glTranslated(0, 1.8, 0);
+		glScaled(1.4, 0.2, 0.4);
+		esfera(4);
+	glPopMatrix();
+
+	glColor3ub(133, 203, 232);
+	glPushMatrix();
+		glTranslated(0, 1.9, 0);
+		glScaled(1.4, 0.2, 0.4);
+		esfera(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 2.2, 0);
+	glScaled(1.3, 0.2, 0.3);
+	esfera(4);
+	glPopMatrix();
+}
+
+void caparazon()
+{
+	
+	glColor3ub(224, 150, 143);
+	glPushMatrix();
+	glTranslated(-1.8, 3, 0);
+	glScaled(1.5, 1.5, 0.8);
+	dona(1.5,1.5,50,50);
+	glPopMatrix();
+
+	glColor3ub(238, 100, 123);
+	glPushMatrix();
+	glTranslated(-1.8, 2.2, 0);
+	glScaled(1.3, 1.3, 0.8);
+	dona(1.5, 1.5, 50, 50);
+	glPopMatrix();
+
+}
+
+
+void ojosGary()
+{
+	glColor3ub(133, 203, 232);
+	glPushMatrix();
+		glTranslated(4, 7, 1.5);
+		glRotated(90,1,0,0);
+		glRotated(10, 1, 0, 0);
+		cilindro(0.2, 0.3, 8);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(4, 7, -1.5);
+		glRotated(90, 1, 0, 0);
+		glRotated(-10, 1, 0, 0);
+		//glScaled(1.5, 1.5, 0.8);
+		cilindro(0.2, 0.3, 8);
+	glPopMatrix();
+
+	glColor3ub(244, 249, 225);
+	glPushMatrix();
+		glTranslated(4, 7, 1.5);
+		glRotated(10, 1, 0, 0);
+		esfera(1);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslated(4, 7, -1.5);
+		glRotated(10, 1, 0, 0);
+		esfera(1);
+	glPopMatrix();
+
+	glColor3ub(241, 138, 63);
+	glPushMatrix();
+	glTranslated(4.5, 7, -1.5);
+	glRotated(10, 1, 0, 0);
+	esfera(0.6);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(4.5, 7, 1.5);
+	glRotated(10, 1, 0, 0);
+	esfera(0.6);
+	glPopMatrix();
+
+	glColor3ub(0, 0, 0);
+		glPushMatrix();
+		glTranslated(5, 7, 1.5);
+		glRotated(10, 1, 0, 0);
+		esfera(0.2);
+	glPopMatrix();
+
+	glColor3ub(0, 0, 0);
+		glPushMatrix();
+		glTranslated(5, 7, -1.5);
+		glRotated(10, 1, 0, 0);
+		esfera(0.2);
+	glPopMatrix();
+
+	glColor3ub(244, 249, 225);
+	glPushMatrix();
+		glTranslated(5, 7.2, 1.3);
+		glRotated(10, 1, 0, 0);
+		esfera(0.1);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(5, 7.2, -1.7);
+	glRotated(10, 1, 0, 0);
+	esfera(0.1);
+	glPopMatrix();
+}
+
+
+void Gary()
+{
+	glPushMatrix();
+	
+	glTranslated(movimientoGary, posY, -20);
+	glScaled(0.25, 0.25, 0.25);
+	glRotated(180, 0, 1, 0);
+	glPushMatrix();
+	glTranslated(0, -2, 0);
+	cuerpo();
+	glPopMatrix();
+
+	caparazon();
+	ojosGary();
+
+	glPopMatrix();
+
+}

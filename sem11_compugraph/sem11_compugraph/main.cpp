@@ -1646,6 +1646,11 @@ void dibujar() {
         movimientoPlankton();
     glPopMatrix();
 
+    // Gary
+    glPushMatrix();
+        glTranslated(0, -0.9, 0);
+        Gary();
+    glPopMatrix();
 
     #pragma endregion
 
@@ -1745,6 +1750,13 @@ void dibujar() {
         burbujitas();
     glPopMatrix();
   
+    // Burbuja de Gary
+    glPushMatrix();
+        //glTranslated(40, -0.8, -20);
+        burbujaGary();
+        actualizarBurbuja();
+    glPopMatrix();
+
     #pragma endregion
 
     #pragma region Corales, rocas y algas
